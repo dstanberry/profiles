@@ -1,0 +1,120 @@
+{
+	"$schema": "https://aka.ms/terminal-profiles-schema",
+
+	"defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+
+	"profiles": [
+		{
+			"guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+			"name": "Windows PowerShell",
+			"commandline": "powershell.exe",
+			"colorScheme": "KDark",
+			"fontFace": "Delugia Nerd Font",
+			"fontSize": 10,
+			"icon": "D:\\Pictures\\Icons\\Papirus-Dark\\Processed\\apps\\microsoft.ico",
+			"padding": "1, 3, 0, 0"
+		},
+		{
+			"guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+			"name": "PowerShell Core",
+			"source": "Windows.Terminal.PowershellCore",
+			"colorScheme": "KDark",
+			"fontFace": "Delugia Nerd Font",
+			"fontSize": 10,
+			"icon": "D:\\Pictures\\Icons\\Papirus-Dark\\Processed\\apps\\pwsh.ico",
+			"padding": "1, 3, 0, 0"
+		},
+		{
+			"guid": "{4b616e97-29ae-4337-882b-1b30a9d82b97}",
+			"name": "Gentoo",
+			"commandline": "wsl -d Gentoo",
+			"startingDirectory": "//wsl$/Gentoo/home/demaro",
+			"colorScheme": "KDark",
+			"fontFace": "Delugia Nerd Font",
+			"fontSize": 10,
+			"icon": "D:\\Pictures\\Icons\\Papirus-Dark\\Processed\\apps\\distributor-logo-gentoo.ico",
+			"padding": "1, 3, 0, 0"
+		},
+		{
+			"guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+			"name": "Command Prompt",
+			"commandline": "cmd.exe",
+			"colorScheme": "KDark",
+			"fontFace": "Delugia Nerd Font",
+			"fontSize": 10,
+			"icon": "D:\\Pictures\\Icons\\Papirus-Dark\\Processed\\apps\\distributor-logo-ms-dos.ico",
+			"padding": "1, 3, 0, 0"
+		},
+		{
+			"guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+			"name": "Azure Cloud Shell",
+			"source": "Windows.Terminal.Azure",
+			"colorScheme": "KDark",
+			"fontFace": "Delugia Nerd Font",
+			"fontSize": 10,
+			"padding": "1, 3, 0, 0",
+			"hidden": true
+		},
+        {
+            "guid": "{1d2d9f1c-0192-5285-8115-38593c2c526e}",
+            "hidden": true,
+            "name": "Gentoo",
+            "source": "Windows.Terminal.Wsl"
+        }
+	],
+
+	"schemes": [
+		{
+			"name": "KDark",
+			"foreground": "#CFD6E4",
+			"background": "#373737",
+			"black": "#434345",
+			"blue": "#6F8FB4",
+			"brightBlack": "#5A5A69",
+			"brightBlue": "#6F8FB4",
+			"brightCyan": "#7EAFAD",
+			"brightGreen": "#93B379",
+			"brightPurple": "#A4799D",
+			"brightRed": "#B04B57",
+			"brightWhite": "#E7EBF1",
+			"brightYellow": "#E5C179",
+			"cyan": "#77B3C5",
+			"green": "#93B379",
+			"purple": "#A4799D",
+			"red": "#B04B57",
+			"white": "#DFE3EC",
+			"yellow": "#E5C179"
+		},
+		{
+			"name": "Nord",
+			"foreground": "#CFD6E4",
+			"background": "#232731",
+			"black": "#2D3241",
+			"blue": "#6D8EB5",
+			"brightBlack": "#3B4358",
+			"brightBlue": "#6D8EB5",
+			"brightCyan": "#7CAFAD",
+			"brightGreen": "#92B477",
+			"brightPurple": "#A5789E",
+			"brightRed": "#B14A56",
+			"brightWhite": "#E7EBF1",
+			"brightYellow": "#E6C274",
+			"cyan": "#75B3C7",
+			"green": "#92B477",
+			"purple": "#A5789E",
+			"red": "#B14A56",
+			"white": "#DFE3ED",
+			"yellow": "#E6C274"
+		}
+	],
+
+	"keybindings": [
+		{ "command": "newTab", "keys": ["ctrl+shift+t"] },
+		{ "command": "splitHorizontal", "keys": ["ctrl+-"] },
+		{ "command": "splitVertical", "keys": ["ctrl+\\"] }
+	],
+
+	"globals": {
+		"initialPosition": "1596, 0"
+	}
+}
