@@ -24,7 +24,7 @@ $PSReadlineOptions = @{
 	HistoryNoDuplicates           = $true
 	HistorySearchCursorMovesToEnd = $true
 	Colors                        = @{
-		"Command" = "White"
+		"Command"   = "White"
 		"Parameter" = "White"
 	}
 }
@@ -47,8 +47,12 @@ Set-Alias reboot Restart-Computer
 ####################################################################################
 # Helper function to change directory to my development workspace
 ####################################################################################
-function chome { Set-Location C:\Users\Demaro }
-function dhome { Set-Location D:\ }
+if ((Get-Volume).DriveLetter -contains "D") {
+	dhome
+}
+else {
+	chome
+}
 
 ####################################################################################
 # Helper function to set location to the User Profile directory
@@ -143,7 +147,10 @@ function prompt {
 ####################################################################################
 # Default Directory
 ####################################################################################
-dhome
+if ((Get-Volume).DriveLetter -contains "D") {
+	function dhome { Set-Location D:\ }
+}
+
 
 ####################################################################################
 # Chocolatey profile
@@ -161,16 +168,4 @@ Set-PSReadlineOption -BellStyle None
 ####################################################################################
 # Custom alias(es)
 ####################################################################################
-Function bashls {
-	$allArgs = "";
-	for ($i = 0; $i -lt $args.Length; $i++) {
-		$allArgs += $args[$i] + " ";
-	}
-
-	$command = "wsl ls $allArgs --ignore='ntuser\.*' --ignore='NTUSER\.*' --almost-all --color --group-directories-first";
-	Invoke-Expression $command
-}
-
-Set-Alias -Name ls -Value bashls -Option AllScope
-Set-Alias -Name rm -Value 'wsl rm' -Option AllScope
 Set-Alias -Name inkscape -Value 'C:\Program Files\Inkscape\inkscape.com' -Option AllScope
