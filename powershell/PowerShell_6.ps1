@@ -11,7 +11,7 @@ Remove-Item Alias:\where -Force -ErrorAction SilentlyContinue
 ####################################################################################
 Import-Module DirColors
 
-Update-DirColors ~\.dircolors
+Update-DirColors $env:USERPROFILE\.dircolors
 
 ####################################################################################
 # WSL Interpop
@@ -66,15 +66,9 @@ Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
 Set-Alias reboot Restart-Computer
 
 ####################################################################################
-# Helper function to change directory to my development workspace
-####################################################################################
-function chome { Set-Location C:\Users\Demaro }
-function dhome { Set-Location D:\ }
-
-####################################################################################
 # Helper function to set location to the User Profile directory
 ####################################################################################
-function cuserprofile { Set-Location ~ }
+function cuserprofile { Set-Location-Then-List-Content ~ }
 
 Set-Alias ~ cuserprofile -Option AllScope
 
@@ -83,7 +77,10 @@ Set-Alias ~ cuserprofile -Option AllScope
 ####################################################################################
 function Set-Location-Then-List-Content {
 	param( $path )
-	if (Test-Path $path) {
+	if ([string]::IsNullOrEmpty($path)) {
+		Set-Location-Then-List-Content $env:USERPROFILE
+	}
+	elseif (Test-Path $path) {
 		$path = Resolve-Path $path
 		Set-Location $path
 		# Get-ChildItem $path
@@ -96,6 +93,22 @@ function Set-Location-Then-List-Content {
 
 Remove-Item Alias:\cd -Force -ErrorAction SilentlyContinue
 Set-Alias cd Set-Location-Then-List-Content
+
+####################################################################################
+# Helper function to change directory to my development workspace
+####################################################################################
+function chome { Set-Location-Then-List-Content $env:USERPROFILE }
+
+if ((Get-Volume).DriveLetter -contains "D") {
+	function dhome { Set-Location-Then-List-Content D:\ }
+}
+
+####################################################################################
+# Default Directory
+####################################################################################
+if ((Get-Volume).DriveLetter -contains "D") {
+	dhome
+}
 
 ####################################################################################
 # Helper function to show Unicode character
@@ -160,11 +173,6 @@ function prompt {
 	Write-Host "" -NoNewline -ForegroundColor White
 	return " "
 }
-
-####################################################################################
-# Default Directory
-####################################################################################
-dhome
 
 ####################################################################################
 # Chocolatey profile
