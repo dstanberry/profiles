@@ -47,7 +47,7 @@ Set-Alias reboot Restart-Computer
 ####################################################################################
 # Helper function to change directory to my development workspace
 ####################################################################################
-function chome { Set-Location C:\Users\Demaro }
+function chome { Set-Location $env:USERPROFILE }
 
 if ((Get-Volume).DriveLetter -contains "D") {
 	function dhome { Set-Location D:\ }
