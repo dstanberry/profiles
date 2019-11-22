@@ -12,7 +12,7 @@ Remove-Item Alias:\where -Force -ErrorAction SilentlyContinue
 ####################################################################################
 Import-Module DirColors
 
-Update-DirColors ~\.dircolors
+Update-DirColors $env:USERPROFILE\.dircolors
 
 ####################################################################################
 # Enable Bash/Emacs key bindings
@@ -47,11 +47,10 @@ Set-Alias reboot Restart-Computer
 ####################################################################################
 # Helper function to change directory to my development workspace
 ####################################################################################
+function chome { Set-Location C:\Users\Demaro }
+
 if ((Get-Volume).DriveLetter -contains "D") {
-	dhome
-}
-else {
-	chome
+	function dhome { Set-Location D:\ }
 }
 
 ####################################################################################
@@ -148,7 +147,10 @@ function prompt {
 # Default Directory
 ####################################################################################
 if ((Get-Volume).DriveLetter -contains "D") {
-	function dhome { Set-Location D:\ }
+	dhome
+}
+else {
+	chome
 }
 
 
