@@ -1,36 +1,84 @@
-﻿Import-Module Get-ChildItemColor
+﻿####################################################################################
+# Remove Powershell alias(es)
+####################################################################################
+Remove-Item Alias:\curl -ErrorAction SilentlyContinue
+Remove-Item Alias:\ls -ErrorAction SilentlyContinue
+Remove-Item Alias:\rm -ErrorAction SilentlyContinue
+Remove-Item Alias:\wget -ErrorAction SilentlyContinue
+Remove-Item Alias:\where -Force -ErrorAction SilentlyContinue
+
+####################################################################################
+# Powershell implementation of GNU coreutils' dircolors
+####################################################################################
+Import-Module DirColors
+
+Update-DirColors ~\.dircolors
+
+####################################################################################
+# Enable Bash/Emacs key bindings
+####################################################################################
 Import-Module PSReadLine
 
-# Enable Bash/Emacs key bindings
 $PSReadlineOptions = @{
 	EditMode                      = "Emacs"
 	HistoryNoDuplicates           = $true
 	HistorySearchCursorMovesToEnd = $true
 	Colors                        = @{
 		"Command" = "White"
+		"Parameter" = "White"
 	}
 }
 
 Set-PSReadLineOption @PSReadlineOptions
 
+####################################################################################
 # Extend key bindings
+####################################################################################
 Set-PSReadLineKeyHandler -Key Shift+Ctrl+C -Function Copy
 Set-PSReadLineKeyHandler -Key Ctrl+Shift+V -Function Paste
 Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
 Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
 
-# Set dir to use the new Get-ChildItemColor cmdlets
-Set-Alias dir Get-ChildItemColor -Option AllScope
+####################################################################################
+# Reboot Machine
+####################################################################################
+Set-Alias reboot Restart-Computer
 
+####################################################################################
 # Helper function to change directory to my development workspace
+####################################################################################
 function chome { Set-Location C:\Users\Demaro }
 function dhome { Set-Location D:\ }
 
+####################################################################################
 # Helper function to set location to the User Profile directory
+####################################################################################
 function cuserprofile { Set-Location ~ }
 Set-Alias ~ cuserprofile -Option AllScope
 
+####################################################################################
+# Show directory contents after changing to it
+####################################################################################
+function Set-Location-Then-List-Content {
+	param( $path )
+	if (Test-Path $path) {
+		$path = Resolve-Path $path
+		Set-Location $path
+		# Get-ChildItem $path
+		ls $path
+	}
+	else {
+		"cd: could not access '$path': No such directory"
+	}
+}
+
+Remove-Item Alias:\\cd -Force -ErrorAction SilentlyContinue
+Set-Alias cd Set-Location-Then-List-Content
+
+
+####################################################################################
 # Helper function to show Unicode character
+####################################################################################
 function U {
 	param([int] $Code)
 
@@ -45,7 +93,9 @@ function U {
 	throw "Invalid character code $Code"
 }
 
+####################################################################################
 # Helper function to check for admin privileges
+####################################################################################
 function Test-Administrator {
 	$user = [Security.Principal.WindowsIdentity]::GetCurrent();
 	(New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
@@ -90,25 +140,27 @@ function prompt {
 	return " "
 }
 
+####################################################################################
 # Default Directory
+####################################################################################
 dhome
 
+####################################################################################
 # Chocolatey profile
+####################################################################################
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
 	Import-Module "$ChocolateyProfile"
 }
 
+####################################################################################
 # Disable bell
+####################################################################################
 Set-PSReadlineOption -BellStyle None
 
-# Remove Powershell alias(es)
-remove-item alias:curl
-remove-item alias:ls
-remove-item alias:rm
-remove-item alias:wget
-
+####################################################################################
 # Custom alias(es)
+####################################################################################
 Function bashls {
 	$allArgs = "";
 	for ($i = 0; $i -lt $args.Length; $i++) {

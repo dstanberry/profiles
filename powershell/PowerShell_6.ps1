@@ -1,10 +1,10 @@
 ﻿####################################################################################
 # Remove Powershell aliases
 ####################################################################################
-remove-item alias:cp
-remove-item alias:ls
-remove-item alias:rm
-remove-item alias:where -Force
+Remove-Item Alias:\cp -ErrorAction SilentlyContinue
+Remove-Item Alias:\ls -ErrorAction SilentlyContinue
+Remove-Item Alias:\rm -ErrorAction SilentlyContinue
+Remove-Item Alias:\where -Force -ErrorAction SilentlyContinue
 
 ####################################################################################
 # Powershell implementation of GNU coreutils' dircolors
@@ -45,7 +45,7 @@ $PSReadlineOptions = @{
 	HistoryNoDuplicates           = $true
 	HistorySearchCursorMovesToEnd = $true
 	Colors                        = @{
-		"Command" = "White"
+		"Command"   = "White"
 		"Parameter" = "White"
 	}
 }
@@ -59,11 +59,6 @@ Set-PSReadLineKeyHandler -Key Shift+Ctrl+C -Function Copy
 Set-PSReadLineKeyHandler -Key Ctrl+Shift+V -Function Paste
 Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
 Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
-
-####################################################################################
-# Set dir to use the new Get-ChildItemColor cmdlets
-####################################################################################
-Set-Alias dir Get-ChildItemColor -Option AllScope
 
 ####################################################################################
 # Reboot Machine
@@ -80,7 +75,27 @@ function dhome { Set-Location D:\ }
 # Helper function to set location to the User Profile directory
 ####################################################################################
 function cuserprofile { Set-Location ~ }
+
 Set-Alias ~ cuserprofile -Option AllScope
+
+####################################################################################
+# Show directory contents after changing to it
+####################################################################################
+function Set-Location-Then-List-Content {
+	param( $path )
+	if (Test-Path $path) {
+		$path = Resolve-Path $path
+		Set-Location $path
+		# Get-ChildItem $path
+		ls $path
+	}	
+	else {
+		"cd: could not access '$path': No such directory"
+	}	
+}	
+
+Remove-Item Alias:\cd -Force -ErrorAction SilentlyContinue
+Set-Alias cd Set-Location-Then-List-Content
 
 ####################################################################################
 # Helper function to show Unicode character
@@ -117,12 +132,12 @@ function prompt {
 		Write-Host " $(U 0xE70F) $ENV:USERNAME " -NoNewline -ForegroundColor Red -BackgroundColor White
 		Write-Host "$(U 0xE0B0)" -NoNewline -ForegroundColor White -BackgroundColor Red
 		Write-Host "$(U 0xE0B0)" -NoNewline -ForegroundColor Red -BackgroundColor DarkBlue
-		}
+	}
 	else {
 		Write-Host " $(U 0xE70F) $ENV:USERNAME " -NoNewline -ForegroundColor Black -BackgroundColor White
 		Write-Host "$(U 0xE0B0)" -NoNewline -ForegroundColor White -BackgroundColor Black
 		Write-Host "$(U 0xE0B0)" -NoNewline -ForegroundColor Black -BackgroundColor DarkBlue
-		}
+	}
 
 	if ($null -ne $s) {
 		# color for PSSessions
