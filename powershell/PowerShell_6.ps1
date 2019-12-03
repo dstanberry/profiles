@@ -1,17 +1,10 @@
-﻿####################################################################################
+####################################################################################
 # Remove Powershell aliases
 ####################################################################################
 Remove-Item Alias:\cp -ErrorAction SilentlyContinue
 Remove-Item Alias:\ls -ErrorAction SilentlyContinue
 Remove-Item Alias:\rm -ErrorAction SilentlyContinue
 Remove-Item Alias:\where -Force -ErrorAction SilentlyContinue
-
-####################################################################################
-# Powershell implementation of GNU coreutils' dircolors
-####################################################################################
-Import-Module DirColors
-
-Update-DirColors $env:USERPROFILE\.dircolors
 
 ####################################################################################
 # WSL Interpop
@@ -61,29 +54,26 @@ Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
 Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
 
 ####################################################################################
+# Disable bell
+####################################################################################
+Set-PSReadlineOption -BellStyle None
+
+####################################################################################
 # Reboot Machine
 ####################################################################################
 Set-Alias reboot Restart-Computer
 
 ####################################################################################
-# Helper function to set location to the User Profile directory
-####################################################################################
-function cuserprofile { Set-Location-Then-List-Content ~ }
-
-Set-Alias ~ cuserprofile -Option AllScope
-
-####################################################################################
 # Show directory contents after changing to it
 ####################################################################################
-function Set-Location-Then-List-Content {
+function Set-Location-Show-Content {
 	param( $path )
 	if ([string]::IsNullOrEmpty($path)) {
-		Set-Location-Then-List-Content $env:USERPROFILE
+		Set-Location-Show-Content $env:USERPROFILE
 	}
 	elseif (Test-Path $path) {
 		$path = Resolve-Path $path
 		Set-Location $path
-		# Get-ChildItem $path
 		ls $path
 	}	
 	else {
@@ -92,15 +82,22 @@ function Set-Location-Then-List-Content {
 }	
 
 Remove-Item Alias:\cd -Force -ErrorAction SilentlyContinue
-Set-Alias cd Set-Location-Then-List-Content
+Set-Alias cd Set-Location-Show-Content
+
+####################################################################################
+# Helper function to set location to the User Profile directory
+####################################################################################
+function cuserprofile { Set-Location-Show-Content ~ }
+
+Set-Alias ~ cuserprofile -Option AllScope
 
 ####################################################################################
 # Helper function to change directory to my development workspace
 ####################################################################################
-function chome { Set-Location-Then-List-Content $env:USERPROFILE }
+function chome { Set-Location-Show-Content $env:USERPROFILE }
 
 if ((Get-Volume).DriveLetter -contains "D") {
-	function dhome { Set-Location-Then-List-Content D:\ }
+	function dhome { Set-Location-Show-Content D:\ }
 }
 
 ####################################################################################
@@ -108,6 +105,8 @@ if ((Get-Volume).DriveLetter -contains "D") {
 ####################################################################################
 if ((Get-Volume).DriveLetter -contains "D") {
 	dhome
+} else {
+	chome
 }
 
 ####################################################################################
@@ -135,6 +134,9 @@ function Test-Administrator {
 	(New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 }
 
+####################################################################################
+# Define prompt
+####################################################################################
 function prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
 
@@ -142,47 +144,21 @@ function prompt {
 
 	if (Test-Administrator) {
 		# Highlight if elevated
-		Write-Host " $(U 0xE70F) $ENV:USERNAME " -NoNewline -ForegroundColor Red -BackgroundColor White
-		Write-Host "$(U 0xE0B0)" -NoNewline -ForegroundColor White -BackgroundColor Red
-		Write-Host "$(U 0xE0B0)" -NoNewline -ForegroundColor Red -BackgroundColor DarkBlue
-	}
-	else {
-		Write-Host " $(U 0xE70F) $ENV:USERNAME " -NoNewline -ForegroundColor Black -BackgroundColor White
-		Write-Host "$(U 0xE0B0)" -NoNewline -ForegroundColor White -BackgroundColor Black
-		Write-Host "$(U 0xE0B0)" -NoNewline -ForegroundColor Black -BackgroundColor DarkBlue
+		Write-Host " $(U 0xE70F) " -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
 
-	if ($null -ne $s) {
-		# color for PSSessions
-		Write-Host " (`$s: " -NoNewline -ForegroundColor DarkGray
-		Write-Host "$($s.Name)" -NoNewline -ForegroundColor White
-		Write-Host ") " -NoNewline -ForegroundColor DarkGray
-	}
-
-	Write-Host " $(U 0xF413) " -NoNewline -ForegroundColor White -BackgroundColor DarkBlue
-	Write-Host $($(Get-Location) -replace ($env:USERPROFILE).Replace('\', '\\'), "~") -NoNewline -ForegroundColor White -BackgroundColor DarkBlue
-	Write-Host " " -NoNewline -BackgroundColor DarkBlue
-	Write-Host "$(U 0xE0B0)" -NoNewline -ForegroundColor DarkBlue -BackgroundColor DarkGray
-	Write-Host " $(U 0xF017) " -NoNewline -ForegroundColor White -BackgroundColor DarkGray
-	Write-Host (Get-Date -Format "h:mm tt") -NoNewline -ForegroundColor White -BackgroundColor DarkGray
-	Write-Host " " -NoNewline -BackgroundColor DarkGray
+	Write-Host $($(Get-Location) -replace ($env:USERPROFILE).Replace('\', '\\'), "~") -NoNewline -ForegroundColor DarkBlue -BackgroundColor Black
+	Write-Host " " -NoNewline -BackgroundColor Black
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
 
-	Write-Host "$(U 0xE0B0)" -NoNewline -ForegroundColor DarkGray
+	if ($realLASTEXITCODE -eq 0) {
+		Write-Host "$(U 0xE0B1)" -NoNewline -ForegroundColor Green -BackgroundColor Black
+	}
+ 	else {
+		Write-Host "$(U 0xE0B1)" -NoNewline -ForegroundColor Red -BackgroundColor Black
+	}
+	
 	Write-Host "" -NoNewline -ForegroundColor White
 	return " "
 }
-
-####################################################################################
-# Chocolatey profile
-####################################################################################
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-	Import-Module "$ChocolateyProfile"
-}
-
-####################################################################################
-# Disable bell
-####################################################################################
-Set-PSReadlineOption -BellStyle None
