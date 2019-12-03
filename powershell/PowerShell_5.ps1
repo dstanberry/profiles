@@ -148,10 +148,10 @@ function prompt {
 	$global:LASTEXITCODE = $realLASTEXITCODE
 
 	if ($realLASTEXITCODE -eq 0) {
-		Write-Host "$(U 0xE0B1)" -NoNewline -ForegroundColor Green -BackgroundColor Black
+		Write-Host "$(U 0xF054)" -NoNewline -ForegroundColor Green -BackgroundColor Black
 	}
  	else {
-		Write-Host "$(U 0xE0B1)" -NoNewline -ForegroundColor Red -BackgroundColor Black
+		Write-Host "$(0xF054)" -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
 	
 	Write-Host "" -NoNewline -ForegroundColor White
