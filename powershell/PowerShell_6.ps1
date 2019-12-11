@@ -105,9 +105,20 @@ if ((Get-Volume).DriveLetter -contains "D") {
 ################################################################################
 if ((Get-Volume).DriveLetter -contains "D") {
 	dhome
-} else {
+}
+else {
 	chome
 }
+
+################################################################################
+# Posh-Git
+################################################################################
+Import-Module posh-git
+
+$GitPromptSettings.DefaultPromptPath = ''
+$GitPromptSettings.BeforeStatus = ''
+$GitPromptSettings.AfterStatus = ''
+$GitPromptSettings.DefaultPromptSuffix = ''
 
 ################################################################################
 # Helper function to show Unicode character
@@ -148,17 +159,35 @@ function prompt {
 	}
 
 	Write-Host $($(Get-Location) -replace ($env:USERPROFILE).Replace('\', '\\'), "~") -NoNewline -ForegroundColor DarkBlue -BackgroundColor Black
-	Write-Host " " -NoNewline -BackgroundColor Black
+
+	Write-Host "$(& $GitPromptScriptBlock) " -NoNewline
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
 
 	if ($realLASTEXITCODE -eq 0) {
 		Write-Host "$(U 0xF054)" -NoNewline -ForegroundColor Green -BackgroundColor Black
 	}
- 	else {
+	else {
 		Write-Host "$(U 0xF054)" -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
 	
 	Write-Host "" -NoNewline -ForegroundColor White
 	return " "
 }
+
+################################################################################
+# Reload Profile
+################################################################################
+Add-Type '
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
+
+[Cmdlet("Reload", "Profile")]
+public class ReloadProfileCmdlet : PSCmdlet {
+	protected override void EndProcessing()
+	{
+		InvokeCommand.InvokeScript(". $profile", false, PipelineResultTypes.Output | PipelineResultTypes.Error, null);
+	}
+}' -PassThru | Select-Object -First 1 -ExpandProperty Assembly | Import-Module -DisableNameChecking;
+
+Set-Alias reload Reload-Profile
