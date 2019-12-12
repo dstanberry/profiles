@@ -1,0 +1,21 @@
+{
+    "name": "kdark",
+    "displayName": "KDark",
+    "description": "A fork of nord color theme with a color neutral base.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.40.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "KDark",
+                "uiTheme": "vs-dark",
+                "path": "./themes/KDark-color-theme.json"
+            }
+        ]
+    }
+}
