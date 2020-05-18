@@ -1,0 +1,137 @@
+{
+	"$schema": "https://aka.ms/terminal-profiles-schema",
+	"defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+	"copyOnSelect": true,
+	"copyFormatting": true,
+	"profiles": {
+		"defaults": {
+			"antialiasingMode": "cleartype",
+			"colorScheme": "KDark",
+			"fontFace": "Source Code Pro",
+			"fontSize": 10,
+			"padding": "4, 6, 4, 6"
+		},
+		"list": [
+			{
+				"guid": "{1d2d9f1c-0192-5285-8115-38593c2c526e}",
+				"hidden": false,
+				"name": "Gentoo",
+				"source": "Windows.Terminal.Wsl",
+				"icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/distributor-logo-gentoo.ico"
+			},
+			{
+				"guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+				"hidden": false,
+				"name": "PowerShell",
+				"source": "Windows.Terminal.PowershellCore",
+				"icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/pwsh.ico"
+			},
+			{
+				"guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+				"hidden": false,
+				"name": "Windows PowerShell",
+				"commandline": "powershell.exe",
+				"icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/microsoft.ico"
+			},
+			{
+				"guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+				"hidden": false,
+				"name": "Command Prompt",
+				"commandline": "cmd.exe",
+				"icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/distributor-logo-ms-dos.ico"
+			},
+			{
+				"guid": "{bf608559-3098-48a8-966b-07d584b6b76e}",
+				"hidden": false,
+				"name": "MSYS2",
+				"commandline": "C:/tools/msys64/msys2_shell.cmd -defterm -no-start -mingw64",
+				"icon": "C:/tools/msys64/msys2.ico"
+			},
+			{
+				"guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+				"hidden": true,
+				"name": "Azure Cloud Shell",
+				"source": "Windows.Terminal.Azure"
+			}
+		]
+	},
+	"schemes": [
+		{
+			"name": "KDark",
+			"foreground": "#CFD6E4",
+			"background": "#373737",
+			"black": "#434345",
+			"blue": "#6F8FB4",
+			"brightBlack": "#434345",
+			"brightBlue": "#6F8FB4",
+			"brightCyan": "#7EAFAD",
+			"brightGreen": "#93B379",
+			"brightPurple": "#A4799D",
+			"brightRed": "#B04B57",
+			"brightWhite": "#E7EBF1",
+			"brightYellow": "#E5C179",
+			"cyan": "#77B3C5",
+			"green": "#93B379",
+			"purple": "#A4799D",
+			"red": "#B04B57",
+			"white": "#DFE3EC",
+			"yellow": "#E5C179"
+		}
+	],
+	"keybindings": [
+		{
+			"command": { "action": "copy", "singleLine": false },
+			"keys": "ctrl+c"
+		},
+		{ "command": "paste", "keys": "ctrl+v" },
+		{ "command": "find", "keys": "ctrl+shift+f" },
+		{
+			"command": {
+				"action": "splitPane",
+				"split": "auto",
+				"splitMode": "duplicate"
+			},
+			"keys": "alt+shift+d"
+		},
+		{
+			"command": { "action": "splitPane", "split": "horizontal" },
+			"keys": "alt+shift+-"
+		},
+		{
+			"command": { "action": "splitPane", "split": "vertical" },
+			"keys": "alt+shift+plus"
+		},
+		{
+			"command": { "action": "moveFocus", "direction": "down" },
+			"keys": "alt+down"
+		},
+		{
+			"command": { "action": "moveFocus", "direction": "up" },
+			"keys": "alt+up"
+		},
+		{
+			"command": { "action": "moveFocus", "direction": "left" },
+			"keys": "alt+left"
+		},
+		{
+			"command": { "action": "moveFocus", "direction": "right" },
+			"keys": "alt+right"
+		},
+		{
+			"command": { "action": "resizePane", "direction": "down" },
+			"keys": "alt+shift+down"
+		},
+		{
+			"command": { "action": "resizePane", "direction": "up" },
+			"keys": "alt+shift+up"
+		},
+		{
+			"command": { "action": "resizePane", "direction": "left" },
+			"keys": "alt+shift+left"
+		},
+		{
+			"command": { "action": "resizePane", "direction": "right" },
+			"keys": "alt+shift+right"
+		}
+	]
+}
