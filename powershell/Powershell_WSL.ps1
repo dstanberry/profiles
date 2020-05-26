@@ -166,7 +166,8 @@ function prompt {
 
 	if ($status = Get-GitStatus -Force) {
 		Write-Host " $(U 0xE0A0)" -NoNewline -ForegroundColor Cyan 
-		Write-Host "$(Write-GitBranchName $status)" -NoNewline
+		Write-Host "$(Write-GitBranchName $status)" -NoNewline -ForegroundColor Cyan
+
 		if ($status.HasIndex) {
 			Write-Host "$(U 0x25CF)" -NoNewline -ForegroundColor Green 
 		}
