@@ -149,7 +149,8 @@ function Test-Administrator {
 function prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
 
-	$host.ui.RawUI.WindowTitle = "Powershell Core | $(Get-Location)"
+	$history = (Get-History)[-1] -split " "
+	$host.ui.RawUI.WindowTitle = "$(Get-Location) | $($history[0])"
 
 	if (Test-Administrator) {
 		# Highlight if elevated
@@ -158,15 +159,27 @@ function prompt {
 
 	Write-Host $($(Get-Location) -replace ($env:USERPROFILE).Replace('\', '\\'), "~") -NoNewline -ForegroundColor DarkBlue -BackgroundColor Black
 
-	Write-Host "$(& $GitPromptScriptBlock) " -NoNewline
+	if ($status = Get-GitStatus -Force) {
+		Write-Host " $(U 0xE0A0)" -NoNewline -ForegroundColor Cyan 
+		Write-Host "$(Write-GitBranchName $status)" -NoNewline
+		if ($status.HasIndex) {
+			Write-Host "$(U 0x25CF)" -NoNewline -ForegroundColor Green 
+		}
+		if ($status.HasWorking) {
+			Write-Host "$(U 0x25CF)" -NoNewline -ForegroundColor Red 
+		}
+		if ($status.HasUntracked) {
+			Write-Host "$(U 0x25CF)" -NoNewline -ForegroundColor Blue 
+		}
+	}
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
 
 	if ($realLASTEXITCODE -eq 0) {
-		Write-Host "$(U 0x276F)" -NoNewline -ForegroundColor Green -BackgroundColor Black
+		Write-Host " $(U 0x276F)" -NoNewline -ForegroundColor Green -BackgroundColor Black
 	}
 	else {
-		Write-Host "$(U 0x276F)" -NoNewline -ForegroundColor Red -BackgroundColor Black
+		Write-Host " $(U 0x276F)" -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
 	
 	Write-Host "" -NoNewline -ForegroundColor White
