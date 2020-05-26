@@ -9,7 +9,7 @@ Remove-Item Alias:\where -Force -ErrorAction SilentlyContinue
 ################################################################################
 # WSL Interpop
 ################################################################################
-Import-WslCommand "awk", "bat", "colordiff", "cp", "curl", "cut", "diff", "diff-highlight", "emacs", "grep", "head", "less", "lnav", "ls", "man", "mv", "nano", "rm", "sed", "seq", "sh", "tail", "tmux", "tree", "vim", "wget", "which", "xargs"
+Import-WslCommand "awk", "bat", "colordiff", "cp", "curl", "cut", "diff", "diff-highlight", "emacs", "git", "grep", "head", "less", "lnav", "ls", "man", "mv", "nano", "rm", "sed", "seq", "sh", "tail", "tmux", "tree", "vim", "wget", "which", "xargs"
 
 $WslDefaultParameterValues = @{ }
 $WslDefaultParameterValues["ls"] = "--ignore='ntuser\.*' --ignore='NTUSER\.*' --almost-all --color=auto --group-directories-first"
