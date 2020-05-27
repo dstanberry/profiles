@@ -118,6 +118,7 @@ else {
 ################################################################################
 Import-Module posh-git
 
+$GitPromptSettings.EnableFileStatus = $false
 $GitPromptSettings.DefaultPromptPath = ''
 $GitPromptSettings.BeforeStatus = ''
 $GitPromptSettings.AfterStatus = ''
@@ -154,8 +155,12 @@ function Test-Administrator {
 function prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
 
-	$history = (Get-History)[-1] -split " "
-	$host.ui.RawUI.WindowTitle = "$(Get-Location) | $($history[0])"
+	$history = Get-History -Count 1
+
+	if ($history) {
+		$command = $($history) -split " "
+		$host.ui.RawUI.WindowTitle = "$(Get-Location) | $($command[0])"
+	}
 
 	if (Test-Administrator) {
 		# Highlight if elevated
