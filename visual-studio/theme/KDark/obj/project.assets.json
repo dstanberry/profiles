@@ -8463,11 +8463,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git\\kdark-visual-studio-theme\\KDark\\KDark.csproj",
+      "projectUniqueName": "D:\\Git\\profiles\\visual-studio\\theme\\KDark\\KDark.csproj",
       "projectName": "KDark",
-      "projectPath": "D:\\Git\\kdark-visual-studio-theme\\KDark\\KDark.csproj",
+      "projectPath": "D:\\Git\\profiles\\visual-studio\\theme\\KDark\\KDark.csproj",
       "packagesPath": "C:\\Users\\Demaro\\.nuget\\packages\\",
-      "outputPath": "D:\\Git\\kdark-visual-studio-theme\\KDark\\obj\\",
+      "outputPath": "D:\\Git\\profiles\\visual-studio\\theme\\KDark\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [

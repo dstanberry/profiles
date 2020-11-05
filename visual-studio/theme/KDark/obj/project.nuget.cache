@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g5VmKoQxSXSDeFOijWTaKIscd7xaIJU1peIrpv0dp2Tuz7UzCmZSVkMNDfBS0QJ687DfAqmAVlYoez7t973AYg==",
+  "dgSpecHash": "tRWvWBpMJ2GUXLJqjo+ym/DLqIgqDL78khRyxkioBGUHhpU4KtuynKLX+sOv2OGV/eii9yPZl2Z0l18aj79QVw==",
   "success": true,
-  "projectFilePath": "D:\\Git\\kdark-visual-studio-theme\\KDark\\KDark.csproj",
+  "projectFilePath": "D:\\Git\\profiles\\visual-studio\\theme\\KDark\\KDark.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Demaro\\.nuget\\packages\\envdte\\8.0.2\\envdte.8.0.2.nupkg.sha512",
     "C:\\Users\\Demaro\\.nuget\\packages\\envdte100\\10.0.3\\envdte100.10.0.3.nupkg.sha512",
