@@ -98,7 +98,6 @@
 	// ***************
 	"telemetry.enableTelemetry": false,
 	"telemetry.enableCrashReporter": false,
-	"vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
 	// ***************
 	// ** TERMINAL **
 	// ***************
