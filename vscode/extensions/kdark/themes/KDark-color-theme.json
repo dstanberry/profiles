@@ -250,7 +250,7 @@
 			"name": "Comment",
 			"scope": "comment",
 			"settings": {
-				"foreground": "#616E88"
+				"foreground": "#5A5A5A"
 			}
 		},
 		{
@@ -427,7 +427,7 @@
 				"punctuation.start.definition.comment"
 			],
 			"settings": {
-				"foreground": "#616E88"
+				"foreground": "#5A5A5A"
 			}
 		},
 		{
@@ -687,7 +687,7 @@
 			"name": "[Java](JavaDoc) Comment Block Documentation HTML Entities",
 			"scope": "source.java comment.block.documentation.javadoc punctuation.definition.entity.html",
 			"settings": {
-				"foreground": "#81A1C1"
+				"foreground": "#5A5A5A"
 			}
 		},
 		{
