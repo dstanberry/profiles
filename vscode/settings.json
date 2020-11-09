@@ -2,7 +2,12 @@
 	// *************
 	// ** _CUSTOM **
 	// *************
-	"bracket-pair-colorizer-2.colors": ["#eee8d5"],
+	"bracket-pair-colorizer-2.colors": [
+		"#e5c179",
+		"#eee8d5",
+		"#a4799d"
+	],
+	"bracket-pair-colorizer-2.colorMode": "Consecutive",
 	"code-eol.style": {
 		"code-eol.validLineEnding": "LF",
 		"color": "#5a5a5a",
@@ -33,40 +38,14 @@
 		"style",
 		"{based_on_style: chromium, align_closing_bracket_with_visual_indentation: True, indent_width: 4, useTabs: True}"
 	],
-	"vim.easymotion": true,
-	"vim.incsearch": true,
-	"vim.useSystemClipboard": true,
-	"vim.useCtrlKeys": true,
-	"vim.hlsearch": true,
-	"vim.insertModeKeyBindings": [
-		{
-			"before": ["j", "k"],
-			"after": ["<Esc>"]
-		}
-	],
-	"vim.normalModeKeyBindingsNonRecursive": [
-		{
-			"before": ["<leader>", "w"],
-			"commands": [":w"]
-		},
-		{
-			"before": ["<C-l>"],
-			"commands": [":nohl"]
-		}
-	],
-	"vim.leader": "<space>",
-	"vim.handleKeys": {
-		"<C-a>": false,
-		"<C-f>": false
-	},
 	// ************
 	// ** EDITOR **
 	// ************
 	"editor.cursorStyle": "line",
 	"editor.cursorWidth": 1,
 	"editor.fontFamily": "Source Code Pro",
-	"editor.fontSize": 13,
-	"editor.fontWeight": "500",
+	"editor.fontSize": 12,
+	"editor.fontWeight": "300",
 	"editor.fontLigatures": true,
 	"editor.lineNumbers": "relative",
 	"editor.minimap.enabled": false,
@@ -81,6 +60,8 @@
 	"editor.wordWrap": "wordWrapColumn",
 	"editor.wordWrapColumn": 100,
 	"editor.wrappingIndent": "same",
+	"explorer.confirmDragAndDrop": false,
+	"explorer.confirmDelete": false,
 	// ***************
 	// **** FILES ****
 	// ***************
@@ -101,9 +82,13 @@
 	"git.autofetch": true,
 	"git.defaultCloneDirectory": "D:\\Git",
 	"git.enableSmartCommit": true,
+	"git.confirmSync": false,
 	// ***************
 	// ** LANGUAGES **
 	// ***************
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
 	"[markdown]": {
 		"editor.quickSuggestions": false,
 		"editor.minimap.enabled": true
@@ -121,6 +106,7 @@
 	"terminal.integrated.fontSize": 14,
 	"terminal.integrated.showExitAlert": false,
 	"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
+	"terminal.integrated.shell.linux": "/bin/zsh",
 	// ***************
 	// ** WORKBENCH **
 	// ***************
@@ -128,15 +114,7 @@
 	"workbench.settings.editor": "json",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.tips.enabled": false,
-	"todo-tree.highlights.enabled": true,
-	"window.zoomLevel": 0,
-	"terminal.integrated.shell.linux": "/bin/bash",
-	"explorer.confirmDragAndDrop": false,
-	"git.confirmSync": false,
-	"explorer.confirmDelete": false,
 	"workbench.colorTheme": "KDark",
-	"todo-tree.tree.showScanModeButton": false,
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	}
+	"window.title": "${activeEditorMedium}${separator}${rootPath}",
+	"window.zoomLevel": -1
 }
