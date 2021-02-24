@@ -17,8 +17,8 @@
 			"fontFace": "Source Code Pro",
 			"fontWeight": "normal",
 			"fontSize": 10,
-			"padding": "4, 6, 4, 6",
-			"scrollbarState": "hidden",
+			"padding": "4, 1, 1, 1",
+			"scrollbarState": "visible",
 			"tabColor": "#212121"
 		},
 		"list": [
@@ -69,7 +69,7 @@
 	"schemes": [
 		{
 			"name": "KDark",
-			"cursorColor": "#cfd6e4",
+			"cursorColor": "#7d8086",
 			"foreground": "#cfd6e4",
 			"background": "#373737",
 			"black": "#434345",
@@ -165,6 +165,10 @@
 		{ "command": { "action": "switchToTab", "index": 5 }, "keys": "alt+6" },
 		{ "command": { "action": "switchToTab", "index": 6 }, "keys": "alt+7" },
 		{ "command": { "action": "switchToTab", "index": 7 }, "keys": "alt+8" },
-		{ "command": { "action": "switchToTab", "index": 8 }, "keys": "alt+9" }
+		{ "command": { "action": "switchToTab", "index": 8 }, "keys": "alt+9" },
+		{
+			"command": { "action": "openSettings", "target": "settingsUI" },
+			"keys": "ctrl+shift+s"
+		}
 	]
 }
