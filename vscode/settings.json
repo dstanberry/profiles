@@ -1,7 +1,7 @@
 {
-	// *************
-	// ** _CUSTOM **
-	// *************
+	// ****************
+	// ** EXTENSIONS **
+	// ****************
 	"bracket-pair-colorizer-2.colors": [
 		"#e5c179",
 		"#eee8d5",
@@ -16,12 +16,6 @@
 		"code-eol.returnCharacter": "⇠",
 		"code-eol.crlfCharacter": "↵"
 	},
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[jsonc]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
 	"prettier.arrowParens": "always",
 	"prettier.bracketSpacing": true,
 	"prettier.endOfLine": "lf",
@@ -31,12 +25,10 @@
 	"prettier.singleQuote": false,
 	"prettier.tabWidth": 4,
 	"prettier.trailingComma": "es5",
-	"prettier.useTabs": true,
+	"prettier.useTabs": false,
 	"python.linting.enabled": true,
 	"python.formatting.provider": "yapf",
 	"python.formatting.yapfArgs": [
-		"style",
-		"{based_on_style: chromium, align_closing_bracket_with_visual_indentation: True, indent_width: 4, useTabs: True}"
 	],
 	// ************
 	// ** EDITOR **
@@ -45,20 +37,20 @@
 	"editor.cursorWidth": 1,
 	"editor.fontFamily": "Source Code Pro",
 	"editor.fontSize": 12,
-	"editor.fontWeight": "300",
+	"editor.fontWeight": "400",
 	"editor.fontLigatures": true,
 	"editor.lineNumbers": "relative",
 	"editor.minimap.enabled": false,
 	"editor.cursorSmoothCaretAnimation": true,
 	"editor.renderIndentGuides": true,
 	"editor.renderWhitespace": "boundary",
-	"editor.rulers": [80, 100],
+	"editor.rulers": [80, 120],
 	"editor.suggestSelection": "first",
 	"editor.tabSize": 4,
 	"editor.insertSpaces": false,
 	"editor.detectIndentation": false,
 	"editor.wordWrap": "wordWrapColumn",
-	"editor.wordWrapColumn": 100,
+	"editor.wordWrapColumn": 120,
 	"editor.wrappingIndent": "same",
 	"explorer.confirmDragAndDrop": false,
 	"explorer.confirmDelete": false,
@@ -89,6 +81,12 @@
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
 	"[markdown]": {
 		"editor.quickSuggestions": false,
 		"editor.minimap.enabled": true
@@ -113,7 +111,7 @@
 	"workbench.settings.editor": "json",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.tips.enabled": false,
-	"workbench.colorTheme": "KDark",
 	"window.title": "${activeEditorMedium}${separator}${rootPath}",
-	"window.zoomLevel": -1
+	"window.zoomLevel": 0,
+	"workbench.colorTheme": "KDark"
 }
