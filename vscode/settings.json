@@ -100,7 +100,8 @@
 	// ** TERMINAL **
 	// ***************
 	"terminal.integrated.fontFamily": "Source Code Pro",
-	"terminal.integrated.fontSize": 14,
+	"terminal.integrated.fontSize": 13,
+	"terminal.integrated.fontWeight": "300",
 	"terminal.integrated.showExitAlert": false,
 	"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
 	"terminal.integrated.shell.linux": "/bin/zsh",
