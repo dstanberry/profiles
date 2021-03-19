@@ -1,174 +1,176 @@
 {
-	"$schema": "https://aka.ms/terminal-profiles-schema",
-	"alwaysOnTop": false,
-	"copyOnSelect": true,
-	"copyFormatting": true,
-	"defaultProfile": "{1d2d9f1c-0192-5285-8115-38593c2c526e}",
-	"launchMode": "focus",
-	"showTabsInTitlebar": true,
-	"profiles": {
-		"defaults": {
-			"antialiasingMode": "cleartype",
-			"bellStyle": "none",
-			"closeOnExit": "graceful",
-			"colorScheme": "KDark",
-			"cursorShape": "filledBox",
-			// "cursorTextColor": "textBackground",
-			"fontFace": "Source Code Pro",
-			"fontWeight": "normal",
-			"fontSize": 10,
-			"padding": "4, 1, 1, 1",
-			"scrollbarState": "visible",
-			"tabColor": "#212121"
-		},
-		"list": [
-			{
-				"guid": "{1d2d9f1c-0192-5285-8115-38593c2c526e}",
-				"hidden": false,
-				"name": "Gentoo",
-				"source": "Windows.Terminal.Wsl",
-				"startingDirectory": "//wsl$/Gentoo/home/demaro",
-				"icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/distributor-logo-gentoo.ico"
-			},
-			{
-				"guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-				"hidden": false,
-				"name": "PowerShell",
-				"source": "Windows.Terminal.PowershellCore",
-				"icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/pwsh.ico"
-			},
-			{
-				"guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-				"hidden": false,
-				"name": "Windows PowerShell",
-				"commandline": "powershell.exe",
-				"icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/microsoft.ico"
-			},
-			{
-				"guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-				"hidden": false,
-				"name": "Command Prompt",
-				"commandline": "cmd.exe",
-				"icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/distributor-logo-ms-dos.ico"
-			},
-			{
-				"guid": "{bf608559-3098-48a8-966b-07d584b6b76e}",
-				"hidden": false,
-				"name": "MSYS2",
-				"commandline": "cmd.exe /c \"set MSYSTEM=MINGW64 && set MSYS=winsymlinks:nativestrict && set MSYS2_PATH_TYPE=inherit && C:/tools/msys64/usr/bin/zsh.exe --login -i\"",
-				"icon": "C:/tools/msys64/msys2.ico"
-			},
-			{
-				"guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-				"hidden": true,
-				"name": "Azure Cloud Shell",
-				"source": "Windows.Terminal.Azure"
-			}
-		]
-	},
-	"schemes": [
-		{
-			"name": "KDark",
-			"cursorColor": "#7d8086",
-			"foreground": "#cfd6e4",
-			"background": "#373737",
-			"black": "#434345",
-			"blue": "#6f8fb4",
-			"brightBlack": "#434345",
-			"brightBlue": "#6f8fb4",
-			"brightCyan": "#7eafad",
-			"brightGreen": "#93b379",
-			"brightPurple": "#a4799d",
-			"brightRed": "#b04b57",
-			"brightWhite": "#e7ebf1",
-			"brightYellow": "#e5c179",
-			"cyan": "#77b3c5",
-			"green": "#93b379",
-			"purple": "#a4799d",
-			"red": "#b04b57",
-			"white": "#dfe3ec",
-			"yellow": "#e5c179"
-		}
-	],
-	"keybindings": [
-		{
-			"command": { "action": "copy", "singleLine": false },
-			"keys": "ctrl+c"
-		},
-		{ "command": "paste", "keys": "ctrl+v" },
-		{ "command": "find", "keys": "ctrl+shift+f" },
-		{
-			"command": "toggleFocusMode",
-			"keys": "ctrl+;"
-		},
-		{
-			"command": "commandPalette",
-			"keys": "ctrl+shift+p"
-		},
-		{
-			"command": { "action": "setTabColor", "color": "#212121" },
-			"keys": "ctrl+shift+c"
-		},
-		{
-			"command": {
-				"action": "splitPane",
-				"split": "auto",
-				"splitMode": "duplicate"
-			},
-			"keys": "ctrl+shift+d"
-		},
-		{
-			"command": { "action": "splitPane", "split": "horizontal" },
-			"keys": "ctrl+shift+-"
-		},
-		{
-			"command": { "action": "splitPane", "split": "vertical" },
-			"keys": "ctrl+shift+plus"
-		},
-		{
-			"command": { "action": "moveFocus", "direction": "down" },
-			"keys": "alt+down"
-		},
-		{
-			"command": { "action": "moveFocus", "direction": "up" },
-			"keys": "alt+up"
-		},
-		{
-			"command": { "action": "moveFocus", "direction": "left" },
-			"keys": "alt+left"
-		},
-		{
-			"command": { "action": "moveFocus", "direction": "right" },
-			"keys": "alt+right"
-		},
-		{
-			"command": { "action": "resizePane", "direction": "down" },
-			"keys": "alt+shift+down"
-		},
-		{
-			"command": { "action": "resizePane", "direction": "up" },
-			"keys": "alt+shift+up"
-		},
-		{
-			"command": { "action": "resizePane", "direction": "left" },
-			"keys": "alt+shift+left"
-		},
-		{
-			"command": { "action": "resizePane", "direction": "right" },
-			"keys": "alt+shift+right"
-		},
-		{ "command": { "action": "switchToTab", "index": 0 }, "keys": "alt+1" },
-		{ "command": { "action": "switchToTab", "index": 1 }, "keys": "alt+2" },
-		{ "command": { "action": "switchToTab", "index": 2 }, "keys": "alt+3" },
-		{ "command": { "action": "switchToTab", "index": 3 }, "keys": "alt+4" },
-		{ "command": { "action": "switchToTab", "index": 4 }, "keys": "alt+5" },
-		{ "command": { "action": "switchToTab", "index": 5 }, "keys": "alt+6" },
-		{ "command": { "action": "switchToTab", "index": 6 }, "keys": "alt+7" },
-		{ "command": { "action": "switchToTab", "index": 7 }, "keys": "alt+8" },
-		{ "command": { "action": "switchToTab", "index": 8 }, "keys": "alt+9" },
-		{
-			"command": { "action": "openSettings", "target": "settingsUI" },
-			"keys": "ctrl+shift+s"
-		}
-	]
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "alwaysOnTop": false,
+    "copyOnSelect": true,
+    "copyFormatting": true,
+    "defaultProfile": "{1d2d9f1c-0192-5285-8115-38593c2c526e}",
+    "launchMode": "focus",
+    "showTabsInTitlebar": true,
+    "profiles": {
+        "defaults": {
+            "antialiasingMode": "cleartype",
+            "bellStyle": "none",
+            "closeOnExit": "graceful",
+            "colorScheme": "KDark",
+            "cursorShape": "filledBox",
+            // "cursorTextColor": "textBackground",
+            "fontFace": "Source Code Pro",
+            "fontWeight": "normal",
+            "fontSize": 10,
+            "padding": "1, 1, 1, 1",
+            "scrollbarState": "visible",
+            "tabColor": "#212121"
+        },
+        "list": [
+            {
+                "guid": "{1d2d9f1c-0192-5285-8115-38593c2c526e}",
+                "hidden": false,
+                "name": "Gentoo",
+                "source": "Windows.Terminal.Wsl",
+                "startingDirectory": "//wsl$/Gentoo/home/demaro",
+                "icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/distributor-logo-gentoo.ico"
+            },
+            {
+                "guid": "{71160544-14d8-4194-af25-d05feeac7233}",
+                "hidden": true,
+                "name": "MSYS / MSYS2",
+                "commandline": "cmd.exe /c \"set MSYSTEM=MINGW64 && set MSYS=winsymlinks:nativestrict && set MSYS2_PATH_TYPE=inherit && C:/tools/msys64/usr/bin/zsh.exe --login -i\"",
+                "startingDirectory": "D:/Git/qmk_firmware",
+                "icon": "C:/tools/msys64/msys2.ico"
+            },
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore",
+                "icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/pwsh.ico"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell",
+                "commandline": "powershell.exe",
+                "icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/microsoft.ico"
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt",
+                "commandline": "cmd.exe",
+                "icon": "D:/Pictures/Icons/Papirus-Dark/Processed/apps/distributor-logo-ms-dos.ico"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": true,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            }
+        ]
+    },
+    "schemes": [
+        {
+            "name": "KDark",
+            "cursorColor": "#7d8086",
+            "foreground": "#cfd6e4",
+            "background": "#373737",
+            "selectionBackground": "#e5c179",
+            "black": "#434345",
+            "blue": "#6f8fb4",
+            "brightBlack": "#434345",
+            "brightBlue": "#6f8fb4",
+            "brightCyan": "#7eafad",
+            "brightGreen": "#93b379",
+            "brightPurple": "#a4799d",
+            "brightRed": "#b04b57",
+            "brightWhite": "#e7ebf1",
+            "brightYellow": "#e5c179",
+            "cyan": "#77b3c5",
+            "green": "#93b379",
+            "purple": "#a4799d",
+            "red": "#b04b57",
+            "white": "#dfe3ec",
+            "yellow": "#e5c179"
+        }
+    ],
+    "keybindings": [
+        {
+            "command": { "action": "copy", "singleLine": false },
+            "keys": "ctrl+c"
+        },
+        { "command": "paste", "keys": "ctrl+v" },
+        { "command": "find", "keys": "ctrl+shift+f" },
+        {
+            "command": "toggleFocusMode",
+            "keys": "ctrl+;"
+        },
+        {
+            "command": "commandPalette",
+            "keys": "ctrl+shift+p"
+        },
+        {
+            "command": { "action": "setTabColor", "color": "#212121" },
+            "keys": "ctrl+shift+c"
+        },
+        {
+            "command": {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "keys": "ctrl+shift+d"
+        },
+        {
+            "command": { "action": "splitPane", "split": "horizontal" },
+            "keys": "ctrl+shift+-"
+        },
+        {
+            "command": { "action": "splitPane", "split": "vertical" },
+            "keys": "ctrl+shift+plus"
+        },
+        {
+            "command": { "action": "moveFocus", "direction": "down" },
+            "keys": "alt+down"
+        },
+        {
+            "command": { "action": "moveFocus", "direction": "up" },
+            "keys": "alt+up"
+        },
+        {
+            "command": { "action": "moveFocus", "direction": "left" },
+            "keys": "alt+left"
+        },
+        {
+            "command": { "action": "moveFocus", "direction": "right" },
+            "keys": "alt+right"
+        },
+        {
+            "command": { "action": "resizePane", "direction": "down" },
+            "keys": "alt+shift+down"
+        },
+        {
+            "command": { "action": "resizePane", "direction": "up" },
+            "keys": "alt+shift+up"
+        },
+        {
+            "command": { "action": "resizePane", "direction": "left" },
+            "keys": "alt+shift+left"
+        },
+        {
+            "command": { "action": "resizePane", "direction": "right" },
+            "keys": "alt+shift+right"
+        },
+        { "command": { "action": "switchToTab", "index": 0 }, "keys": "alt+1" },
+        { "command": { "action": "switchToTab", "index": 1 }, "keys": "alt+2" },
+        { "command": { "action": "switchToTab", "index": 2 }, "keys": "alt+3" },
+        { "command": { "action": "switchToTab", "index": 3 }, "keys": "alt+4" },
+        { "command": { "action": "switchToTab", "index": 4 }, "keys": "alt+5" },
+        { "command": { "action": "switchToTab", "index": 5 }, "keys": "alt+6" },
+        { "command": { "action": "switchToTab", "index": 6 }, "keys": "alt+7" },
+        { "command": { "action": "switchToTab", "index": 7 }, "keys": "alt+8" },
+        { "command": { "action": "switchToTab", "index": 8 }, "keys": "alt+9" },
+        {
+            "command": { "action": "openSettings", "target": "settingsUI" },
+            "keys": "ctrl+shift+s"
+        }
+    ]
 }
