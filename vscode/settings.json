@@ -1,118 +1,128 @@
 {
-	// ****************
-	// ** EXTENSIONS **
-	// ****************
-	"bracket-pair-colorizer-2.colors": [
-		"#e5c179",
-		"#eee8d5",
-		"#a4799d"
-	],
-	"bracket-pair-colorizer-2.colorMode": "Consecutive",
-	"code-eol.style": {
-		"code-eol.validLineEnding": "LF",
-		"color": "#5a5a5a",
-		"opacity": 1.0,
-		"code-eol.newlineCharacter": "¬",
-		"code-eol.returnCharacter": "⇠",
-		"code-eol.crlfCharacter": "↵"
-	},
-	"prettier.arrowParens": "always",
-	"prettier.bracketSpacing": true,
-	"prettier.endOfLine": "lf",
-	"prettier.insertPragma": false,
-	"prettier.printWidth": 80,
-	"prettier.semi": true,
-	"prettier.singleQuote": false,
-	"prettier.tabWidth": 4,
-	"prettier.trailingComma": "es5",
-	"prettier.useTabs": false,
-	"python.linting.enabled": true,
-	"python.formatting.provider": "yapf",
-	"python.formatting.yapfArgs": [
-	],
-	// ************
-	// ** EDITOR **
-	// ************
-	"editor.cursorStyle": "line",
-	"editor.cursorWidth": 1,
-	"editor.fontFamily": "Source Code Pro",
-	"editor.fontSize": 12,
-	"editor.fontWeight": "400",
-	"editor.fontLigatures": true,
-	"editor.lineNumbers": "relative",
-	"editor.minimap.enabled": false,
-	"editor.cursorSmoothCaretAnimation": true,
-	"editor.renderIndentGuides": true,
-	"editor.renderWhitespace": "boundary",
-	"editor.rulers": [80, 120],
-	"editor.suggestSelection": "first",
-	"editor.tabSize": 4,
-	"editor.insertSpaces": false,
-	"editor.detectIndentation": false,
-	"editor.wordWrap": "wordWrapColumn",
-	"editor.wordWrapColumn": 120,
-	"editor.wrappingIndent": "same",
-	"explorer.confirmDragAndDrop": false,
-	"explorer.confirmDelete": false,
-	// ***************
-	// **** FILES ****
-	// ***************
-	"files.associations": {
-		"Dockerfile-*": "dockerfile",
-		"Dockerfile_*": "dockerfile"
-	},
-	"files.autoSave": "off",
-	"files.autoSaveDelay": 10000,
-	"files.exclude": {
-		"**/.git": true,
-		"**/.svn": true,
-		"**/node_modules": true
-	},
-	// ***************
-	// ***** GIT *****
-	// ***************
-	"git.autofetch": true,
-	"git.defaultCloneDirectory": "D:\\Git",
-	"git.enableSmartCommit": true,
-	"git.confirmSync": false,
-	// ***************
-	// ** LANGUAGES **
-	// ***************
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[jsonc]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[markdown]": {
-		"editor.quickSuggestions": false,
-		"editor.minimap.enabled": true
-	},
-	// ***************
-	// ** TELEMETRY **
-	// ***************
-	"telemetry.enableTelemetry": false,
-	"telemetry.enableCrashReporter": false,
-	// ***************
-	// ** TERMINAL **
-	// ***************
-	"terminal.integrated.fontFamily": "Source Code Pro",
-	"terminal.integrated.fontSize": 13,
-	"terminal.integrated.fontWeight": "300",
-	"terminal.integrated.showExitAlert": false,
-	"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
-	"terminal.integrated.shell.linux": "/bin/zsh",
-	// ***************
-	// ** WORKBENCH **
-	// ***************
-	"workbench.iconTheme": "material-icon-theme",
-	"workbench.settings.editor": "json",
-	"workbench.startupEditor": "newUntitledFile",
-	"workbench.tips.enabled": false,
-	"window.title": "${activeEditorMedium}${separator}${rootPath}",
-	"window.zoomLevel": 0,
-	"workbench.colorTheme": "KDark"
+    // ****************
+    // ** EXTENSIONS **
+    // ****************
+    "bracket-pair-colorizer-2.colors": ["#e5c179", "#eee8d5", "#a4799d"],
+    "bracket-pair-colorizer-2.colorMode": "Consecutive",
+    "code-eol.style": {
+        "code-eol.validLineEnding": "LF",
+        "color": "#5a5a5a",
+        "opacity": 1.0,
+        "code-eol.newlineCharacter": "¬",
+        "code-eol.returnCharacter": "⇠",
+        "code-eol.crlfCharacter": "↵"
+    },
+    "prettier.arrowParens": "always",
+    "prettier.bracketSpacing": true,
+    "prettier.endOfLine": "lf",
+    "prettier.insertPragma": false,
+    "prettier.printWidth": 80,
+    "prettier.semi": true,
+    "prettier.singleQuote": false,
+    "prettier.tabWidth": 4,
+    "prettier.trailingComma": "es5",
+    "prettier.useTabs": false,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfArgs": [],
+    // ************
+    // ** EDITOR **
+    // ************
+    "editor.cursorStyle": "line",
+    "editor.cursorWidth": 1,
+    "editor.fontFamily": "Source Code Pro",
+    "editor.fontSize": 12,
+    "editor.fontWeight": "400",
+    "editor.fontLigatures": true,
+    "editor.lineHeight": 22,
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.renderIndentGuides": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [80, 120],
+    "editor.suggestSelection": "first",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120,
+    "editor.wrappingIndent": "same",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    // ***************
+    // **** FILES ****
+    // ***************
+    "files.associations": {
+        "Dockerfile-*": "dockerfile",
+        "Dockerfile_*": "dockerfile"
+    },
+    "files.autoSave": "off",
+    "files.autoSaveDelay": 10000,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/node_modules": true
+    },
+    // ***************
+    // ***** GIT *****
+    // ***************
+    "git.autofetch": true,
+    "git.defaultCloneDirectory": "D:\\Git",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    // ***************
+    // ** LANGUAGES **
+    // ***************
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+        "editor.quickSuggestions": false,
+        "editor.minimap.enabled": true
+    },
+    // ***************
+    // ** TELEMETRY **
+    // ***************
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    // ***************
+    // ** TERMINAL **
+    // ***************
+    "terminal.integrated.fontFamily": "Source Code Pro",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.fontWeight": "300",
+    "terminal.integrated.showExitAlert": false,
+    // WSL
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    // MINGW64
+    // "terminal.integrated.shell.windows": "C:\\tools\\msys64\\usr\\bin\\bash.exe",
+    // "terminal.integrated.env.windows": {
+    //     "MSYSTEM": "MINGW64",
+    //     "CHERE_INVOKING": "1"
+    // },
+    // "terminal.integrated.shellArgs.windows": ["--login"],
+    // ***************
+    // ** WORKBENCH **
+    // ***************
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.settings.editor": "json",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.tips.enabled": false,
+    "window.title": "${activeEditorMedium}${separator}${rootPath}",
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "KDark"
 }
