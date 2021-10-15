@@ -1,13 +1,4 @@
 ################################################################################
-# Remove Powershell alias(es)
-################################################################################
-Remove-Item Alias:\curl -ErrorAction SilentlyContinue
-Remove-Item Alias:\ls -ErrorAction SilentlyContinue
-Remove-Item Alias:\rm -ErrorAction SilentlyContinue
-Remove-Item Alias:\wget -ErrorAction SilentlyContinue
-Remove-Item Alias:\where -Force -ErrorAction SilentlyContinue
-
-################################################################################
 # Enable Bash/Emacs key bindings
 ################################################################################
 Import-Module PSReadLine
