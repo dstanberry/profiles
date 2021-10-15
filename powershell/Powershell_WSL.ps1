@@ -40,7 +40,7 @@ $PSReadlineOptions = @{
 	HistoryNoDuplicates           = $true
 	HistorySearchCursorMovesToEnd = $true
 	Colors                        = @{
-		"Command"   = "White"
+		"Command"   = "Green"
 		"Parameter" = "White"
 	}
 }
@@ -59,11 +59,6 @@ Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
 # Disable bell
 ################################################################################
 Set-PSReadlineOption -BellStyle None
-
-################################################################################
-# Reboot Machine
-################################################################################
-Set-Alias reboot Restart-Computer
 
 ################################################################################
 # Show directory contents after changing to it
@@ -152,7 +147,7 @@ function Test-Administrator {
 # Define prompt
 ################################################################################
 function prompt {
-	$realLASTEXITCODE = $?
+	$retval = $?
 
 	$history = Get-History -Count 1
 
@@ -183,14 +178,14 @@ function prompt {
 		}
 	}
 
-	if ($realLASTEXITCODE) {
+	if ($retval) {
 		Write-Host " $(U 0x276F)" -NoNewline -ForegroundColor Green -BackgroundColor Black
 	}
 	else {
 		Write-Host " $(U 0x276F)" -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
 	
-	Remove-Variable realLASTEXITCODE
+	Remove-Variable retval
 
 	Write-Host "" -NoNewline -ForegroundColor White
 	return " "

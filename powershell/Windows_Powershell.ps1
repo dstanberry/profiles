@@ -1,10 +1,11 @@
-using namespace System.Management.Automation
-using namespace System.Management.Automation.Language
-
 ################################################################################
-# Show file and directory icons
+# Remove Powershell alias(es)
 ################################################################################
-Import-Module -Name Terminal-Icons
+Remove-Item Alias:\curl -ErrorAction SilentlyContinue
+Remove-Item Alias:\ls -ErrorAction SilentlyContinue
+Remove-Item Alias:\rm -ErrorAction SilentlyContinue
+Remove-Item Alias:\wget -ErrorAction SilentlyContinue
+Remove-Item Alias:\where -Force -ErrorAction SilentlyContinue
 
 ################################################################################
 # Enable Bash/Emacs key bindings
@@ -24,13 +25,10 @@ $PSReadlineOptions = @{
 
 Set-PSReadLineOption @PSReadlineOptions
 Set-PSReadlineOption -BellStyle None
-Set-PSReadLineOption -PredictionSource History
 
 ################################################################################
 # Extend key bindings
 ################################################################################
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key Shift+Ctrl+C -Function Copy
 Set-PSReadLineKeyHandler -Key Ctrl+Shift+V -Function Paste
 Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
@@ -81,21 +79,6 @@ function prompt {
 
 	Write-Host $($(Get-Location) -replace ($env:USERPROFILE).Replace('\', '\\'), "~") -NoNewline -ForegroundColor DarkBlue -BackgroundColor Black
 
-	if ($status = Get-GitStatus -Force) {
-		Write-Host " $(U 0xE0A0)" -NoNewline -ForegroundColor Cyan 
-		Write-Host "$(Write-GitBranchName $status)" -NoNewline -ForegroundColor Cyan
-
-		if ($status.HasIndex) {
-			Write-Host "$(U 0x25CF)" -NoNewline -ForegroundColor Green 
-		}
-		if ($status.HasWorking) {
-			Write-Host "$(U 0x25CF)" -NoNewline -ForegroundColor Red 
-		}
-		if ($status.HasUntracked) {
-			Write-Host "$(U 0x25CF)" -NoNewline -ForegroundColor Blue 
-		}
-	}
-
 	if ($retval) {
 		Write-Host " $(U 0x276F)" -NoNewline -ForegroundColor Green -BackgroundColor Black
 	}
@@ -104,7 +87,7 @@ function prompt {
 	}
 	
 	Remove-Variable retval
-
+	
 	Write-Host "" -NoNewline -ForegroundColor White
 	return " "
 }
