@@ -217,7 +217,9 @@
     "workbench.colorTheme": "KDark",
     "workbench.colorCustomizations": {
         "[KDark]": {
-            "editorCursor.foreground": "#e5c179"
+            "editorCursor.foreground": "#e5c179",
+            "editorInlayHint.background": "#37373700",
+            "editorInlayHint.foreground": "#8f8f8f"
         }
     },
     "workbench.editorAssociations": {
