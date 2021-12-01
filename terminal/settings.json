@@ -49,6 +49,7 @@
   {
       "defaults": 
       {
+          "intenseTextStyle": "all",
           "antialiasingMode": "grayscale",
           "bellStyle": "none",
           "closeOnExit": "graceful",
@@ -60,7 +61,6 @@
               "size": 10,
               "weight": "normal"
           },
-          "intenseTextStyle": "all",
           "padding": "1, 1, 1, 1",
           "scrollbarState": "hidden",
           "tabColor": "#303030",
