@@ -1,236 +1,248 @@
 {
-    // **************************************************************************
-    // ** EXTENSIONS
-    // **************************************************************************
-    "bracket-pair-colorizer-2.colorMode": "Consecutive",
-    "bracket-pair-colorizer-2.colors": [
-        "#73c1b9",
-        "#80d3dd",
-        "#9086a4",
-        "#bfafc4",
-        "#dec7d0",
-        "#e09696",
-        "#ffdca8"
-    ],
-    "code-eol.style": {
-        "code-eol.crlfCharacter": "↵",
-        "code-eol.newlineCharacter": "¬",
-        "code-eol.returnCharacter": "⇠",
-        "code-eol.validLineEnding": "LF",
-        "color": "#5a5a5a",
-        "opacity": 0.4
+  // **************************************************************************
+  // ** EXTENSIONS
+  // **************************************************************************
+  "bracket-pair-colorizer-2.colorMode": "Consecutive",
+  "bracket-pair-colorizer-2.colors": [
+    "#73c1b9",
+    "#80d3dd",
+    "#9086a4",
+    "#bfafc4",
+    "#dec7d0",
+    "#e09696",
+    "#ffdca8"
+  ],
+  "code-eol.style": {
+    "code-eol.crlfCharacter": "↵",
+    "code-eol.newlineCharacter": "¬",
+    "code-eol.returnCharacter": "⇠",
+    "code-eol.validLineEnding": "LF",
+    "color": "#5a5a5a",
+    "opacity": 0.4
+  },
+  "foam.openDailyNote.directory": "vault/journal",
+  "foam.openDailyNote.filenameFormat": "yyyy-mm-dd-'daily-note'",
+  "foam.openDailyNote.fileExtension": "md",
+  "foam.openDailyNote.titleFormat": "'Journal Entry, ' dddd, mmmm d",
+  "gitlens.advanced.messages": {
+    "suppressGitMissingWarning": true
+  },
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "material-icon-theme.folders.color": "#6f8fb4",
+  "pasteImage.path": "${projectRoot}/attachments",
+  "pasteImage.showFilePathConfirmInputBox": true,
+  "prettier.arrowParens": "always",
+  "prettier.bracketSpacing": true,
+  "prettier.endOfLine": "lf",
+  "prettier.insertPragma": false,
+  "prettier.printWidth": 80,
+  "prettier.semi": true,
+  "prettier.singleQuote": false,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "es5",
+  "prettier.useTabs": false,
+  "python.formatting.provider": "yapf",
+  "python.formatting.yapfArgs": [],
+  "python.linting.enabled": true,
+  "shellcheck.customArgs": [],
+  "shellcheck.enable": true,
+  "shellcheck.enableQuickFix": true,
+  "shellcheck.exclude": [],
+  "shellcheck.executablePath": "",
+  "shellformat.flag": "-i 2 -bn -ci -sr",
+  "shellcheck.ignoreFileSchemes": [
+    "git",
+    "gitfs"
+  ],
+  "shellcheck.ignorePatterns": {
+    // "**/*.zsh": true,
+    // "**/*.zshrc": true,
+  },
+  "shellcheck.run": "onType",
+  "spellright.notificationClass": "warning",
+  "vscodeMarkdownNotes.noteCompletionConvention": "noExtension",
+  "vscodeMarkdownNotes.slugifyMethod": "github-slugger",
+  // **************************************************************************
+  // ** EDITOR
+  // **************************************************************************
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "expand",
+  "editor.cursorWidth": 1,
+  "editor.detectIndentation": true,
+  // "editor.fontFamily": "Source Code Pro",
+  "editor.fontFamily": "JetBrainsMono NF",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 13,
+  "editor.fontWeight": "400",
+  "editor.inlayHints.enabled": true,
+  "editor.inlayHints.fontSize": 8,
+  "editor.insertSpaces": true,
+  "editor.lineHeight": 22,
+  "editor.lineNumbers": "relative",
+  "editor.matchBrackets": "never",
+  "editor.minimap.enabled": false,
+  "editor.guides.indentation": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 120,
+  "editor.wrappingIndent": "same",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  // **************************************************************************
+  // ** LANGUAGES
+  // **************************************************************************
+  "emmet.includeLanguages": {
+    "javascript": "html"
+  },
+  "html.format.wrapLineLength": 240,
+  "html.format.preserveNewLines": true,
+  "html.format.indentInnerHtml": false,
+  "html.format.wrapAttributes": "auto",
+  "html.format.enable": false,
+  "markdown.preview.breaks": true,
+  // **************************************************************************
+  // ** CODELENS
+  // **************************************************************************
+  "html.autoClosingTags": false,
+  "html.suggest.html5": true,
+  "html.validate.scripts": true,
+  "html.validate.styles": true,
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  "javascript.referencesCodeLens.enabled": true,
+  "javascript.updateImportsOnFileMove.enabled": "prompt",
+  // **************************************************************************
+  // ** FTDETECT
+  // **************************************************************************
+  "files.associations": {
+    "Dockerfile-*": "dockerfile",
+    "Dockerfile_*": "dockerfile"
+  },
+  "files.autoSave": "off",
+  "files.autoSaveDelay": 10000,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/node_modules": true
+  },
+  // **************************************************************************
+  // ** GIT
+  // **************************************************************************
+  "git.autofetch": true,
+  "git.defaultCloneDirectory": "D:\\Git",
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  // **************************************************************************
+  // ** FTPLUGIN
+  // **************************************************************************
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.foldingStrategy": "indentation"
+  },
+  "[javascript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": false,
+      "source.organizeImports": true
     },
-    "gitlens.advanced.messages": {
-        "suppressGitMissingWarning": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false
+  },
+  "[jsonc]": {
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.lineHeight": 24,
+    "editor.overviewRulerBorder": false,
+    "editor.quickSuggestions": false,
+    "editor.wrappingIndent": "indent",
+    "files.trimTrailingWhitespace": false,
+  },
+  // **************************************************************************
+  // ** TERMINAL
+  // **************************************************************************
+  // "terminal.integrated.fontFamily": "Source Code Pro",
+  "terminal.external.windowsExec": "wt.exe",
+  "terminal.integrated.fontFamily": "JetBrainsMono NF",
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontWeight": "400",
+  "terminal.integrated.showExitAlert": false,
+  "terminal.integrated.splitCwd": "workspaceRoot",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
     },
-    "gitlens.codeLens.authors.enabled": false,
-    "gitlens.codeLens.recentChange.enabled": false,
-    "gitlens.currentLine.enabled": false,
-    "material-icon-theme.folders.color": "#6f8fb4",
-    "prettier.arrowParens": "always",
-    "prettier.bracketSpacing": true,
-    "prettier.endOfLine": "lf",
-    "prettier.insertPragma": false,
-    "prettier.printWidth": 80,
-    "prettier.semi": true,
-    "prettier.singleQuote": false,
-    "prettier.tabWidth": 2,
-    "prettier.trailingComma": "es5",
-    "prettier.useTabs": false,
-    "python.formatting.provider": "yapf",
-    "python.formatting.yapfArgs": [],
-    "python.linting.enabled": true,
-    "shellcheck.customArgs": [],
-    "shellcheck.enable": true,
-    "shellcheck.enableQuickFix": true,
-    "shellcheck.exclude": [],
-    "shellcheck.executablePath": "",
-    "shellformat.flag": "-i 2 -bn -ci -sr",
-    "shellcheck.ignoreFileSchemes": [
-        "git",
-        "gitfs"
-    ],
-    "shellcheck.ignorePatterns": {
-        // "**/*.zsh": true,
-        // "**/*.zshrc": true,
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
     },
-    "shellcheck.run": "onType",
-    // **************************************************************************
-    // ** EDITOR
-    // **************************************************************************
-    "editor.cursorSmoothCaretAnimation": true,
-    "editor.cursorStyle": "line",
-    "editor.cursorBlinking": "expand",
-    "editor.cursorWidth": 1,
-    "editor.detectIndentation": true,
-    // "editor.fontFamily": "Source Code Pro",
-    "editor.fontFamily": "JetBrainsMono NF",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 13,
-    "editor.fontWeight": "400",
-    "editor.inlayHints.enabled": true,
-    "editor.inlayHints.fontSize": 8,
-    "editor.insertSpaces": true,
-    "editor.lineHeight": 22,
-    "editor.lineNumbers": "relative",
-    "editor.matchBrackets": "never",
-    "editor.minimap.enabled": false,
-    "editor.guides.indentation": true,
-    "editor.renderWhitespace": "boundary",
-    "editor.rulers": [
-        80,
-        120
-    ],
-    "editor.suggestSelection": "first",
-    "editor.tabSize": 2,
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 120,
-    "editor.wrappingIndent": "same",
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    // **************************************************************************
-    // ** LANGUAGES
-    // **************************************************************************
-    "emmet.includeLanguages": {
-        "javascript": "html"
+    "Git Bash": null
+  },
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "bash",
+      "icon": "terminal-bash"
     },
-    "html.format.wrapLineLength": 240,
-    "html.format.preserveNewLines": true,
-    "html.format.indentInnerHtml": false,
-    "html.format.wrapAttributes": "auto",
-    "html.format.enable": false,
-    // **************************************************************************
-    // ** CODELENS
-    // **************************************************************************
-    "html.autoClosingTags": false,
-    "html.suggest.html5": true,
-    "html.validate.scripts": true,
-    "html.validate.styles": true,
-    "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-    "javascript.inlayHints.parameterNames.enabled": "all",
-    "javascript.inlayHints.parameterTypes.enabled": true,
-    "javascript.inlayHints.variableTypes.enabled": true,
-    "javascript.referencesCodeLens.enabled": true,
-    "javascript.updateImportsOnFileMove.enabled": "prompt",
-    // **************************************************************************
-    // ** FTDETECT
-    // **************************************************************************
-    "files.associations": {
-        "Dockerfile-*": "dockerfile",
-        "Dockerfile_*": "dockerfile"
+    "zsh": {
+      "path": "zsh"
     },
-    "files.autoSave": "off",
-    "files.autoSaveDelay": 10000,
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/node_modules": true
+    "tmux": {
+      "path": "tmux",
+      "icon": "terminal-tmux"
     },
-    // **************************************************************************
-    // ** GIT
-    // **************************************************************************
-    "git.autofetch": true,
-    "git.defaultCloneDirectory": "D:\\Git",
-    "git.enableSmartCommit": true,
-    "git.confirmSync": false,
-    // **************************************************************************
-    // ** FTPLUGIN
-    // **************************************************************************
-    "[c]": {
-        "editor.defaultFormatter": "ms-vscode.cpptools"
-    },
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.foldingStrategy": "indentation"
-    },
-    "[javascript]": {
-        "editor.codeActionsOnSave": {
-            "source.fixAll": false,
-            "source.organizeImports": true
-        },
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features",
-        "editor.formatOnPaste": true,
-        "editor.formatOnSave": false,
-        "editor.formatOnType": false
-    },
-    "[jsonc]": {
-        "editor.formatOnPaste": true,
-        "editor.formatOnSave": false,
-        "editor.formatOnType": false,
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "[markdown]": {
-        "editor.quickSuggestions": false,
-        "editor.minimap.enabled": true,
-        "files.trimTrailingWhitespace": false
-    },
-    // **************************************************************************
-    // ** TERMINAL
-    // **************************************************************************
-    // "terminal.integrated.fontFamily": "Source Code Pro",
-    "terminal.external.windowsExec": "wt.exe",
-    "terminal.integrated.fontFamily": "JetBrainsMono NF",
-    "terminal.integrated.fontSize": 12,
-    "terminal.integrated.fontWeight": "400",
-    "terminal.integrated.showExitAlert": false,
-    "terminal.integrated.splitCwd": "workspaceRoot",
-    "terminal.integrated.profiles.windows": {
-        "PowerShell": {
-            "source": "PowerShell",
-            "icon": "terminal-powershell"
-        },
-        "Command Prompt": {
-            "path": [
-                "${env:windir}\\Sysnative\\cmd.exe",
-                "${env:windir}\\System32\\cmd.exe"
-            ],
-            "args": [],
-            "icon": "terminal-cmd"
-        },
-        "Git Bash": null
-    },
-    "terminal.integrated.profiles.linux": {
-        "bash": {
-            "path": "bash",
-            "icon": "terminal-bash"
-        },
-        "zsh": {
-            "path": "zsh"
-        },
-        "tmux": {
-            "path": "tmux",
-            "icon": "terminal-tmux"
-        },
-        "pwsh": {
-            "path": "pwsh",
-            "icon": "terminal-powershell"
-        }
-    },
-    "terminal.integrated.defaultProfile.linux": "zsh",
-    "terminal.integrated.defaultProfile.windows": "PowerShell",
-    // **************************************************************************
-    // ** WORKBENCH
-    // **************************************************************************
-    "workbench.colorTheme": "KDark",
-    "workbench.colorCustomizations": {
-        "[KDark]": {
-            "editorCursor.foreground": "#e5c179",
-            "editorInlayHint.background": "#37373700",
-            "editorInlayHint.foreground": "#8f8f8f"
-        }
-    },
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.settings.editor": "json",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.tips.enabled": false,
-    "window.title": "${activeEditorMedium}${separator}${rootPath}",
-    "powershell.promptToUpdatePowerShell": false,
-    "security.workspace.trust.untrustedFiles": "open",
-    "telemetry.telemetryLevel": "off"
+    "pwsh": {
+      "path": "pwsh",
+      "icon": "terminal-powershell"
+    }
+  },
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  // **************************************************************************
+  // ** WORKBENCH
+  // **************************************************************************
+  "workbench.colorTheme": "KDark",
+  "workbench.colorCustomizations": {
+    "[KDark]": {
+      "editorCursor.foreground": "#e5c179",
+      "editorInlayHint.background": "#37373700",
+      "editorInlayHint.foreground": "#8f8f8f"
+    }
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.settings.editor": "json",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.tips.enabled": false,
+  "window.title": "${activeEditorMedium}${separator}${rootPath}",
+  "powershell.promptToUpdatePowerShell": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "telemetry.telemetryLevel": "off"
 }
