@@ -61,7 +61,7 @@
               "size": 10,
               "weight": "normal"
           },
-          "padding": "1, 1, 1, 1",
+          "padding": "1, 1, 0, 1",
           "scrollbarState": "hidden",
           "tabColor": "#303030",
           "useAcrylic": false
