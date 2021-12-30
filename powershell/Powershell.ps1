@@ -79,7 +79,8 @@ function prompt {
 		Write-Host " $(U 0xE0A2) " -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
 
-	Write-Host $($(Get-Location) -replace ($env:USERPROFILE).Replace('\', '\\'), "~") -NoNewline -ForegroundColor DarkBlue -BackgroundColor Black
+	$cwd = $(Get-Location | Split-Path -Leaf)
+	Write-Host $cwd -NoNewline -ForegroundColor DarkBlue -BackgroundColor Black
 
 	if ($status = Get-GitStatus -Force) {
 		Write-Host " $(U 0xE725)" -NoNewline -ForegroundColor Cyan 
