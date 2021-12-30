@@ -82,17 +82,17 @@ function prompt {
 	Write-Host $($(Get-Location) -replace ($env:USERPROFILE).Replace('\', '\\'), "~") -NoNewline -ForegroundColor DarkBlue -BackgroundColor Black
 
 	if ($status = Get-GitStatus -Force) {
-		Write-Host " $(U 0xE0A0)" -NoNewline -ForegroundColor Cyan 
+		Write-Host " $(U 0xE725)" -NoNewline -ForegroundColor Cyan 
 		Write-Host "$(Write-GitBranchName $status)" -NoNewline -ForegroundColor Cyan
 
 		if ($status.HasIndex) {
-			Write-Host "$(U 0x25CF)" -NoNewline -ForegroundColor Green 
+			Write-Host "$(U 0x25AA)" -NoNewline -ForegroundColor Green 
 		}
 		if ($status.HasWorking) {
-			Write-Host "$(U 0x25CF)" -NoNewline -ForegroundColor Red 
+			Write-Host "$(U 0x25AA)" -NoNewline -ForegroundColor Red 
 		}
 		if ($status.HasUntracked) {
-			Write-Host "$(U 0x25CF)" -NoNewline -ForegroundColor Blue 
+			Write-Host "$(U 0x25AA)" -NoNewline -ForegroundColor Blue 
 		}
 	}
 
