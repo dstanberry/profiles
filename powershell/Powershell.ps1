@@ -79,7 +79,12 @@ function prompt {
 		Write-Host " $(U 0xE0A2) " -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
 
-	$cwd = $(Get-Location | Split-Path -Leaf)
+	if ((Get-Location).providerpath -eq ($env:USERPROFILE)) {
+		$cwd = "~"
+	}
+	else {
+		$cwd = $(Get-Location | Split-Path -Leaf)
+	}
 	Write-Host $cwd -NoNewline -ForegroundColor DarkBlue -BackgroundColor Black
 
 	if ($status = Get-GitStatus -Force) {
@@ -147,3 +152,16 @@ $env:FZF_DEFAULT_OPTS='
 --color=info:#5f5f5f,prompt:#6f8fb4,pointer:#b04b57
 --color=marker:#e5c179,spinner:#4c566a,header:#4c566a
 '
+Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
+
+Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
+	Get-ChildItem -Path C:\Users\Demaro,D:\,D:\Git,D:\Projects,D:\Projects\*\* -Attributes Directory | Invoke-Fzf | Set-Location
+	$previousOutputEncoding = [Console]::OutputEncoding
+	[Console]::OutputEncoding = [Text.Encoding]::UTF8
+
+	try {
+		[Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
+	} finally {
+		[Console]::OutputEncoding = $previousOutputEncoding
+	}
+}
