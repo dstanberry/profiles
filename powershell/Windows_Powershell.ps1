@@ -1,33 +1,3 @@
-################################################################################
-# Enable Bash/Emacs key bindings
-################################################################################
-Import-Module PSReadLine
-
-$PSReadlineOptions = @{
-	EditMode                      = "Emacs"
-	HistoryNoDuplicates           = $true
-	HistorySearchCursorMovesToEnd = $true
-	Colors                        = @{
-		"Command"   = "Green"
-		"Parameter" = "White"
-		"InlinePrediction" = "#5f5f5f"
-	}
-}
-
-Set-PSReadLineOption @PSReadlineOptions
-Set-PSReadlineOption -BellStyle None
-
-################################################################################
-# Extend key bindings
-################################################################################
-Set-PSReadLineKeyHandler -Key Shift+Ctrl+C -Function Copy
-Set-PSReadLineKeyHandler -Key Ctrl+Shift+V -Function Paste
-Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
-Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
-
-################################################################################
-# Helper function to show Unicode character
-################################################################################
 function U {
 	param([int] $Code)
 
@@ -42,18 +12,54 @@ function U {
 	throw "Invalid character code $Code"
 }
 
-################################################################################
-# Helper function to check for admin privileges
-################################################################################
 function Test-Administrator {
 	$user = [Security.Principal.WindowsIdentity]::GetCurrent();
 	(New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 }
 
-################################################################################
-# Define prompt
-################################################################################
 function prompt {
+	function Initialize-Profile {
+		Import-Module PSReadLine
+
+		$PSReadlineOptions = @{
+			EditMode                      = "Emacs"
+			HistoryNoDuplicates           = $true
+			HistorySearchCursorMovesToEnd = $true
+			Colors                        = @{
+				"Command"   = "Green"
+				"Parameter" = "White"
+				"InlinePrediction" = "#5f5f5f"
+			}
+		}
+
+		Set-PSReadLineOption @PSReadlineOptions
+		Set-PSReadlineOption -BellStyle None
+
+		Set-PSReadLineKeyHandler -Key Shift+Ctrl+C -Function Copy
+		Set-PSReadLineKeyHandler -Key Ctrl+Shift+V -Function Paste
+		Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
+		Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
+
+		Add-Type '
+		using System.Management.Automation;
+		using System.Management.Automation.Runspaces;
+
+		[Cmdlet("Reload", "Profile")]
+		public class ReloadProfileCmdlet : PSCmdlet {
+			protected override void EndProcessing()
+			{
+				InvokeCommand.InvokeScript(". $profile", false, PipelineResultTypes.Output | PipelineResultTypes.Error, null);
+			}
+		}' -PassThru | Select-Object -First 1 -ExpandProperty Assembly | Import-Module -DisableNameChecking;
+
+		Set-Alias reload Reload-Profile
+	}
+
+	if ($global:profile_initialized -ne $true) {
+		$global:profile_initialized = $true
+		Initialize-Profile
+	}
+
 	$retval = $?
 
 	$history = Get-History -Count 1
@@ -82,20 +88,3 @@ function prompt {
 	Write-Host "" -NoNewline -ForegroundColor White
 	return " "
 }
-
-################################################################################
-# Reload Profile
-################################################################################
-Add-Type '
-using System.Management.Automation;
-using System.Management.Automation.Runspaces;
-
-[Cmdlet("Reload", "Profile")]
-public class ReloadProfileCmdlet : PSCmdlet {
-	protected override void EndProcessing()
-	{
-		InvokeCommand.InvokeScript(". $profile", false, PipelineResultTypes.Output | PipelineResultTypes.Error, null);
-	}
-}' -PassThru | Select-Object -First 1 -ExpandProperty Assembly | Import-Module -DisableNameChecking;
-
-Set-Alias reload Reload-Profile
