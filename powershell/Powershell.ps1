@@ -46,19 +46,21 @@ function prompt {
 		Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
 		Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
 
-		Add-Type '
-		using System.Management.Automation;
-		using System.Management.Automation.Runspaces;
+		# Add-Type '
+		# using System.Management.Automation;
+		# using System.Management.Automation.Runspaces;
+		#
+		# [Cmdlet("Reload", "Profile")]
+		# public class ReloadProfileCmdlet : PSCmdlet {
+		# 	protected override void EndProcessing()
+		# 	{
+		# 		InvokeCommand.InvokeScript(". $profile", false, PipelineResultTypes.Output | PipelineResultTypes.Error, null);
+		# 	}
+		# }' -PassThru | Select-Object -First 1 -ExpandProperty Assembly | Import-Module -DisableNameChecking;
+		#
+		# Set-Alias reload Reload-Profile
 
-		[Cmdlet("Reload", "Profile")]
-		public class ReloadProfileCmdlet : PSCmdlet {
-			protected override void EndProcessing()
-			{
-				InvokeCommand.InvokeScript(". $profile", false, PipelineResultTypes.Output | PipelineResultTypes.Error, null);
-			}
-		}' -PassThru | Select-Object -First 1 -ExpandProperty Assembly | Import-Module -DisableNameChecking;
-
-		Set-Alias reload Reload-Profile
+		$env:ZK_NOTEBOOK_DIR = "D:\Documents\_notes\zettelkasten\vault"
 
 		$env:FZF_DEFAULT_COMMAND="fd -H --follow --type f --color=always -E .git -E 'ntuser.dat\*' -E 'NTUSER.DAT\*'"
 		$env:FZF_DEFAULT_OPTS='
@@ -78,7 +80,7 @@ function prompt {
 		'
 		Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 		Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
-			Get-ChildItem -Path C:\Users\Demaro,D:\,D:\Git,D:\Projects,D:\Projects\*\* -Attributes Directory | Invoke-Fzf | Set-Location
+			Get-ChildItem -Path C:\Users\Demaro,D:\,D:\Git,D:\Documents\_notes\zettelkasten,D:\Projects,D:\Projects\*\* -Attributes Directory | Invoke-Fzf | Set-Location
 			$previousOutputEncoding = [Console]::OutputEncoding
 			[Console]::OutputEncoding = [Text.Encoding]::UTF8
 
