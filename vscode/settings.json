@@ -21,7 +21,6 @@
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
   "gitlens.currentLine.enabled": false,
-  "material-icon-theme.folders.color": "#6f8fb4",
   "pasteImage.path": "${projectRoot}/attachments",
   "pasteImage.showFilePathConfirmInputBox": true,
   "prettier.arrowParens": "always",
@@ -178,7 +177,7 @@
   // "terminal.integrated.fontFamily": "Source Code Pro",
   "terminal.external.windowsExec": "wt.exe",
   "terminal.integrated.fontFamily": "JetBrainsMono NF",
-  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontWeight": "400",
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.splitCwd": "workspaceRoot",
@@ -216,10 +215,10 @@
   },
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "powershell.promptToUpdatePowerShell": false,
   // **************************************************************************
   // ** WORKBENCH
   // **************************************************************************
-  "workbench.colorTheme": "KDark",
   "workbench.colorCustomizations": {
     "[KDark]": {
       "editorCursor.foreground": "#e5c179",
@@ -237,12 +236,17 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
   },
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "nonicons",
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tips.enabled": false,
-  "window.title": "${activeEditorMedium}${separator}${rootPath}",
-  "powershell.promptToUpdatePowerShell": false,
+  "workbench.colorTheme": "KDark",
+  "workbench.productIconTheme": "icons-carbon",
   "security.workspace.trust.untrustedFiles": "open",
-  "telemetry.telemetryLevel": "off"
+  "telemetry.telemetryLevel": "off",
+  // **************************************************************************
+  // ** WINDOWS
+  // **************************************************************************
+  "window.title": "",
+  "window.menuBarVisibility": "compact"
 }
