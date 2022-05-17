@@ -86,5 +86,6 @@ function prompt {
 	Remove-Variable retval
 	
 	Write-Host "" -NoNewline -ForegroundColor White
+	Write-Host -NoNewLine "`e[2 q"
 	return " "
 }

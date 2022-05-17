@@ -72,6 +72,8 @@ function prompt {
 		--layout=reverse
 		--preview-window border-left
 		--scroll-off=3
+		--bind=ctrl-d:preview-down
+		--bind=ctrl-f:preview-up
 		--color=dark
 		--color=fg:#bebebe,bg:-1,hl:#93b379
 		--color=fg+:#dfe3ec,bg+:-1,hl+:#93b379
@@ -144,5 +146,6 @@ function prompt {
 	Remove-Variable retval
 
 	Write-Host "" -NoNewline -ForegroundColor White
+	Write-Host -NoNewLine "`e[2 q"
 	return " "
 }
