@@ -26,8 +26,8 @@ function prompt {
 			HistoryNoDuplicates           = $true
 			HistorySearchCursorMovesToEnd = $true
 			Colors                        = @{
-				"Command"   = "Green"
-				"Parameter" = "White"
+				"Command"          = "Green"
+				"Parameter"        = "White"
 				"InlinePrediction" = "#5f5f5f"
 			}
 		}

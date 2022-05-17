@@ -29,8 +29,8 @@ function prompt {
 			HistoryNoDuplicates           = $true
 			HistorySearchCursorMovesToEnd = $true
 			Colors                        = @{
-				"Command"   = "Green"
-				"Parameter" = "White"
+				"Command"          = "Green"
+				"Parameter"        = "White"
 				"InlinePrediction" = "#5f5f5f"
 			}
 		}
@@ -62,8 +62,8 @@ function prompt {
 
 		$env:ZK_NOTEBOOK_DIR = "D:\Documents\_notes\zettelkasten\vault"
 
-		$env:FZF_DEFAULT_COMMAND="fd -H --follow --type f --color=always -E .git -E 'ntuser.dat\*' -E 'NTUSER.DAT\*'"
-		$env:FZF_DEFAULT_OPTS='
+		$env:FZF_DEFAULT_COMMAND = "fd -H --follow --type f --color=always -E .git -E 'ntuser.dat\*' -E 'NTUSER.DAT\*'"
+		$env:FZF_DEFAULT_OPTS = '
 		--ansi
 		--border
 		--cycle
@@ -82,13 +82,14 @@ function prompt {
 		'
 		Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 		Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
-			Get-ChildItem -Path C:\Users\Demaro,D:\,D:\Git,D:\Documents\_notes\zettelkasten,D:\Projects,D:\Projects\*\* -Attributes Directory | Invoke-Fzf | Set-Location
+			Get-ChildItem -Path C:\Users\Demaro, D:\, D:\Git, D:\Documents\_notes\zettelkasten, D:\Projects, D:\Projects\*\* -Attributes Directory | Invoke-Fzf | Set-Location
 			$previousOutputEncoding = [Console]::OutputEncoding
 			[Console]::OutputEncoding = [Text.Encoding]::UTF8
 
 			try {
 				[Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
-			} finally {
+			}
+			finally {
 				[Console]::OutputEncoding = $previousOutputEncoding
 			}
 		}
