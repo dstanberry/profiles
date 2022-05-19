@@ -88,10 +88,17 @@ function prompt {
 		'
 		Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 		Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
-			Get-ChildItem -Path $env:USERPROFILE, $basedir, $basedir + Git, $basedir + Documents\_notes\zettelkasten, $basedir + Projects, $basedir + Projects\*\* -Attributes Directory | Invoke-Fzf | Set-Location
+			$mru = @(
+				$env:USERPROFILE, 
+				$basedir,
+				$basedir + "Documents\_notes\zettelkasten",
+				$basedir + "Git",
+				$basedir + "Projects",
+				$basedir + "Projects\*\*"
+			)
+			Get-ChildItem -Path @mru -Attributes Directory | Invoke-Fzf | Set-Location
 			$previousOutputEncoding = [Console]::OutputEncoding
 			[Console]::OutputEncoding = [Text.Encoding]::UTF8
-
 			try {
 				[Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
 			}
