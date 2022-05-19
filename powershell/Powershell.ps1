@@ -1,6 +1,12 @@
 using namespace System.Management.Automation
 using namespace System.Management.Automation.Language
 
+$basedir = (Resolve-Path $env:USERPROFILE).ToString() + "\"
+
+if ((Get-Volume).DriveLetter -contains "D") {
+	$basedir = (Resolve-Path "D:").ToString() + "\"
+}
+
 function U {
 	param([int] $Code)
 	if ((0 -le $Code) -and ($Code -le 0xFFFF)) {
@@ -60,7 +66,7 @@ function prompt {
 		#
 		# Set-Alias reload Reload-Profile
 
-		$env:ZK_NOTEBOOK_DIR = "D:\Documents\_notes\zettelkasten\vault"
+		$env:ZK_NOTEBOOK_DIR = $basedir + "Documents\_notes\zettelkasten\vault"
 
 		$env:FZF_DEFAULT_COMMAND = "fd -H --follow --type f --color=always -E .git -E 'ntuser.dat\*' -E 'NTUSER.DAT\*'"
 		$env:FZF_DEFAULT_OPTS = '
@@ -82,7 +88,7 @@ function prompt {
 		'
 		Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 		Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
-			Get-ChildItem -Path C:\Users\Demaro, D:\, D:\Git, D:\Documents\_notes\zettelkasten, D:\Projects, D:\Projects\*\* -Attributes Directory | Invoke-Fzf | Set-Location
+			Get-ChildItem -Path $env:USERPROFILE, $basedir, $basedir + Git, $basedir + Documents\_notes\zettelkasten, $basedir + Projects, $basedir + Projects\*\* -Attributes Directory | Invoke-Fzf | Set-Location
 			$previousOutputEncoding = [Console]::OutputEncoding
 			[Console]::OutputEncoding = [Text.Encoding]::UTF8
 
