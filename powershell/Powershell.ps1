@@ -130,7 +130,12 @@ function prompt {
 			Write-Host "$(U 0x25AA)" -NoNewline -ForegroundColor Green 
 		}
 		if ($status.HasWorking) {
-			Write-Host "$(U 0x25AA)" -NoNewline -ForegroundColor Red 
+			if ($status.HasUntracked -and $status.Working.length -gt 1) {
+				Write-Host "$(U 0x25AA)" -NoNewline -ForegroundColor Red 
+			}
+			elseif ($status.HasUntracked -eq $false) {
+				Write-Host "$(U 0x25AA)" -NoNewline -ForegroundColor Red 
+			}
 		}
 		if ($status.HasUntracked) {
 			Write-Host "$(U 0x25AA)" -NoNewline -ForegroundColor Blue 
