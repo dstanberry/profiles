@@ -4,7 +4,7 @@ using namespace System.Management.Automation.Language
 $basedir = (Resolve-Path $env:USERPROFILE).ToString() + "\"
 
 if ((Get-Volume).DriveLetter -contains "D") {
-	$basedir = (Resolve-Path "D:").ToString() + "\"
+	$basedir = (Resolve-Path "D:").ToString()
 }
 
 function U {
@@ -91,12 +91,12 @@ function prompt {
 			$mru = @(
 				$env:USERPROFILE, 
 				$basedir,
-				$basedir + "Documents\_notes\zettelkasten",
-				$basedir + "Git",
-				$basedir + "Projects",
-				$basedir + "Projects\*\*"
+				-join($basedir, "Documents\_notes\zettelkasten"),
+				-join($basedir, "Git"),
+				-join($basedir, "Projects"),
+				-join($basedir, "Projects\*\*")
 			)
-			Get-ChildItem -Path @mru -Attributes Directory | Invoke-Fzf | Set-Location
+			$mru | Get-ChildItem -Attributes Directory | Invoke-Fzf | Set-Location
 			$previousOutputEncoding = [Console]::OutputEncoding
 			[Console]::OutputEncoding = [Text.Encoding]::UTF8
 			try {
