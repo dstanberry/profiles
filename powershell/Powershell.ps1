@@ -70,8 +70,8 @@ function rprompt
 	if ($last = Get-History -Count 1)
 	{
 		$elapsed = ""
-		$delta = $last.EndExecutionTime.Subtract($last.StartExecutionTime).TotalSeconds
-		$timespan = (New-TimeSpan -Seconds $delta)
+		$delta = $last.EndExecutionTime.Subtract($last.StartExecutionTime).TotalMilliseconds
+		$timespan = [TimeSpan]::FromMilliseconds($delta)
 		if ($timespan.Days -gt 0)
 		{
 			$elapsed = "{0}d" -f $timespan.Days
@@ -86,7 +86,8 @@ function rprompt
 		}
 		if ($elapsed -eq "")
 		{
-			$elapsed += "{0:N2}s" -f $timespan.Seconds
+			$seconds = [int]$timespan.Seconds + ([int]$timespan.Milliseconds / 1000)
+			$elapsed += "{0:N2}s" -f $seconds
 		} else
 		{
 			if($timespan.Days -eq 0)
@@ -170,14 +171,14 @@ function prompt
 		Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 		Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
 			$mru = @(
-				$env:USERPROFILE,
+				-join($env:USERPROFILE, "\"),
 				$basedir,
 				-join($basedir, "Documents\_notes\zettelkasten"),
 				-join($basedir, "Git"),
 				-join($basedir, "Projects"),
 				-join($basedir, "Projects\*\*")
 			)
-			$mru | Get-ChildItem -Attributes Directory | Invoke-Fzf | Set-Location
+			$mru | Sort-Object -Unique | Get-ChildItem -Attributes Directory | Invoke-Fzf | Set-Location
 			$previousOutputEncoding = [Console]::OutputEncoding
 			[Console]::OutputEncoding = [Text.Encoding]::UTF8
 			try
