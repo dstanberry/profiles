@@ -42,6 +42,7 @@ function Get-ChildItemEx
 			if (Resolve-Path $Path -ErrorAction Ignore)
 			{
 				$Content = Get-ChildItem -Path $Path
+				$null = $PSBoundParameters.Remove('Path')
 				# $PSBoundParameters['Path'] = $Path
 			} elseif (Resolve-Path -LiteralPath $Path -ErrorAction Ignore)
 			{
