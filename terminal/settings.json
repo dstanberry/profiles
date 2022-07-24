@@ -19,8 +19,6 @@
         { "command": { "action": "sendInput", "input": "\u001b[13;2u" }, "keys": "shift+enter" },
         { "command": { "action": "sendInput", "input": "\u001b[13;5u" }, "keys": "ctrl+enter" },
         { "command": { "action": "sendInput", "input": "\u001b[13;6u" }, "keys": "ctrl+shift+enter" },
-        { "command": { "action": "sendInput", "input": "\u001b[2;6u" }, "keys": "ctrl+shift+b" },
-        { "command": { "action": "sendInput", "input": "\u001b[8;6u" }, "keys": "ctrl+shift+h" },
         // screen navigation
         { "command": { "action": "moveFocus", "direction": "down" }, "keys": "ctrl+shift+j" },
         { "command": { "action": "moveFocus", "direction": "up" }, "keys": "ctrl+shift+k" },
