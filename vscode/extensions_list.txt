@@ -1,4 +1,4 @@
-alphabotsec.vscode-eclipse-keybindings
+lphabotsec.vscode-eclipse-keybindings
 antfu.icons-carbon
 asvetliakov.vscode-neovim
 ban.spellright
@@ -6,6 +6,7 @@ bierner.github-markdown-preview
 bierner.markdown-checkbox
 bierner.markdown-emoji
 bierner.markdown-footnotes
+bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
 bierner.markdown-yaml-preamble
 DavidAnson.vscode-markdownlint
@@ -16,11 +17,13 @@ eamodio.gitlens
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
 foam.foam-vscode
+formulahendry.auto-rename-tag
 foxundermoon.shell-format
 ionutvmi.reg
 jeff-hykin.code-eol
 kortina.vscode-markdown-notes
 malmaud.tmux
+mickael-menu.zk-vscode
 ms-python.python
 ms-python.vscode-pylance
 ms-toolsai.jupyter
@@ -31,6 +34,7 @@ ms-vscode.cpptools
 ms-vscode.powershell
 msjsdiag.debugger-for-edge
 mushan.vscode-paste-image
+oouo-diogo-perdigao.docthis
 patbenatar.advanced-new-file
 redhat.vscode-yaml
 sleistner.vscode-fileutils
