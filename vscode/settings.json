@@ -10,11 +10,6 @@
     "color": "#5a5a5a",
     "opacity": 0.4
   },
-  "foam.edit.linkReferenceDefinitions": "off",
-  "foam.openDailyNote.directory": "vault/journal",
-  "foam.openDailyNote.filenameFormat": "yyyy-mm-dd-'daily-note'",
-  "foam.openDailyNote.fileExtension": "md",
-  "foam.openDailyNote.titleFormat": "'Journal Entry, ' dddd, mmmm d",
   "gitlens.advanced.messages": {
     "suppressGitMissingWarning": true
   },
@@ -27,14 +22,14 @@
   "prettier.bracketSpacing": true,
   "prettier.endOfLine": "lf",
   "prettier.insertPragma": false,
-  "prettier.printWidth": 80,
+  "prettier.printWidth": 120,
   "prettier.semi": true,
   "prettier.singleQuote": false,
   "prettier.tabWidth": 2,
   "prettier.trailingComma": "es5",
   "prettier.useTabs": false,
-  "python.formatting.provider": "yapf",
-  "python.formatting.yapfArgs": [],
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": [],
   "python.linting.enabled": true,
   "shellcheck.customArgs": [],
   "shellcheck.enable": true,
@@ -58,6 +53,10 @@
   // ** EDITOR
   // **************************************************************************
   "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
   "editor.guides.bracketPairs": "active",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.cursorStyle": "line",
@@ -69,13 +68,14 @@
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
   "editor.fontWeight": "400",
-  "editor.inlayHints.enabled": true,
+  "editor.inlayHints.enabled": "on",
   "editor.inlayHints.fontSize": 8,
   "editor.insertSpaces": true,
   "editor.lineHeight": 22,
   "editor.lineNumbers": "relative",
   "editor.matchBrackets": "never",
   "editor.minimap.enabled": false,
+  "editor.mouseWheelZoom": true,
   "editor.guides.indentation": true,
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [
@@ -141,6 +141,9 @@
   "[c]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
+  "[css]": {
+    "editor.suggest.insertMode": "replace"
+  },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.foldingStrategy": "indentation"
@@ -167,17 +170,21 @@
   "[markdown]": {
     "editor.lineHeight": 24,
     "editor.overviewRulerBorder": false,
-    "editor.quickSuggestions": false,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
     "editor.wrappingIndent": "indent",
     "files.trimTrailingWhitespace": false
   },
   // **************************************************************************
   // ** TERMINAL
   // **************************************************************************
-  // "terminal.integrated.fontFamily": "Source Code Pro",
   "terminal.external.windowsExec": "wt.exe",
+  // "terminal.integrated.fontFamily": "Source Code Pro",
   "terminal.integrated.fontFamily": "JetBrainsMono NF",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 13,
   "terminal.integrated.fontWeight": "400",
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.splitCwd": "workspaceRoot",
@@ -202,15 +209,12 @@
       "icon": "terminal-bash"
     },
     "zsh": {
-      "path": "zsh"
+      "path": "zsh",
+      "icon": "terminal-linux"
     },
     "tmux": {
       "path": "tmux",
       "icon": "terminal-tmux"
-    },
-    "pwsh": {
-      "path": "pwsh",
-      "icon": "terminal-powershell"
     }
   },
   "terminal.integrated.defaultProfile.linux": "zsh",
@@ -234,13 +238,12 @@
     "editorBracketHighlight.unexpectedBracket.foreground": "#ffdca8"
   },
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter-notebook"
   },
   "workbench.iconTheme": "nonicons",
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tips.enabled": false,
-  "workbench.colorTheme": "KDark",
   "workbench.productIconTheme": "icons-carbon",
   "security.workspace.trust.untrustedFiles": "open",
   "telemetry.telemetryLevel": "off",
@@ -248,5 +251,7 @@
   // ** WINDOWS
   // **************************************************************************
   "window.title": "",
-  "window.menuBarVisibility": "compact"
+  "window.menuBarVisibility": "compact",
+  "workbench.colorTheme": "KDark",
+  "Lua.telemetry.enable": false
 }
