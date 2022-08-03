@@ -233,6 +233,5 @@
   // **************************************************************************
   "window.title": "",
   "window.menuBarVisibility": "compact",
-  "workbench.colorTheme": "KDark",
-  "Lua.telemetry.enable": false
+  "workbench.colorTheme": "KDark"
 }
