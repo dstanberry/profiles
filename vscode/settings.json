@@ -16,8 +16,6 @@
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
   "gitlens.currentLine.enabled": false,
-  "pasteImage.path": "${projectRoot}/attachments",
-  "pasteImage.showFilePathConfirmInputBox": true,
   "prettier.arrowParens": "always",
   "prettier.bracketSpacing": true,
   "prettier.endOfLine": "lf",
@@ -31,24 +29,7 @@
   "python.formatting.provider": "black",
   "python.formatting.blackArgs": [],
   "python.linting.enabled": true,
-  "shellcheck.customArgs": [],
-  "shellcheck.enable": true,
-  "shellcheck.enableQuickFix": true,
-  "shellcheck.exclude": [],
-  "shellcheck.executablePath": "",
   "shellformat.flag": "-i 2 -bn -ci -sr",
-  "shellcheck.ignoreFileSchemes": [
-    "git",
-    "gitfs"
-  ],
-  "shellcheck.ignorePatterns": {
-    // "**/*.zsh": true,
-    // "**/*.zshrc": true,
-  },
-  "shellcheck.run": "onType",
-  "spellright.notificationClass": "warning",
-  "vscodeMarkdownNotes.noteCompletionConvention": "noExtension",
-  "vscodeMarkdownNotes.slugifyMethod": "github-slugger",
   // **************************************************************************
   // ** EDITOR
   // **************************************************************************
