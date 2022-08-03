@@ -121,6 +121,9 @@
   "git.defaultCloneDirectory": "D:\\Git",
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
+  "git.mergeEditor": true,
+  "git.useEditorAsCommitInput": true,
+  "git.terminalGitEditor": true,
   // **************************************************************************
   // ** FTPLUGIN
   // **************************************************************************
@@ -209,9 +212,6 @@
   // **************************************************************************
   // ** WORKBENCH
   // **************************************************************************
-  "git.mergeEditor": true,
-  "git.useEditorAsCommitInput": true,
-  "git.terminalGitEditor": true,
   "workbench.colorCustomizations": {
     "[KDark]": {
       "editorCursor.foreground": "#e5c179",
