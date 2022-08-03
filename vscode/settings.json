@@ -49,6 +49,7 @@
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
   "editor.fontWeight": "400",
+  "editor.guides.indentation": true,
   "editor.inlayHints.enabled": "on",
   "editor.inlayHints.fontSize": 8,
   "editor.insertSpaces": true,
@@ -57,7 +58,11 @@
   "editor.matchBrackets": "never",
   "editor.minimap.enabled": false,
   "editor.mouseWheelZoom": true,
-  "editor.guides.indentation": true,
+  "editor.quickSuggestions": {
+    "other": "inline",
+    "comments": "off",
+    "strings": "inline",
+  },
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [
     80,
@@ -204,6 +209,9 @@
   // **************************************************************************
   // ** WORKBENCH
   // **************************************************************************
+  "git.mergeEditor": true,
+  "git.useEditorAsCommitInput": true,
+  "git.terminalGitEditor": true,
   "workbench.colorCustomizations": {
     "[KDark]": {
       "editorCursor.foreground": "#e5c179",
@@ -232,6 +240,7 @@
   // **************************************************************************
   // ** WINDOWS
   // **************************************************************************
+  "window.commandCenter": true,
   "window.title": "",
   "window.menuBarVisibility": "compact",
   "workbench.colorTheme": "KDark"
