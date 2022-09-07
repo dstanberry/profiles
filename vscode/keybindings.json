@@ -1,7 +1,37 @@
-// Place your key bindings in this file to override the defaults
 [
-	{
-		"key": "ctrl+h",
-		"command": "editor.action.startFindReplaceAction"
-	}
+  // disable conflicting keybindings
+  {
+    "key": "ctrl+d",
+    "command": "-editor.action.addSelectionToNextFindMatch"
+  },
+  {
+    "key": "alt+w",
+    "command": "-toggleSearchWholeWord",
+    "when": "editorTextFocus"
+  },
+  // (n)vim controls
+  {
+    "key": "ctrl+shift+;",
+    "command": "toggleVim"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "workbench.action.findInFiles",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "workbench.action.replaceInFiles",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+k",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus"
+  }
 ]
