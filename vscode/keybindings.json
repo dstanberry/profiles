@@ -1,37 +1,7 @@
 [
-  // disable conflicting keybindings
   {
-    "key": "ctrl+d",
-    "command": "-editor.action.addSelectionToNextFindMatch"
-  },
-  {
-    "key": "alt+w",
-    "command": "-toggleSearchWholeWord",
-    "when": "editorTextFocus"
-  },
-  // (n)vim controls
-  {
-    "key": "ctrl+shift+;",
-    "command": "toggleVim"
-  },
-  {
-    "key": "ctrl+f",
-    "command": "workbench.action.findInFiles",
+    "key": "ctrl+k ctrl+b",
+    "command": "workbench.action.toggleActivityBarVisibility",
     "when": "editorFocus"
-  },
-  {
-    "key": "ctrl+r",
-    "command": "workbench.action.replaceInFiles",
-    "when": "editorFocus"
-  },
-  {
-    "key": "ctrl+w",
-    "command": "editor.action.addSelectionToNextFindMatch",
-    "when": "editorFocus"
-  },
-  {
-    "key": "shift+k",
-    "command": "editor.action.showHover",
-    "when": "editorTextFocus"
   }
 ]
