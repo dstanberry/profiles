@@ -1,75 +1,27 @@
-if(Get-Module -ListAvailable -Name Terminal-Icons)
-{
-	Import-Module -Name Terminal-Icons
-}
-
 function Get-ChildItemEx
 {
-	[CmdletBinding(
-		DefaultParameterSetName = 'Path',
-		SupportsTransactions = $true)
-	]
+	[CmdletBinding()]
 	param(
-		[Parameter(ParameterSetName = 'Path', Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-		[string] ${Path}
+		[Parameter(Position=1, ValueFromRemainingArguments)]
+		[string[]] ${PassthruArgs}
 	)
 
-	begin
+	Process
 	{
-		if ($PSBoundParameters.Count -eq 0 -and !$myInvocation.ExpectingInput)
-		{
-			$Path = $PWD
-		} elseif ($PSCmdlet.ParameterSetName -eq 'Path')
-		{
-			if (
-			($dirs = $Path | RemoveTrailingSeparator | Expand-Path -Directory) -and
-			(@($dirs).Count -eq 1 -or ($dirs = $dirs | Where-Object Name -eq $Path).Count -eq 1)
-			)
-			{
-				$Path = $dirs | Resolve-Path | Select-Object -Expand ProviderPath
-			} elseif (
-			($vpath = Get-Variable $Path -ValueOnly -ErrorAction Ignore) -and
-			(Test-Path $vpath -PathType Container -ErrorAction Ignore)
-			)
-			{
-				$Path = $vpath
-			}
-		}
-		
-		$Content = $Path
-		if ($Path -and !$myInvocation.ExpectingInput)
-		{
-			if (Resolve-Path $Path -ErrorAction Ignore)
-			{
-				$Content = Get-ChildItem -Path $Path
-				$null = $PSBoundParameters.Remove('Path')
-				# $PSBoundParameters['Path'] = $Path
-			} elseif (Resolve-Path -LiteralPath $Path -ErrorAction Ignore)
-			{
-				$Content = Get-ChildItem -LiteralPath $Path
-				# $PSBoundParameters['LiteralPath'] = $Path
-				# $null = $PSBoundParameters.Remove('Path')
-			}
-
-			$PSBoundParameters['InputObject'] = $Content
-			$PSBoundParameters['AutoSize'] = $true
-		}
-
-		# Get-ChildItem $Path | Format-Wide -AutoSize
-		$wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(
-			'Format-Wide',
-			[System.Management.Automation.CommandTypes]::Cmdlet
-		)
-		$scriptCmd = { & $wrappedCmd @PSBoundParameters }
-		$steppablePipeline = $scriptCmd.GetSteppablePipeline($myInvocation.CommandOrigin)
-		$steppablePipeline.Begin($PSCmdlet)
+		exa --ignore-glob='ntuser.*|NTUSER.*' --all --group-directories-first --group $PassthruArgs
 	}
+}
 
-	process
+function Get-ChildItemExLong
+{
+	[CmdletBinding()]
+	param(
+		[Parameter(Position=1, ValueFromRemainingArguments)]
+		[string[]] ${PassthruArgs}
+	)
+
+	Process
 	{
-		if ($steppablePipeline)
-		{
-			$steppablePipeline.Process($_)
-		}
+		exa --ignore-glob='ntuser.*|NTUSER.*' --long --git-ignore --icons --git --tree $PassthruArgs
 	}
 }
