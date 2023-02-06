@@ -50,4 +50,9 @@ if(Get-Module -ListAvailable -Name PSReadLine)
 
 		Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 	}
+
+	Set-PSReadLineKeyHandler -Key Ctrl+g -ScriptBlock {
+		Write-Host "`e[2J`e[3J"
+		[Microsoft.PowerShell.PSConsoleReadLine]::ClearScreen()
+	}
 }
