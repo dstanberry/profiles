@@ -21,5 +21,10 @@ $env:FZF_DEFAULT_OPTS = '
 --color=info:#5f5f5f,prompt:#93b379,pointer:#bebebe
 --color=marker:#b04b57,spinner:#4c566a,header:#4c566a
 '
+$env:FZF_CTRL_T_OPTS = "
+--select-1
+--exit-0
+--preview '(bat --color ""always"" {} || cat {} || tree -C {}) | head -200'
+"
 
 $env:ZK_NOTEBOOK_DIR = $global:basedir + "Documents\_notes\zettelkasten\vault"

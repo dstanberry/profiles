@@ -47,7 +47,7 @@ if(Get-Module -ListAvailable -Name PSReadLine)
 				[Console]::OutputEncoding = $previousOutputEncoding
 			}
 		}
-
+		Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' 
 		Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 	}
 
