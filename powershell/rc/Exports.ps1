@@ -27,4 +27,7 @@ $env:FZF_CTRL_T_OPTS = "
 --preview '(bat --color ""always"" {} || cat {} || tree -C {}) | head -200'
 "
 
+$env:PROJECTS_DIR = $global:basedir + "Projects"
+
+$env:hash_notes = $global:basedir + "Documents\_notes"
 $env:ZK_NOTEBOOK_DIR = $global:basedir + "Documents\_notes\zettelkasten\vault"
