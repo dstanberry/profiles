@@ -177,12 +177,12 @@
       "name": "KDark",
       "tab": {
         "background": "terminalBackground",
-        "unfocusedBackground": "#37373700",
+        "unfocusedBackground": "#373737",
         "showCloseButton": "hover"
       },
       "tabRow": {
         "background": "terminalBackground",
-        "unfocusedBackground": "#37373700"
+        "unfocusedBackground": "#373737"
       },
       "window": {
         "applicationTheme": "dark"
