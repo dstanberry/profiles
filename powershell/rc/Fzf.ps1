@@ -108,32 +108,38 @@ function Get-GitStashes()
 	}
 	git stash list --pretty="%C(auto)%gD%Creset %C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs%Creset" |
 		Invoke-Fzf @fzfArguments | ForEach-Object { $result += $_ }
-
-	$out = $result.Split(@("`r`n", "`r", "`n"), [StringSplitOptions]::None)
-	$q = $out[0]
-	$k = $out[1]
-	$ref = $out[2].Substring(0, $out[2].IndexOf(" "))
-	$sha = $out[2].Substring($ref.Length+1)
-	$sha = $sha.Substring(0, $sha.IndexOf(" "))
-
-	FixInvokePrompt
-
-	if ($null -ne $sha -and $null -ne $ref)
+	if ($result.Count -gt 0)
 	{
-		if ($k -eq "alt-b")
+		$out = $result.Split(@("`r`n", "`r", "`n"), [StringSplitOptions]::None)
+		if ($out.Count -ne 3)
 		{
-			git stash branch "stash-$sha" "$sha"
-		} elseif ($k -eq "alt-d")
+			return
+		}
+		$q = $out[0]
+		$k = $out[1]
+		$ref = $out[2].Substring(0, $out[2].IndexOf(" "))
+		$sha = $out[2].Substring($ref.Length+1)
+		$sha = $sha.Substring(0, $sha.IndexOf(" "))
+
+		FixInvokePrompt
+
+		if ($null -ne $sha -and $null -ne $ref)
 		{
-			git diff "$sha"
-		} elseif ($k -eq "alt-s")
-		{
-			[Microsoft.PowerShell.PSConsoleReadLine]::ShellBackwardWord()
-			[Microsoft.PowerShell.PSConsoleReadLine]::ShellKillWord()
-			Remove-GitStash -Stash "$ref"
-		} else
-		{
-			git stash show -p "$sha"
+			if ($k -eq "alt-b")
+			{
+				git stash branch "stash-$sha" "$sha"
+			} elseif ($k -eq "alt-d")
+			{
+				git diff "$sha"
+			} elseif ($k -eq "alt-s")
+			{
+				[Microsoft.PowerShell.PSConsoleReadLine]::ShellBackwardWord()
+				[Microsoft.PowerShell.PSConsoleReadLine]::ShellKillWord()
+				Remove-GitStash -Stash "$ref"
+			} else
+			{
+				git stash show -p "$sha"
+			}
 		}
 	}
 }
