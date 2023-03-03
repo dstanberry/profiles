@@ -18,12 +18,14 @@ if(Get-Module -ListAvailable -Name PSReadLine)
 	Set-PSReadLineOption -PredictionSource History
 
 	Set-PSReadLineKeyHandler -Chord Shift+Tab -Function MenuComplete
-	Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-	Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-	Set-PSReadLineKeyHandler -Key Shift+Ctrl+C -Function Copy
-	Set-PSReadLineKeyHandler -Key Ctrl+Shift+V -Function Paste
 	Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
 	Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
+	Set-PSReadLineKeyHandler -Key Ctrl+Shift+V -Function Paste
+	Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
+	Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+	Set-PSReadLineKeyHandler -Key Shift+Ctrl+C -Function Copy
+	Set-PSReadLineKeyHandler -Key Tab -Function Complete
+	Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 
 	if(Get-Module -ListAvailable -Name PSFzf)
 	{
