@@ -51,3 +51,17 @@ function Test-Administrator
 	$user = [Security.Principal.WindowsIdentity]::GetCurrent();
 	(New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 }
+
+function FixInvokePrompt
+{
+	$previousOutputEncoding = [Console]::OutputEncoding
+	[Console]::OutputEncoding = [Text.Encoding]::UTF8
+	try
+	{
+		[Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
+	} finally
+	{
+		[Console]::OutputEncoding = $previousOutputEncoding
+	}
+
+}

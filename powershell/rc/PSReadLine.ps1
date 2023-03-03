@@ -37,15 +37,7 @@ if(Get-Module -ListAvailable -Name PSReadLine)
 				-join($global:basedir, "Projects\*\*")
 			)
 			$mru | Sort-Object -Unique | Get-ChildItem -Attributes Directory | Invoke-Fzf | Set-Location
-			$previousOutputEncoding = [Console]::OutputEncoding
-			[Console]::OutputEncoding = [Text.Encoding]::UTF8
-			try
-			{
-				[Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
-			} finally
-			{
-				[Console]::OutputEncoding = $previousOutputEncoding
-			}
+			FixInvokePrompt
 		}
 		Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' 
 		Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'

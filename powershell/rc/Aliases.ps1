@@ -9,4 +9,5 @@ Set-Item Alias:ll Get-ChildItemExLong
 if(Get-Module -ListAvailable -Name PSFzf)
 {
 	Set-Item Alias:fe Invoke-CustomFuzzyEdit
+	Set-Item Alias:gstash Get-GitStashes
 }
