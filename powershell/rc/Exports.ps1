@@ -1,4 +1,9 @@
+# define the default editor
+$env:EDITOR = "nvim"
+
+# set fd as the default source for fzf
 $env:FZF_DEFAULT_COMMAND = "fd -H --follow --type f --color=always -E .git -E 'ntuser.dat\*' -E 'NTUSER.DAT\*'"
+# define default options for fzf
 $env:FZF_DEFAULT_OPTS = '
 --ansi
 --border
@@ -21,13 +26,22 @@ $env:FZF_DEFAULT_OPTS = '
 --color=info:#5f5f5f,prompt:#93b379,pointer:#bebebe
 --color=marker:#b04b57,spinner:#4c566a,header:#4c566a
 '
+# define default behaviour for ctrl-t
 $env:FZF_CTRL_T_OPTS = "
 --select-1
 --exit-0
 --preview '(bat --color ""always"" {} || cat {} || tree -C {}) | head -200'
 "
 
+# define default name of primary upstream git branch
+$env:GIT_REVIEW_BASE = "main"
+# enable terminal colors in output
+$env:GH_FORCE_TTY = "100%"
+
+# define location for local projects
 $env:PROJECTS_DIR = $global:basedir + "Projects"
 
+# |compat| define location of notes directory
 $env:hash_notes = $global:basedir + "Documents\_notes"
+# define location of zettelkasten vault
 $env:ZK_NOTEBOOK_DIR = $global:basedir + "Documents\_notes\zettelkasten\vault"
