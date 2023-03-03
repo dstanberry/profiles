@@ -17,38 +17,73 @@ if(!(Test-Path variable:global:profile_initialized))
 
 function RPrompt
 {
-	$pos = $Host.UI.RawUI.CursorPosition
+	Import-Module posh-git
+	$global:GitPromptSettings.EnableStashStatus = $true
 	$status = (Get-GitStatus -Force)
 	$b = $status.Branch
-	$l = $b.Length
+	$offset = $b.Length
+	$pos = $Host.UI.RawUI.CursorPosition
 
-	if ($l -gt 0)
+	if ($offset -gt 0)
 	{
-		$l = $b.Length + 3
+		if($null -ne $status.Upstream)
+		{
+			$parts = $status.Upstream.Split("/")
+			if ($parts.Count -eq 2)
+			{
+				$remote_name = $parts[1]
+				if ($b -ne $remote_name)
+				{
+					$b = "$b→[$($status.Upstream)]"
+					$offset = $b.Length
+				}
+			}
+		}
+
+		$offset = $b.Length + 3
 
 		$text = (Write-Prompt " $(Get-Glyph 0xE725)" -ForegroundColor ([ConsoleColor]::Cyan))
 		$text += (Write-Prompt " $b" -ForegroundColor ([ConsoleColor]::Cyan))
+
+		if ($status.AheadBy -gt 0)
+		{
+			$text += (Write-Prompt "$(Get-Glyph 0x21E1)" -ForegroundColor ([ConsoleColor]::Red))
+			$text += (Write-Prompt "$($status.AheadBy)")
+			$offset += 2
+		}
+		if ($status.BehindBy -gt 0)
+		{
+			$text += (Write-Prompt "$(Get-Glyph 0x21E3)" -ForegroundColor ([ConsoleColor]::Blue))
+			$text += (Write-Prompt "$($status.AheadBy)")
+			$offset += 2
+		}
 		if ($status.HasIndex)
 		{
 			$text += (Write-Prompt "$(Get-Glyph 0x25AA)" -ForegroundColor ([ConsoleColor]::Green))
-			$l += 1
+			$offset += 1
 		}
 		if ($status.HasWorking)
 		{
 			if ($status.HasUntracked -and $status.Working.length -gt 1)
 			{
 				$text += (Write-Prompt "$(Get-Glyph 0x25AA)" -ForegroundColor ([ConsoleColor]::Red))
-				$l += 1
+				$offset += 1
 			} elseif ($status.HasUntracked -eq $false)
 			{
 				$text += (Write-Prompt "$(Get-Glyph 0x25AA)" -ForegroundColor ([ConsoleColor]::Red))
-				$l += 1
+				$offset += 1
 			}
 		}
 		if ($status.HasUntracked)
 		{
 			$text += (Write-Prompt "$(Get-Glyph 0x25AA)" -ForegroundColor ([ConsoleColor]::Blue))
-			$l += 1
+			$offset += 1
+		}
+
+		if ($status.StashCount -gt 0)
+		{
+			$text += (Write-Prompt " $(Get-Glyph 0xF7FA) " -ForegroundColor ([ConsoleColor]::Yellow))
+			$offset += 3
 		}
 	}
 
@@ -80,12 +115,12 @@ function RPrompt
 				$elapsed += "{0}s" -f $timespan.Seconds 
 			}
 		}
-		$l += 1 + $elapsed.Length
+		$offset += 1 + $elapsed.Length
 		$text += (Write-Prompt " $elapsed" -ForegroundColor "#808080")
 	}
 
 	$Host.UI.RawUI.CursorPosition = New-Object `
-		System.Management.Automation.Host.Coordinates ($Host.UI.RawUI.WindowSize.Width - $l),$Host.UI.RawUI.CursorPosition.Y
+		System.Management.Automation.Host.Coordinates ($Host.UI.RawUI.WindowSize.Width - $offset),$Host.UI.RawUI.CursorPosition.Y
 
 	Write-Host $text -NoNewline
 	$Host.UI.RawUI.CursorPosition = $pos
