@@ -1,5 +1,4 @@
-function CompletePaths
-{
+function CompletePaths {
 	param(
 		[Switch] $dirsOnly,
 		[Switch] $filesOnly,
@@ -10,70 +9,63 @@ function CompletePaths
 		$boundParameters = @{ }
 	)
 
-	filter Colourise
-	{
+	filter Colourise {
 		if (
 			($cde.ColorCompletion) -and
 			($_.PSProvider.Name -eq 'FileSystem') -and
-			(Test-Path Function:\Format-ColorizedFilename))
-		{
+			(Test-Path Function:\Format-ColorizedFilename)) {
 			Format-ColorizedFilename $_
-		} else
-		{
+		}
+		else {
 			$_.PSChildName
 		}
 	}
 
-	filter CompletionResult ($isListTruncated = $false)
-	{
-		Begin
-		{
+	filter CompletionResult ($isListTruncated = $false) {
+		Begin {
 			$seenNames = @{} 
 		}
 
-		Process
-		{
+		Process {
 			$fullPath = $_ | Convert-Path
 
-			$completionText = if ($wordToComplete -match '^\.{1,2}$')
-			{
+			$completionText = if ($wordToComplete -match '^\.{1,2}$') {
 				$wordToComplete
-			} elseif (!($wordToComplete | IsRooted) -and ($_ | Resolve-Path -Relative | IsDescendedFrom ..))
-			{
+			}
+			elseif (!($wordToComplete | IsRooted) -and ($_ | Resolve-Path -Relative | IsDescendedFrom ..)) {
 				$_ | Resolve-Path -Relative
-			} else
-			{
+			}
+			else {
 				$fullPath -replace "^$($HOME | NormaliseAndEscape)", "~"
 			}
 
-			$trailChar = if ($_.PSIsContainer)
-			{ ${/} 
+			$trailChar = if ($_.PSIsContainer) {
+				${/} 
 			}
 
 			$completionText = $completionText |
-				RemoveTrailingSeparator |
-				SurroundAndTerminate $trailChar |
-				EscapeWildcards
+			RemoveTrailingSeparator |
+			SurroundAndTerminate $trailChar |
+			EscapeWildcards
 
-			if ($_.PSProvider.Name -eq 'Registry')
-			{
+			if ($_.PSProvider.Name -eq 'Registry') {
 				$completionText = $completionText -replace $_.PSDrive.Root, "$($_.PSDrive.Name):"
 			}
 
-			filter Dedupe
-			{
+			filter Dedupe {
 				$n = ++$seenNames[$_]
-				if ($n -le 1)
-				{ $_ 
-				} else
-				{ "$_ ($n)" 
+				if ($n -le 1) {
+					$_ 
+				}
+				else {
+					"$_ ($n)" 
 				}
 			}
 
-			$tooltip = if ($cde.ToolTip)
-			{ &$cde.ToolTip $_ $isListTruncated 
-			} else
-			{
+			$tooltip = if ($cde.ToolTip) {
+				&$cde.ToolTip $_ $isListTruncated 
+			}
+			else {
 				$_ 
 			}
 
@@ -85,33 +77,30 @@ function CompletePaths
 		}
 	}
 
-	$wordToExpand = if ($wordToComplete)
-	{
+	$wordToExpand = if ($wordToComplete) {
 		$wordToComplete | RemoveSurroundingQuotes 
-	} else
-	{
+	}
+ else {
 		'./' 
 	}
 
 	$maxCompletions =
-	if ($cde.MaxCompletions)
-	{
+	if ($cde.MaxCompletions) {
 		$cde.MaxCompletions
-	} else
-	{
+	}
+ else {
 		$columnPadding = 5
 		$winSize = $Host.UI.RawUI.WindowSize
-		$options = if (Get-Module PSReadLine)
-		{ Get-PSReadLineOption 
-		} else
-		{
+		$options = if (Get-Module PSReadLine) {
+			Get-PSReadLineOption 
+		}
+		else {
 			@{ShowToolTips = $false; ExtraPromptLineCount = 0; CompletionQueryItems = 256 }
 		}
-		$tooltipHeight = if ($options.ShowToolTips)
-		{
+		$tooltipHeight = if ($options.ShowToolTips) {
 			2 
-		} else
-		{
+		}
+		else {
 			0 
 		}
 		$promptLines = 1 + $options.ExtraPromptLineCount
@@ -124,9 +113,9 @@ function CompletePaths
 	}
 
 	$switches = @{
-		File       = $boundParameters['File'] -or $filesOnly
-		Directory  = $boundParameters['Directory'] -or $dirsOnly
-		Force      = $true
+		File = $boundParameters['File'] -or $filesOnly
+		Directory = $boundParameters['Directory'] -or $dirsOnly
+		Force = $true
 		MaxResults = $maxCompletions + 1
 	}
 
@@ -137,19 +126,16 @@ function CompletePaths
 		$completions.Length -lt $maxCompletions -and
 		$wordToComplete -match '[^/\\]+' -and # separate variable from slashes before or after it
     ($maybeVar = Get-Variable "$($Matches[0])*" -ValueOnly | Where-Object { Test-Path $_ -PathType Container })
-	)
-	{
+	) {
 		Expand-Path @switches ($wordToExpand -replace $Matches[0], $maybeVar)
 	}
 
 	$allCompletions = @($completions) + @($variableCompletions) | Where-Object { $_ }
-	$isListTruncated = if ($allCompletions.Length -gt $maxCompletions)
-	{
+	$isListTruncated = if ($allCompletions.Length -gt $maxCompletions) {
 		$true 
 	}
 
-	if (!$allCompletions)
-	{
+	if (!$allCompletions) {
 		return 
 	}
 

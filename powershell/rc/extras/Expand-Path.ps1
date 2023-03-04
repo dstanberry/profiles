@@ -1,5 +1,4 @@
-function Expand-Path
-{
+function Expand-Path {
 	[OutputType([object])]
 	[CmdletBinding()]
 	param (
@@ -14,23 +13,20 @@ function Expand-Path
 		[Switch]    $Force
 	)
 
-	Process
-	{
-		$delimiterGroup = if ($WordDelimiters)
-		{
+	Process {
+		$delimiterGroup = if ($WordDelimiters) {
 			'[{0}]' -f [Regex]::Escape($WordDelimiters -join '')
-		} else
-		{
+		}
+		else {
 			'$^' 
 		}
 
 		$multiDot = [regex]::Match($Path, '^\.{3,}').Value
 		$replacement = ('../' * [Math]::Max(0, $multiDot.Length - 1)) -replace '.$'
-		$uncShare = if ($Path -match '^\\\\([a-z0-9_.$-]+)\\([a-z0-9_.$-]+)')
-		{
+		$uncShare = if ($Path -match '^\\\\([a-z0-9_.$-]+)\\([a-z0-9_.$-]+)') {
 			$Matches[0] 
-		} else
-		{
+		}
+		else {
 			'' 
 		}
 
@@ -42,21 +38,19 @@ function Expand-Path
 			-replace '(\w)\.\.(\w)', '$1*$2' `
 			-replace "$delimiterGroup\w+", '*$0'
 
-		if ($uncShare)
-		{
+		if ($uncShare) {
 			$wildcardedPath = $uncShare + $wildcardedPath
 		}
 
-		$wildcardedPaths = if ($SearchPaths -and -not ($Path | IsRootedOrRelative))
-		{
+		$wildcardedPaths = if ($SearchPaths -and -not ($Path | IsRootedOrRelative)) {
 			@($wildcardedPath) + ($SearchPaths | Join-Path -ChildPath $wildcardedPath)
-		} else
-		{
+		}
+		else {
 			$wildcardedPath 
 		}
 
 		Get-Item $wildcardedPaths -Force:$Force -ErrorAction Ignore |
-			Where-Object { (!$File -or !$_.PSIsContainer) -and (!$Directory -or $_.PSIsContainer) } |
-			Select-Object -First $MaxResults
+		Where-Object { (!$File -or !$_.PSIsContainer) -and (!$Directory -or $_.PSIsContainer) } |
+		Select-Object -First $MaxResults
 	}
 }

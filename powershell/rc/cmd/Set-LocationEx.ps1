@@ -1,5 +1,4 @@
-function Set-LocationEx
-{
+function Set-LocationEx {
 	[CmdletBinding(
 		DefaultParameterSetName = 'Path',
 		SupportsTransactions = $true)
@@ -9,35 +8,30 @@ function Set-LocationEx
 		[string] ${Path}
 	)
 
-	begin
-	{
-		if ($PSBoundParameters.Count -eq 0 -and !$myInvocation.ExpectingInput)
-		{
+	begin {
+		if ($PSBoundParameters.Count -eq 0 -and !$myInvocation.ExpectingInput) {
 			$Path = $HOME
-		} elseif ($PSCmdlet.ParameterSetName -eq 'Path')
-		{
+		}
+		elseif ($PSCmdlet.ParameterSetName -eq 'Path') {
 			if (
 			($dirs = $Path | RemoveTrailingSeparator | Expand-Path -Directory) -and
 			(@($dirs).Count -eq 1 -or ($dirs = $dirs | Where-Object Name -eq $Path).Count -eq 1)
-			)
-			{
+			) {
 				$Path = $dirs | Resolve-Path | Select-Object -Expand ProviderPath
-			} elseif (
+			}
+			elseif (
 			($vpath = Get-Variable $Path -ValueOnly -ErrorAction Ignore) -and
 			(Test-Path $vpath -PathType Container -ErrorAction Ignore)
-			)
-			{
+			) {
 				$Path = $vpath
 			}
 		}
 
-		if ($Path -and !$myInvocation.ExpectingInput)
-		{
-			if (Resolve-Path $Path -ErrorAction Ignore)
-			{
+		if ($Path -and !$myInvocation.ExpectingInput) {
+			if (Resolve-Path $Path -ErrorAction Ignore) {
 				$PSBoundParameters['Path'] = $Path
-			} elseif (Resolve-Path -LiteralPath $Path -ErrorAction Ignore)
-			{
+			}
+			elseif (Resolve-Path -LiteralPath $Path -ErrorAction Ignore) {
 				$PSBoundParameters['LiteralPath'] = $Path
 				$null = $PSBoundParameters.Remove('Path')
 			}
@@ -52,10 +46,8 @@ function Set-LocationEx
 		$steppablePipeline.Begin($PSCmdlet)
 	}
 
-	process
-	{
-		if ($steppablePipeline)
-		{
+	process {
+		if ($steppablePipeline) {
 			$steppablePipeline.Process($_)
 		}
 	}

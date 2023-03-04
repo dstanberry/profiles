@@ -22,12 +22,12 @@ function prompt {
 		Import-Module PSReadLine
 
 		$PSReadlineOptions = @{
-			EditMode                      = "Emacs"
-			HistoryNoDuplicates           = $true
+			EditMode = "Emacs"
+			HistoryNoDuplicates = $true
 			HistorySearchCursorMovesToEnd = $true
-			Colors                        = @{
-				"Command"          = "Green"
-				"Parameter"        = "White"
+			Colors = @{
+				"Command" = "Green"
+				"Parameter" = "White"
 				"InlinePrediction" = "#5f5f5f"
 			}
 		}
