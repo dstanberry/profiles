@@ -22,7 +22,7 @@ function Get-FileSystemCmd {
 			$script:ShellCmd -f ($cmd -f $dir)
 		}
 	}
- else {
+	 else {
 		$script:ShellCmd -f ($env:FZF_DEFAULT_COMMAND -f $dir)
 	}
 }
@@ -44,16 +44,15 @@ function Invoke-CustomFuzzyEdit() {
 			}
 		}
 	}
- catch {
+	catch {
 	}
- finally {
+	 finally {
 		if ($prevDir) {
 			cd $prevDir
 		}
 	}
 
-	# TODO: add override option
-	$editor = "nvim"
+	$Editor = $env:EDITOR
 	if ($files.Count -gt 0) {
 		try {
 			if ($Directory) {
@@ -61,7 +60,6 @@ function Invoke-CustomFuzzyEdit() {
 				cd $Directory
 			}
 			$cmd = Invoke-Editor -FileList $files
-			Write-Host "Executing '$cmd'..."
             ($Editor, $Arguments) = $cmd.Split(' ')
 			Start-Process $Editor -ArgumentList $Arguments -Wait:$Wait -NoNewWindow
 		}
