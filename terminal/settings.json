@@ -57,7 +57,7 @@
   "minimizeToNotificationArea": false,
   "alwaysShowNotificationIcon": false,
   "showTabsInTitlebar": true,
-  "startOnUserLogin": false,
+  "startOnUserLogin": true,
   // bleeding edge
   "experimental.rendering.software": false,
   // profiles
@@ -119,7 +119,7 @@
       },
       {
         "guid": "{6ded2573-59d6-5b93-8014-be395890e140}",
-        "hidden": true,
+        "hidden": false,
         "name": "Developer Command Prompt for VS 2022",
         "source": "Windows.Terminal.VisualStudio"
       },
@@ -147,6 +147,38 @@
       }
     ]
   },
+  "newTabMenu": [
+    { "type": "profile", "profile": "Gentoo" },
+    { "type": "profile", "profile": "PowerShell Core" },
+    { "type": "separator" },
+    {
+      "type": "folder",
+      "name": "Linux",
+      "icon": "",
+      "entries": [
+        { "type": "profile", "profile": "MSYS / MSYS2" },
+        { "type": "profile", "profile": "MINGW64 / MSYS2" }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Legacy",
+      "icon": "",
+      "entries": [
+        { "type": "profile", "profile": "Windows PowerShell" },
+        { "type": "profile", "profile": "Command Prompt" }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Visual Studio",
+      "icon": "",
+      "entries": [
+        { "type": "profile", "profile": "Developer Command Prompt for VS 2022" },
+        { "type": "profile", "profile": "Developer PowerShell for VS 2022" }
+      ]
+    }
+  ],
   "schemes": [
     {
       "name": "KDark",
@@ -185,7 +217,8 @@
         "unfocusedBackground": "#373737"
       },
       "window": {
-        "applicationTheme": "dark"
+        "applicationTheme": "dark",
+        "useMica": false
       }
     }
   ]
