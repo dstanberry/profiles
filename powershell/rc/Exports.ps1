@@ -35,8 +35,11 @@ $env:FZF_CTRL_T_OPTS = "
 
 # define default name of primary upstream git branch
 $env:GIT_REVIEW_BASE = "main"
+
 # enable terminal colors in output
 $env:GH_FORCE_TTY = "100%"
+# define path to configuration files
+$env:GH_CONFIG_DIR = "$HOME/.config/gh"
 
 # define location for local projects
 $env:PROJECTS_DIR = $global:basedir + "Projects"
