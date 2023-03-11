@@ -41,6 +41,14 @@ $env:GH_FORCE_TTY = "100%"
 # define path to configuration files
 $env:GH_CONFIG_DIR = "$HOME/.config/gh"
 
+# set sane default options for less
+$env:LESS = "-iFMRX -x4"
+# define the default pager
+$env:PAGER = "less"
+
+# define the default manpager
+$env:MANPAGER='nvim +Man!'
+
 # define location for local projects
 $env:PROJECTS_DIR = $global:basedir + "Projects"
 

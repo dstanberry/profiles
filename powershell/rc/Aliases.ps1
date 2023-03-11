@@ -1,6 +1,11 @@
 # better cd
 Set-Item Alias:cd Set-LocationEx
 
+# better cat
+if (Get-Command bat -ErrorAction SilentlyContinue) {
+	Set-Item Alias:cat bat
+}
+
 # better ls (exa)
 Set-Item Alias:ls Get-ChildItemEx
 Set-Item Alias:ll Get-ChildItemExLong

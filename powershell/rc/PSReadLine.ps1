@@ -31,10 +31,10 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 			$mru = @(
 				-join ($env:USERPROFILE, "\"),
 				$global:basedir,
-				-join ($global:basedir, "Documents\_notes\zettelkasten"),
+				-join ($env:hash_notes, "\zettelkasten"),
 				-join ($global:basedir, "Git"),
-				-join ($global:basedir, "Projects"),
-				-join ($global:basedir, "Projects\*\*")
+				$env:PROJECTS_DIR,
+				-join ($env:PROJECTS_DIR, "\*\*")
 			)
 			$mru | Sort-Object -Unique | Get-ChildItem -Attributes Directory | Invoke-Fzf | Set-Location
 			FixInvokePrompt
