@@ -34,10 +34,8 @@ function RPrompt {
 		}
 
 		$offset = $b.Length + 3
-
 		$text = (Write-Prompt " $(Get-Glyph 0xE725)" -ForegroundColor ([ConsoleColor]::Cyan))
 		$text += (Write-Prompt " $b" -ForegroundColor ([ConsoleColor]::Cyan))
-
 		if ($status.AheadBy -gt 0) {
 			$text += (Write-Prompt "$(Get-Glyph 0x21E1)" -ForegroundColor ([ConsoleColor]::Red))
 			$text += (Write-Prompt "$($status.AheadBy)")
@@ -66,7 +64,6 @@ function RPrompt {
 			$text += (Write-Prompt "$(Get-Glyph 0x25AA)" -ForegroundColor ([ConsoleColor]::Blue))
 			$offset += 1
 		}
-
 		if ($status.StashCount -gt 0) {
 			$text += (Write-Prompt " $(Get-Glyph 0xF7FA) " -ForegroundColor ([ConsoleColor]::Yellow))
 			$offset += 3
@@ -101,32 +98,32 @@ function RPrompt {
 
 	$Host.UI.RawUI.CursorPosition = New-Object `
 		System.Management.Automation.Host.Coordinates ($Host.UI.RawUI.WindowSize.Width - $offset), $Host.UI.RawUI.CursorPosition.Y
-
 	Write-Host $text -NoNewline
 	$Host.UI.RawUI.CursorPosition = $pos
 }
 
 function Prompt {
 	$retval = $?
-
-	$history = Get-History -Count 1
-	if ($history) {
-		$command = $($history) -split " "
-		$Host.ui.RawUI.WindowTitle = "$(Get-Location) | $($command[0])"
-	}
-
+	$current_working_directory = $(Get-Location | Split-Path -Leaf)
+	$command = ""
+	$history = $(Get-History -Count 1 | Select-Object -ExpandProperty CommandLine)
+	if ($history) { $command = $history	}
 	if (Test-Administrator) {
 		Write-Host " $(Get-Glyph 0xE0A2) " -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
-
 	if ((Get-Location).providerpath -eq ($env:USERPROFILE)) {
 		$cwd = "~"
 	}
  else {
-		$cwd = $(Get-Location | Split-Path -Leaf)
+		$cwd = $current_working_directory
+	}
+	if ($command -eq "") {
+		$Host.ui.RawUI.WindowTitle = "$current_working_directory ―― pwsh"
+	}
+	else {
+		$Host.ui.RawUI.WindowTitle = "$current_working_directory | $command ―― pwsh"
 	}
 	Write-Host $cwd -NoNewline -ForegroundColor DarkBlue -BackgroundColor Black
-
 	if ($retval) {
 		Write-Host " $(Get-Glyph 0x276F)" -NoNewline -ForegroundColor Green -BackgroundColor Black
 	}
@@ -137,6 +134,12 @@ function Prompt {
 
 	RPrompt
 
+	$loc = $executionContext.SessionState.Path.CurrentLocation;
+	$current_context = "$([char]27)]9;12$([char]7)"
+	if ($loc.Provider.Name -eq "FileSystem") {
+		$current_context += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
+	}
+	Write-Host $current_context -NoNewline 
 	Write-Host "" -NoNewline -ForegroundColor White
 	Write-Host -NoNewLine "`e[2 q"
 	return " "

@@ -8,10 +8,6 @@ ColorTool makes it easy to change the Windows console to your desired scheme. In
 
 A PowerShell profile is a script that runs when PowerShell starts. You can use the profile as a logon script to customize the environment. You can add commands, aliases, functions, variables, snap-ins, modules, and PowerShell drives. You can also add other session-specific elements to your profile so they are available in every session without having to import or re-create them.
 
-## Visual Studio
-
-The Visual Studio Color Theme Designer allows for creating a custom theme in a faster, more intuitive way.
-
 ## VS Code
 
 These are user specific settings and can be overriden if a `settings.json` file exists inside `<workspace>/.vscode/`.

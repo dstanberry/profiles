@@ -28,8 +28,8 @@
     { "command": { "action": "resizePane", "direction": "up" }, "keys": "alt+shift+k" },
     { "command": { "action": "resizePane", "direction": "left" }, "keys": "alt+shift+h" },
     { "command": { "action": "resizePane", "direction": "right" }, "keys": "alt+shift+l" },
-    { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "ctrl+shift+minus" },
-    { "command": { "action": "splitPane", "split": "vertical" }, "keys": "ctrl+shift+plus" },
+    { "command": { "action": "splitPane", "split": "down", "splitMode": "duplicate" }, "keys": "ctrl+shift+minus" },
+    { "command": { "action": "splitPane", "split": "right", "splitMode": "duplicate" }, "keys": "ctrl+shift+plus" },
     { "command": { "action": "togglePaneZoom" }, "keys": "ctrl+shift+z" },
     // tab navigation
     { "command": { "action": "switchToTab", "index": 0 }, "keys": "alt+1" },
@@ -61,7 +61,7 @@
   // bleeding edge
   "experimental.rendering.software": false,
   // profiles
-  "theme": "KDark",
+  "theme": "Minimal",
   "defaultProfile": "{1d2d9f1c-0192-5285-8115-38593c2c526e}",
   "profiles": {
     "defaults": {
@@ -74,7 +74,11 @@
       "font": {
         "face": "JetBrainsMono NF",
         "size": 10,
-        "weight": "light"
+        "weight": "light",
+        "cellSize": {
+          "height": "20",
+          "width": "20"
+        }
       },
       "intenseTextStyle": "all",
       "padding": "1, 1, 0, 1",
@@ -183,6 +187,9 @@
     {
       "name": "KDark",
       "background": "#373737",
+      "foreground": "#B4BAC6",
+      "selectionBackground": "#E5C179",
+      "cursorColor": "#92929D",
       "black": "#434345",
       "blue": "#6F8FB4",
       "brightBlack": "#434345",
@@ -193,20 +200,17 @@
       "brightRed": "#B04B57",
       "brightWhite": "#B4BAC6",
       "brightYellow": "#E5C179",
-      "cursorColor": "#92929D",
       "cyan": "#77B3C5",
-      "foreground": "#B4BAC6",
       "green": "#93B379",
       "purple": "#A4799D",
       "red": "#B04B57",
-      "selectionBackground": "#E5C179",
       "white": "#B4BAC6",
       "yellow": "#E5C179"
     }
   ],
   "themes": [
     {
-      "name": "KDark",
+      "name": "Minimal",
       "tab": {
         "background": "terminalBackground",
         "unfocusedBackground": "#373737",
