@@ -24,7 +24,7 @@ $env:FZF_DEFAULT_OPTS = '
 --color=fg:#bebebe,bg:-1,hl:#93b379
 --color=fg+:#dfe3ec,bg+:-1,hl+:#93b379
 --color=info:#5f5f5f,prompt:#93b379,pointer:#bebebe
---color=marker:#b04b57,spinner:#4c566a,header:#4c566a
+--color=marker:#b04b57,spinner:#516882,header:#97b6e5
 '
 # define default behaviour for ctrl-t
 $env:FZF_CTRL_T_OPTS = "
