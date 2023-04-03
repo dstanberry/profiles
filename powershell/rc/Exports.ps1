@@ -1,3 +1,7 @@
+$CONFIG_HOME = "$CONFIG_HOME"
+$CACHE_HOME = "$env:TEMP"
+$DATA_HOME = "$env:LOCALAPPDATA"
+
 # define the default editor
 $env:EDITOR = "nvim"
 
@@ -39,7 +43,7 @@ $env:GIT_REVIEW_BASE = "main"
 # enable terminal colors in output
 $env:GH_FORCE_TTY = "100%"
 # define path to configuration files
-$env:GH_CONFIG_DIR = "$HOME/.config/gh"
+$env:GH_CONFIG_DIR = "$CONFIG_HOME/gh"
 
 # set sane default options for less
 $env:LESS = "-iFMRX -x4"
