@@ -7,14 +7,30 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 		HistorySearchCursorMovesToEnd = $true
 		Colors = @{
 			"Command" = "Green"
-			"Parameter" = "White"
 			"InlinePrediction" = "#5f5f5f"
+			"Operator" = "White"
+			"Parameter" = "White"
 		}
 	}
 
 	Set-PSReadLineOption @PSReadlineOptions
 	Set-PSReadlineOption -BellStyle None
 	Set-PSReadLineOption -PredictionSource History
+	Set-PSReadLineOption -HistoryNoDuplicates
+
+	# save executed commands to global variable
+	# see |Prompt()| for truncating history file
+	Set-PSReadLineOption -AddToHistoryHandler {
+		param($line)
+		$global:LASTHIST = $line
+		return $true
+	}
+
+	# change |history| behaviour to show PSReadline history instead of  Get-History
+	Remove-Item Alias:\history -Force *> $null
+	function history {
+		Get-Content (Get-PSReadLineOption).HistorySavePath
+	}
 
 	Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
 	Set-PSReadLineKeyHandler -Key Tab -Function Complete
@@ -39,7 +55,7 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 			$mru | Sort-Object -Unique | Get-ChildItem -Attributes Directory | Invoke-Fzf | Set-Location
 			FixInvokePrompt
 		}
-		Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' 
+		Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
 		Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 	}
 

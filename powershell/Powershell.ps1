@@ -128,9 +128,18 @@ function Prompt {
 		Write-Host " $(Get-Glyph 0x276F)" -NoNewline -ForegroundColor Green -BackgroundColor Black
 	}
  else {
+		$historyPath = (Get-PSReadLineOption).HistorySavePath
+		$historyContent = $(Get-Content $historyPath)
+		# prevent invalid commands from being written to history file
+		if ($null -ne $global:LASTHIST -and $null -ne $historyContent) {
+			if ($historyContent | Select-String -Pattern $global:LASTHIST) {
+				Set-Content -Path $historyPath -Value ($historyContent | Select-String -Pattern $global:LASTHIST -NotMatch)
+			}
+		}
 		Write-Host " $(Get-Glyph 0x276F)" -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
 	Remove-Variable retval
+	Remove-Variable LASTHIST -Scope "Global"
 
 	RPrompt
 
