@@ -56,6 +56,11 @@ $env:MANPAGER='nvim +Man!'
 # define location for local projects
 $env:PROJECTS_DIR = $global:basedir + "Projects"
 
+$env:PSQLRC="$CONFIG_HOME/pg/psqlrc"
+$env:PSQL_HISTORY="$CACHE_HOME/pg/psql_history"
+$env:PGPASSFILE="$CONFIG_HOME/pg/pgpass"
+$env:PGSERVICEFILE="$CONFIG_HOME/pg/pg_service.conf"
+
 # |compat| define location of notes directory
 $env:hash_notes = $global:basedir + "Documents\_notes"
 # define location of zettelkasten vault
