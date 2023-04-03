@@ -1,6 +1,6 @@
-$CONFIG_HOME = "$CONFIG_HOME"
-$CACHE_HOME = "$env:TEMP"
-$DATA_HOME = "$env:LOCALAPPDATA"
+$env:CONFIG_HOME = "$HOME/.config"
+$env:CACHE_HOME = "$env:TEMP"
+$env:DATA_HOME = "$env:LOCALAPPDATA"
 
 # define the default editor
 $env:EDITOR = "nvim"
@@ -43,7 +43,7 @@ $env:GIT_REVIEW_BASE = "main"
 # enable terminal colors in output
 $env:GH_FORCE_TTY = "100%"
 # define path to configuration files
-$env:GH_CONFIG_DIR = "$CONFIG_HOME/gh"
+$env:GH_CONFIG_DIR = "$env:CONFIG_HOME/gh"
 
 # set sane default options for less
 $env:LESS = "-iFMRX -x4"
@@ -56,10 +56,10 @@ $env:MANPAGER='nvim +Man!'
 # define location for local projects
 $env:PROJECTS_DIR = $global:basedir + "Projects"
 
-$env:PSQLRC="$CONFIG_HOME/pg/psqlrc"
-$env:PSQL_HISTORY="$CACHE_HOME/pg/psql_history"
-$env:PGPASSFILE="$CONFIG_HOME/pg/pgpass"
-$env:PGSERVICEFILE="$CONFIG_HOME/pg/pg_service.conf"
+$env:PSQLRC="$env:CONFIG_HOME/pg/psqlrc"
+$env:PSQL_HISTORY="$env:CACHE_HOME/pg/psql_history"
+$env:PGPASSFILE="$env:CONFIG_HOME/pg/pgpass"
+$env:PGSERVICEFILE="$env:CONFIG_HOME/pg/pg_service.conf"
 
 # |compat| define location of notes directory
 $env:hash_notes = $global:basedir + "Documents\_notes"
