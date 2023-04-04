@@ -17,6 +17,7 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 	Set-PSReadlineOption -BellStyle None
 	Set-PSReadLineOption -PredictionSource History
 	Set-PSReadLineOption -HistoryNoDuplicates
+	Set-PSReadlineOption -ShowToolTips:$false
 
 	# save executed commands to global variable
 	# see |Prompt()| for truncating history file
@@ -32,16 +33,26 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 		Get-Content (Get-PSReadLineOption).HistorySavePath
 	}
 
+	# basic editing
+	Set-PSReadlineKeyHandler -Key Ctrl+u -Function BackwardKillInput
 	Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
-	Set-PSReadLineKeyHandler -Key Tab -Function Complete
-	Set-PSReadLineKeyHandler -Chord Shift+Tab -Function MenuComplete
-	Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-	Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+	Set-PSReadlineKeyHandler -Key Alt+u -Function KillLine
+	Set-PSReadlineKeyHandler -Key Alt+w -Function KillWord
 	Set-PSReadLineKeyHandler -Key Shift+Ctrl+C -Function Copy
 	Set-PSReadLineKeyHandler -Key Ctrl+Shift+V -Function Paste
+	# completion
+	Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+	Set-PSReadLineKeyHandler -Chord Shift+Tab -Function MenuComplete
+	# history
+	Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+	Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+	# cursor movement
+	Set-PSReadLineKeyHandler -Key Ctrl+a -Function BeginningOfLine
+	Set-PSReadLineKeyHandler -Key Ctrl+e -Function EndOfLine
 	Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
 	Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
 
+	# custom
 	if (Get-Module -ListAvailable -Name PSFzf) {
 		Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
 			$mru = @(
