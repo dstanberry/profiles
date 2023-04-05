@@ -66,7 +66,11 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 				$env:PROJECTS_DIR,
 				-join ($env:PROJECTS_DIR, "\*\*")
 			)
-			$mru | Sort-Object -Unique | Get-ChildItem -Attributes Directory | Invoke-Fzf -Preview "$previewer" | Set-Location
+			$mru |`
+				Sort-Object -Unique |`
+				Get-ChildItem -Attributes Directory |`
+				Invoke-Fzf -Height "100%" -Preview "$previewer" |`
+				Set-Location
 			FixInvokePrompt
 		}
 		Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
