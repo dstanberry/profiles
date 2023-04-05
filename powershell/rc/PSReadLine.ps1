@@ -55,6 +55,9 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 	# custom
 	if (Get-Module -ListAvailable -Name PSFzf) {
 		Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
+			$previewer = @"
+(bat --color "always" {1}/README.md || cat {1}/README.md || exa -lh --icons {1} || ls -lh {1}) 2> Nul
+"@
 			$mru = @(
 				-join ($env:USERPROFILE, "\"),
 				$global:basedir,
@@ -63,7 +66,7 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 				$env:PROJECTS_DIR,
 				-join ($env:PROJECTS_DIR, "\*\*")
 			)
-			$mru | Sort-Object -Unique | Get-ChildItem -Attributes Directory | Invoke-Fzf | Set-Location
+			$mru | Sort-Object -Unique | Get-ChildItem -Attributes Directory | Invoke-Fzf -Preview "$previewer" | Set-Location
 			FixInvokePrompt
 		}
 		Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
