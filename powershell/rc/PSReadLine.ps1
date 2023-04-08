@@ -15,8 +15,8 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 
 	Set-PSReadLineOption @PSReadlineOptions
 	Set-PSReadlineOption -BellStyle None
-	Set-PSReadLineOption -PredictionSource History
 	Set-PSReadLineOption -HistoryNoDuplicates
+	try { Set-PSReadLineOption -PredictionSource History } catch {}
 	Set-PSReadlineOption -ShowToolTips:$false
 
 	# save executed commands to global variable
