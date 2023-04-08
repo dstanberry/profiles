@@ -39,13 +39,12 @@
     "source.organizeImports": true
   },
   "editor.guides.bracketPairs": "active",
-  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorStyle": "line",
   "editor.cursorBlinking": "expand",
   "editor.cursorWidth": 1,
   "editor.detectIndentation": true,
-  // "editor.fontFamily": "Source Code Pro",
-  "editor.fontFamily": "JetBrainsMono NF",
+  "editor.fontFamily": "Cartograph CF",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
   "editor.fontWeight": "400",
@@ -169,8 +168,7 @@
   // ** TERMINAL
   // **************************************************************************
   "terminal.external.windowsExec": "wt.exe",
-  // "terminal.integrated.fontFamily": "Source Code Pro",
-  "terminal.integrated.fontFamily": "JetBrainsMono NF",
+  "terminal.integrated.fontFamily": "Cartograph CF",
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.fontWeight": "400",
   "terminal.integrated.showExitAlert": false,
@@ -206,14 +204,23 @@
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "powershell.promptToUpdatePowerShell": false,
   // **************************************************************************
+  // ** HARDENING
+  // **************************************************************************
+  "security.workspace.trust.untrustedFiles": "open",
+  "telemetry.telemetryLevel": "off",
+  // **************************************************************************
   // ** WORKBENCH
   // **************************************************************************
+  "workbench.colorTheme": "KDark",
   "workbench.colorCustomizations": {
     "[KDark]": {
       "editorCursor.foreground": "#e5c179",
       "editorInlayHint.background": "#37373700",
       "editorInlayHint.foreground": "#8f8f8f",
-      "editorRuler.foreground": "#5a5a5a20"
+      "editorRuler.foreground": "#5a5a5a20",
+      "editor.selectionBackground": "#49535e",
+      "tab.activeBackground": "#37373700",
+      "tab.activeForeground": "#d8dee9"
     },
     "editorBracketHighlight.foreground1": "#73c1b9",
     "editorBracketHighlight.foreground2": "#80d3dd",
@@ -226,17 +233,13 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
+  "window.commandCenter": true,
+  "window.menuBarVisibility": "compact",
+  "window.title": "",
   "workbench.iconTheme": "nonicons",
+  "workbench.layoutControl.enabled": false,
+  "workbench.productIconTheme": "icons-carbon",
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.tips.enabled": false,
-  "workbench.productIconTheme": "icons-carbon",
-  "security.workspace.trust.untrustedFiles": "open",
-  "telemetry.telemetryLevel": "off",
-  "window.title": "",
-  "workbench.layoutControl.enabled": false,
-  "workbench.statusBar.visible": false,
-  "window.menuBarVisibility": "compact",
-  "workbench.colorTheme": "KDark",
-  "workbench.activityBar.visible": false
+  "workbench.tips.enabled": false
 }
