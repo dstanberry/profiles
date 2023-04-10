@@ -56,7 +56,7 @@ $env:MANPAGER='nvim +Man!'
 # define location for local projects
 $env:PROJECTS_DIR = $global:basedir + "Projects"
 
-$env:PSQLRC="$env:CONFIG_HOME/pg/psqlrc"
+$env:PSQLRC="$env:CONFIG_HOME/pg/psqlrc-win"
 $env:PSQL_HISTORY="$env:CACHE_HOME/pg/psql_history"
 $env:PGPASSFILE="$env:CONFIG_HOME/pg/pgpass"
 $env:PGSERVICEFILE="$env:CONFIG_HOME/pg/pg_service.conf"
