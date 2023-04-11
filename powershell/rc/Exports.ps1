@@ -5,6 +5,9 @@ $env:DATA_HOME = "$env:LOCALAPPDATA"
 # define the default editor
 $env:EDITOR = "nvim"
 
+# define configuration path for bat
+$env:BAT_CONFIG_PATH = "$env:CONFIG_HOME/bat/bat.conf"
+
 # set fd as the default source for fzf
 $env:FZF_DEFAULT_COMMAND = "fd -H --follow --type f --color=always -E .git -E 'ntuser.dat\*' -E 'NTUSER.DAT\*'"
 # define default options for fzf
