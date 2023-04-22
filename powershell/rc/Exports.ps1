@@ -8,6 +8,13 @@ $env:EDITOR = "nvim"
 # define configuration path for bat
 $env:BAT_CONFIG_PATH = "$env:CONFIG_HOME/bat/bat.conf"
 
+# define configuration path for rust-cargo
+$env:CARGO_HOME="$env:DATA_HOME/cargo"
+$env:RUSTUP_HOME="$env:DATA_HOME/rustup"
+
+# define configuration path for go
+$env:GOPATH="$env:DATA_HOME/go"
+
 # set fd as the default source for fzf
 $env:FZF_DEFAULT_COMMAND = "fd -H --follow --type f --color=always -E .git -E 'ntuser.dat\*' -E 'NTUSER.DAT\*'"
 # define default options for fzf
