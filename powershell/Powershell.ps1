@@ -1,8 +1,8 @@
 if ((Get-Volume).DriveLetter -Contains "D") {
-	$global:basedir = (Resolve-Path "D:").ToString()
+	$global:basedir = "D:\"
 }
 else {
-	$global:basedir = (Resolve-Path $env:USERPROFILE).ToString() + "\"
+	$global:basedir = $env:USERPROFILE.ToString() + "\"
 }
 
 if (!(Test-Path variable:global:profile_initialized)) {
