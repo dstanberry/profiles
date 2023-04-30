@@ -28,7 +28,7 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 	}
 
 	# change |history| behaviour to show PSReadline history instead of  Get-History
-	Remove-Item Alias:\history -Force *> $null
+	Remove-Item Alias:\history -Force *> $null -ErrorAction SilentlyContinue
 	function history {
 		Get-Content (Get-PSReadLineOption).HistorySavePath
 	}
