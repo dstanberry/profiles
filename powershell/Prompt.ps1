@@ -94,12 +94,15 @@ function Prompt {
 	$history = $(Get-History -Count 1 | Select-Object -ExpandProperty CommandLine)
 	if ($history) { $command = $history	}
 	if (Test-Administrator) {
-		Write-Host " $(Get-Glyph 0xE0A2) " -NoNewline -ForegroundColor Red -BackgroundColor Black
+		Write-Host "$(Get-Glyph 0xF0483) " -NoNewline -ForegroundColor Red -BackgroundColor Black
+	}
+	if (!$null -eq $env:VIRTUAL_ENV) {
+		Write-Host "($($env:VIRTUAL_ENV | Split-Path -Leaf)) " -NoNewline -ForegroundColor Yellow -BackgroundColor Black
 	}
 	if ((Get-Location).providerpath -eq ($env:USERPROFILE)) {
 		$cwd = "~"
 	}
- else {
+	else {
 		$cwd = $current_working_directory
 	}
 	if ($command -eq "") {
@@ -112,7 +115,7 @@ function Prompt {
 	if ($retval) {
 		Write-Host " $(Get-Glyph 0x276F)" -NoNewline -ForegroundColor Green -BackgroundColor Black
 	}
- else {
+	else {
 		$historyPath = (Get-PSReadLineOption).HistorySavePath
 		$historyContent = $(Get-Content $historyPath)
 		# prevent invalid commands from being written to history file

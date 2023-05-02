@@ -71,6 +71,9 @@ $env:PSQL_HISTORY="$env:CACHE_HOME/pg/psql_history"
 $env:PGPASSFILE="$env:CONFIG_HOME/pg/pgpass"
 $env:PGSERVICEFILE="$env:CONFIG_HOME/pg/pg_service.conf"
 
+# prevent virtualenv from automatically modifying prompt
+$env:VIRTUAL_ENV_DISABLE_PROMPT=$true
+
 # |compat| define location of notes directory
 $env:hash_notes = $global:basedir + "Documents\_notes"
 # define location of zettelkasten vault
