@@ -72,7 +72,7 @@
       "cursorShape": "filledBox",
       "useAtlasEngine": false,
       "font": {
-        "face": "CartographCF NF",
+        "face": "CartographCF Nerd Font",
         "size": 10,
         "weight": "light",
         "cellSize": {
