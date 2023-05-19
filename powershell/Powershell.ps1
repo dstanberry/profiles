@@ -6,6 +6,8 @@ else {
 }
 
 if (!(Test-Path variable:global:profile_initialized)) {
+	[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8
+
 	$content = Get-ChildItem "$PSScriptRoot\rc\extras\*.ps1" | ForEach-Object {
 		[System.IO.File]::ReadAllText($_.FullName, [Text.Encoding]::UTF8) + [Environment]::NewLine
 	}
