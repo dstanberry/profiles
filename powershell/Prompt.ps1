@@ -50,7 +50,7 @@ function RPrompt {
 			$offset += 1
 		}
 		if ($status.StashCount -gt 0) {
-			$text += (Write-Prompt " $(Get-Glyph 0xF7FA) " -ForegroundColor ([ConsoleColor]::Yellow))
+			$text += (Write-Prompt " $(Get-Glyph 0xF02FB) " -ForegroundColor ([ConsoleColor]::Yellow))
 			$offset += 3
 		}
 	}
