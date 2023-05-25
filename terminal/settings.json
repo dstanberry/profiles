@@ -16,6 +16,8 @@
     { "command": { "action": "openSettings", "target": "settingsUI" }, "keys": "ctrl+shift+s" },
     { "command": { "action": "toggleFocusMode" }, "keys": "ctrl+;" },
     // allow additional keycodes to be consumed
+    { "command": { "action": "sendInput", "input": "\u001b[64;5u" }, "keys": "ctrl+space" },
+    { "command": { "action": "sendInput", "input": "\u001b[8;5u" }, "keys": "ctrl+backspace" },
     { "command": { "action": "sendInput", "input": "\u001b[13;2u" }, "keys": "shift+enter" },
     { "command": { "action": "sendInput", "input": "\u001b[13;5u" }, "keys": "ctrl+enter" },
     { "command": { "action": "sendInput", "input": "\u001b[13;6u" }, "keys": "ctrl+shift+enter" },
@@ -70,15 +72,12 @@
       "closeOnExit": "graceful",
       "colorScheme": "KDark",
       "cursorShape": "filledBox",
-      "useAtlasEngine": false,
+      "useAtlasEngine": true,
       "font": {
         "face": "CartographCF Nerd Font",
         "size": 10,
         "weight": "light",
-        "cellSize": {
-          "height": "20",
-          "width": "20"
-        },
+        "cellHeight": "1.3",
         "features": {
           "calt": 1,
           "liga": 1,
