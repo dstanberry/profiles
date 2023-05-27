@@ -1,6 +1,6 @@
 $script:ShellCmd = 'cmd.exe /S /C {0}'
 $script:DefaultFileSystemFdCmd = "fd.exe --hidden --color always . --full-path `"{0}`" --fixed-strings"
-$script:PreviewCmd = "(bat --color ""always"" {} || cat {} || tree -C {}) | head -200"
+$script:PreviewCmd = "(bat --style=plain --color ""always"" {} || cat {} || tree -C {}) | head -200"
 
 function Get-FileSystemCmd {
 	param($dir, [switch]$dirOnly = $false)
