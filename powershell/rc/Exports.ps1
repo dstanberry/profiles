@@ -47,7 +47,7 @@ $env:FZF_DEFAULT_OPTS = '
 $env:FZF_CTRL_T_OPTS = "
 --select-1
 --exit-0
---preview '(bat --style=plain --color ""always"" {} || cat {} || tree -C {}) | head -200'
+--preview '(bat --style=plain {} || cat {} || tree -C {}) | head -200'
 "
 
 # define default name of primary upstream git branch
