@@ -1,6 +1,6 @@
 $env:CONFIG_HOME = "$HOME/.config"
 $env:CACHE_HOME = "$env:TEMP"
-$env:DATA_HOME = "$env:LOCALAPPDATA"
+$env:DATA_HOME = "$env:APPDATA"
 
 # define the default editor
 $env:EDITOR = "nvim"
