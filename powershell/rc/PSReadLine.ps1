@@ -69,7 +69,7 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 			$mru |`
 				Sort-Object -Unique |`
 				Get-ChildItem -Attributes Directory |`
-				Invoke-Fzf -Height "100%" -Preview "$previewer" |`
+				Invoke-Fzf -Height "50%" -Preview "$previewer" |`
 				Set-Location
 			FixInvokePrompt
 		}
