@@ -127,9 +127,7 @@ function git {
 		elseif ($args[0] -eq "wta") { Add-GitWorktree $args[1] }
 		elseif ($args[0] -eq "wtb") { Add-GitWorktree-From-Current $args[1] }
 		elseif ($args[0] -eq "wtl") { Switch-GitWorktree }
-		else {
-			git.exe @args
-		}
+		else { git.exe @args }
 	}
 	catch {
 		Throw "$($_.Exception.Message)"
