@@ -56,7 +56,7 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 	if (Get-Module -ListAvailable -Name PSFzf) {
 		Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
 			$previewer = @"
-(bat --style=plain {1}/README.md || cat {1}/README.md || exa -lh --icons {1} || ls -lh {1}) 2> Nul
+(glow -s dark {1}/README.md || bat --style=plain {1}/README.md || cat {1}/README.md || exa -lh --icons {1} || ls -lh {1}) 2> Nul
 "@
 			$mru = @(
 				-join ($env:USERPROFILE, "\"),
