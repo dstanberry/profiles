@@ -26,10 +26,42 @@
   "prettier.tabWidth": 2,
   "prettier.trailingComma": "es5",
   "prettier.useTabs": false,
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": [],
-  "python.linting.enabled": true,
   "shellformat.flag": "-i 2 -bn -ci -sr",
+  "todohighlight.isEnable": true,
+  "todohighlight.isCaseSensitive": true,
+  "todohighlight.keywords": [
+    {
+      "text": "ERROR:",
+      "color": "#c9d1d9",
+      "backgroundColor": "#bf616a",
+      "overviewRulerColor": "#bf616a",
+      "fontWeight": "bold"
+    },
+    {
+      "text": "WARN:",
+      "color": "#59595e",
+      "backgroundColor": "#ebcb8b",
+      "fontWeight": "bold"
+    },
+    {
+      "text": "TODO:",
+      "color": "#c9d1d9",
+      "backgroundColor": "#62757e",
+      "fontWeight": "bold"
+    },
+    {
+      "text": "NOTE:",
+      "color": "#c9d1d9",
+      "backgroundColor": "#62757e",
+      "fontWeight": "bold"
+    },
+    {
+      "text": "TEST:",
+      "color": "#c9d1d9",
+      "backgroundColor": "#656c63",
+      "fontWeight": "bold"
+    }
+  ],
   // **************************************************************************
   // ** EDITOR
   // **************************************************************************
@@ -47,7 +79,7 @@
   "editor.fontFamily": "CartographCF Nerd Font",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
-  "editor.fontWeight": "400",
+  "editor.fontWeight": "300",
   "editor.guides.indentation": true,
   "editor.inlayHints.enabled": "on",
   "editor.inlayHints.fontSize": 8,
@@ -78,6 +110,7 @@
   "emmet.includeLanguages": {
     "javascript": "html"
   },
+  "flake8.args": [],
   "html.format.wrapLineLength": 240,
   "html.format.preserveNewLines": true,
   "html.format.indentInnerHtml": false,
@@ -154,10 +187,10 @@
     "editor.formatOnType": false
   },
   "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnPaste": true,
     "editor.formatOnSave": false,
-    "editor.formatOnType": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.formatOnType": false
   },
   "[markdown]": {
     "editor.lineHeight": 24,
@@ -169,6 +202,10 @@
     },
     "editor.wrappingIndent": "indent",
     "files.trimTrailingWhitespace": false
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
   },
   // **************************************************************************
   // ** TERMINAL
@@ -217,14 +254,18 @@
   // **************************************************************************
   // ** WORKBENCH
   // **************************************************************************
+  "window.commandCenter": true,
+  "window.menuBarVisibility": "compact",
+  "window.title": "",
   "workbench.colorTheme": "KDark",
   "workbench.colorCustomizations": {
     "[KDark]": {
+      "editor.selectionBackground": "#49535e",
+      "editor.wordHighlightBackground": "#00000000",
       "editorCursor.foreground": "#e5c179",
       "editorInlayHint.background": "#37373700",
       "editorInlayHint.foreground": "#8f8f8f",
       "editorRuler.foreground": "#5a5a5a20",
-      "editor.selectionBackground": "#49535e",
       "tab.activeBackground": "#37373700",
       "tab.activeForeground": "#d8dee9"
     },
@@ -239,9 +280,6 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
-  "window.commandCenter": true,
-  "window.menuBarVisibility": "compact",
-  "window.title": "",
   "workbench.iconTheme": "nonicons",
   "workbench.layoutControl.enabled": false,
   "workbench.productIconTheme": "icons-carbon",
