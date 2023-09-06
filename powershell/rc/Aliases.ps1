@@ -6,7 +6,7 @@ if (Get-Command bat -ErrorAction SilentlyContinue) {
 	Set-Item Alias:cat bat
 }
 
-# better ls (exa)
+# better ls (eza)
 Set-Item Alias:ls Get-ChildItemEx
 Set-Item Alias:ll Get-ChildItemExLong
 

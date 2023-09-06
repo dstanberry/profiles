@@ -6,7 +6,7 @@ function Get-ChildItemEx {
 	)
 
 	Process {
-		exa --ignore-glob='ntuser.*|NTUSER.*' --all --group-directories-first --group --icons $PassthruArgs
+		eza --ignore-glob='ntuser.*|NTUSER.*' --all --group-directories-first --group --icons $PassthruArgs
 	}
 }
 
@@ -18,6 +18,6 @@ function Get-ChildItemExLong {
 	)
 
 	Process {
-		exa --ignore-glob='ntuser.*|NTUSER.*' --long --group-directories-first --group --git-ignore --icons --git --tree $PassthruArgs
+		eza --ignore-glob='ntuser.*|NTUSER.*' --long --group-directories-first --group --git-ignore --icons --git --tree $PassthruArgs
 	}
 }

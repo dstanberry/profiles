@@ -48,7 +48,7 @@ function notes {
 				Header = "Create note within:"
 				Bind = 'focus:transform-header(echo Create note within {1})'
 				Preview = @"
-(exa -lh --icons ${env:ZK_NOTEBOOK_DIR}/{1} || ls -lh ${env:ZK_NOTEBOOK_DIR}/{1}) 2> Nul
+(eza -lh --icons ${env:ZK_NOTEBOOK_DIR}/{1} || ls -lh ${env:ZK_NOTEBOOK_DIR}/{1}) 2> Nul
 "@
 			}
 			$dir = $($env:ZK_NOTEBOOK_DIR | Sort-Object -Unique |`
