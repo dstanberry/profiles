@@ -16,8 +16,14 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 	Set-PSReadLineOption @PSReadlineOptions
 	Set-PSReadlineOption -BellStyle None
 	Set-PSReadLineOption -HistoryNoDuplicates
-	try { Set-PSReadLineOption -PredictionSource History } catch {}
 	Set-PSReadlineOption -ShowToolTips:$false
+	try {
+		Set-PSReadLineOption -PredictionSource History
+		Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ForwardWord
+	}
+	catch {
+		Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
+	}
 
 	# save executed commands to global variable
 	# see |Prompt()| for truncating history file
@@ -50,7 +56,6 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 	Set-PSReadLineKeyHandler -Key Ctrl+a -Function BeginningOfLine
 	Set-PSReadLineKeyHandler -Key Ctrl+e -Function EndOfLine
 	Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
-	Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ShellNextWord
 
 	# custom
 	if (Get-Module -ListAvailable -Name PSFzf) {
