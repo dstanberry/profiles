@@ -16,6 +16,7 @@
     { "command": { "action": "openSettings", "target": "settingsUI" }, "keys": "ctrl+shift+s" },
     { "command": { "action": "toggleFocusMode" }, "keys": "ctrl+;" },
     // allow additional keycodes to be consumed
+    { "command": { "action": "sendInput", "input": "\u001b[105;5u" }, "keys": "ctrl+i" },
     { "command": { "action": "sendInput", "input": "\u001b[64;5u" }, "keys": "ctrl+space" },
     { "command": { "action": "sendInput", "input": "\u001b[8;5u" }, "keys": "ctrl+backspace" },
     { "command": { "action": "sendInput", "input": "\u001b[13;2u" }, "keys": "shift+enter" },
