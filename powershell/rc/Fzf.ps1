@@ -72,3 +72,62 @@ function Invoke-CustomFuzzyEdit() {
 		}
 	}
 }
+
+function Invoke-ProjectSwitcher() {
+	$previewer = @"
+(glow -s dark {1}/README.md || bat --style=plain {1}/README.md || cat {1}/README.md || eza -lh --icons {1} || ls -lh {1}) 2> Nul
+"@
+	$mru = @(
+		-join ($env:USERPROFILE, "\"),
+		$global:basedir,
+		-join ($env:hash_notes, "\zettelkasten"),
+		-join ($global:basedir, "Git"),
+		$env:PROJECTS_DIR,
+		-join ($env:PROJECTS_DIR, "\*\*")
+	)
+	$mru |`
+		Sort-Object -Unique |`
+		Get-ChildItem -Attributes Directory |`
+		Invoke-Fzf -Height "50%" -Preview "$previewer" |`
+		Set-Location
+	FixInvokePrompt
+}
+
+function Invoke-FuzzyGrep() {
+	try {
+		$AppNames = @('fzf-*-windows_*.exe', 'fzf.exe')
+		$AppNames | ForEach-Object {
+			$result = Get-Command $_ -ErrorAction Ignore
+			$result | ForEach-Object {
+				$FzfLocation = Resolve-Path $_.Source
+			}
+		}
+		$RG_PREFIX = "rg --column --line-number --no-heading --color=always --smart-case "
+		$INITIAL_QUERY = ""
+		$sleepCmd = ''
+		$trueCmd = 'cd .'
+		$env:FZF_DEFAULT_COMMAND = "$RG_PREFIX ""$INITIAL_QUERY"""
+
+		& $FzfLocation --ansi --height="100%" --disabled --query "$INITIAL_QUERY" `
+			--bind "change:reload:$sleepCmd $RG_PREFIX {q} || $trueCmd" `
+			--bind "ctrl-f:unbind(change,ctrl-f)+change-prompt(fzf )+enable-search+clear-query+rebind(ctrl-r)" `
+			--bind "ctrl-r:unbind(ctrl-r)+change-prompt(ripgrep )+disable-search+reload($RG_PREFIX {q} || $trueCmd)+rebind(change,ctrl-f)" `
+			--color "hl:-1:underline,hl+:-1:underline:reverse" `
+			--prompt 'ripgrep ' `
+			--delimiter : `
+			--header '╱ CTRL-R (ripgrep mode) ╱ CTRL-F (fzf mode) ╱' `
+			--preview 'bat --style=numbers {1} --highlight-line {2}' `
+			--preview-window 'up,60%,border-bottom,+{2}+3/3,~3' | `
+			ForEach-Object { $results += $_ }
+
+		if (-not [string]::IsNullOrEmpty($results)) {
+			$split = $results.Split(':')
+			$fileList = $split[0]
+			$lineNum = $split[1]
+			$cmd = Get-EditorLaunch -FileList $fileList -LineNum $lineNum
+			Write-Host "Executing '$cmd'..."
+			Invoke-Expression -Command $cmd
+		}
+	}
+	catch { Write-Error "Error occurred: $_" }
+}

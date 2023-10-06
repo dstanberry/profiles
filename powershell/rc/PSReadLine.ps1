@@ -57,33 +57,20 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 	Set-PSReadLineKeyHandler -Key Ctrl+e -Function EndOfLine
 	Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
 
-	# custom
 	if (Get-Module -ListAvailable -Name PSFzf) {
-		Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
-			$previewer = @"
-(glow -s dark {1}/README.md || bat --style=plain {1}/README.md || cat {1}/README.md || eza -lh --icons {1} || ls -lh {1}) 2> Nul
-"@
-			$mru = @(
-				-join ($env:USERPROFILE, "\"),
-				$global:basedir,
-				-join ($env:hash_notes, "\zettelkasten"),
-				-join ($global:basedir, "Git"),
-				$env:PROJECTS_DIR,
-				-join ($env:PROJECTS_DIR, "\*\*")
-			)
-			$mru |`
-				Sort-Object -Unique |`
-				Get-ChildItem -Attributes Directory |`
-				Invoke-Fzf -Height "50%" -Preview "$previewer" |`
-				Set-Location
-			FixInvokePrompt
-		}
 		Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
 		Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
-	}
 
-	Set-PSReadLineKeyHandler -Key Ctrl+g -ScriptBlock {
-		Write-Host "`e[2J`e[3J"
-		[Microsoft.PowerShell.PSConsoleReadLine]::ClearScreen()
+		# custom dynamic fuzzy finder
+		Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock { Invoke-Expression Invoke-FuzzyGrep } `
+			-BriefDescription "Dynamic Grep"
+		# clear buffer
+		Set-PSReadLineKeyHandler -Key Ctrl+g -ScriptBlock {
+			Write-Host "`e[2J`e[3J"
+			[Microsoft.PowerShell.PSConsoleReadLine]::ClearScreen()
+		} -BriefDescription "Clear Screen"
+		# custom session switcher
+		Set-PSReadLineKeyHandler -Key Ctrl+p -ScriptBlock { Invoke-ProjectSwitcher } `
+			-BriefDescription "Dynamic Directory Switcher"
 	}
 }
