@@ -40,7 +40,7 @@
     {
       "text": "WARN:",
       "color": "#59595e",
-      "backgroundColor": "#ebcb8b",
+      "backgroundColor": "#cd8d88",
       "fontWeight": "bold"
     },
     {
@@ -52,13 +52,13 @@
     {
       "text": "NOTE:",
       "color": "#c9d1d9",
-      "backgroundColor": "#62757e",
+      "backgroundColor": "#b48ead",
       "fontWeight": "bold"
     },
     {
       "text": "TEST:",
       "color": "#c9d1d9",
-      "backgroundColor": "#656c63",
+      "backgroundColor": "#7f966d",
       "fontWeight": "bold"
     }
   ],
@@ -67,8 +67,8 @@
   // **************************************************************************
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
   },
   "editor.guides.bracketPairs": "active",
   "editor.cursorSmoothCaretAnimation": "on",
@@ -96,6 +96,7 @@
   },
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [80, 120],
+  "editor.semanticHighlighting.enabled": true,
   "editor.stickyScroll.enabled": true,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
@@ -169,14 +170,17 @@
   "[css]": {
     "editor.suggest.insertMode": "replace"
   },
+  "[gopls]": {
+    "ui.semanticTokens": true
+  },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.foldingStrategy": "indentation"
   },
   "[javascript]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll": false,
-      "source.organizeImports": true
+      "source.fixAll": "never",
+      "source.organizeImports": "explicit"
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -214,6 +218,7 @@
   "terminal.integrated.fontFamily": "CartographCF Nerd Font",
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.fontWeight": "400",
+  "terminal.integrated.minimumContrastRatio": 1,
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.splitCwd": "workspaceRoot",
   "terminal.integrated.profiles.windows": {
@@ -244,6 +249,7 @@
   },
   "terminal.integrated.smoothScrolling": true,
   "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "powershell.promptToUpdatePowerShell": false,
   // **************************************************************************
@@ -258,7 +264,7 @@
   "window.commandCenter": true,
   "window.menuBarVisibility": "compact",
   "window.title": "",
-  "workbench.colorTheme": "KDark",
+  "workbench.colorTheme": "Catppuccin Frappé",
   "workbench.colorCustomizations": {
     "[KDark]": {
       "editor.selectionBackground": "#49535e",
@@ -281,7 +287,7 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
-  "workbench.iconTheme": "nonicons",
+  "workbench.iconTheme": "catppuccin-frappe",
   "workbench.layoutControl.enabled": false,
   "workbench.productIconTheme": "icons-carbon",
   "workbench.settings.editor": "json",
