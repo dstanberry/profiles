@@ -66,7 +66,7 @@
   // bleeding edge
   "experimental.rendering.software": false,
   // profiles
-  "theme": "Minimal",
+  "theme": "KDark",
   "defaultProfile": "{1d2d9f1c-0192-5285-8115-38593c2c526e}",
   "profiles": {
     "defaults": {
@@ -192,35 +192,111 @@
   ],
   "schemes": [
     {
+      "name": "Catppuccin Frappe",
+      "cursorColor": "#F2D5CF",
+      "selectionBackground": "#626880",
+      "background": "#303446",
+      "foreground": "#C6D0F5",
+      "black": "#51576D",
+      "red": "#E78284",
+      "green": "#A6D189",
+      "yellow": "#E5C890",
+      "blue": "#8CAAEE",
+      "purple": "#F4B8E4",
+      "cyan": "#81C8BE",
+      "white": "#B5BFE2",
+      "brightBlack": "#626880",
+      "brightRed": "#E78284",
+      "brightGreen": "#A6D189",
+      "brightYellow": "#E5C890",
+      "brightBlue": "#8CAAEE",
+      "brightPurple": "#F4B8E4",
+      "brightCyan": "#81C8BE",
+      "brightWhite": "#A5ADCE"
+    },
+    {
+      "name": "Catppuccin Mocha",
+      "background": "#1E1E2E",
+      "foreground": "#CDD6F4",
+      "selectionBackground": "#585B70",
+      "cursorColor": "#F5E0DC",
+      "black": "#45475A",
+      "red": "#F38BA8",
+      "green": "#A6E3A1",
+      "yellow": "#F9E2AF",
+      "blue": "#89B4FA",
+      "purple": "#F5C2E7",
+      "cyan": "#94E2D5",
+      "white": "#BAC2DE",
+      "brightBlack": "#585B70",
+      "brightRed": "#F38BA8",
+      "brightGreen": "#A6E3A1",
+      "brightYellow": "#F9E2AF",
+      "brightBlue": "#89B4FA",
+      "brightPurple": "#F5C2E7",
+      "brightCyan": "#94E2D5",
+      "brightWhite": "#A6ADC8"
+    },
+    {
       "name": "KDark",
       "background": "#373737",
       "foreground": "#B4BAC6",
       "selectionBackground": "#E5C179",
       "cursorColor": "#92929D",
       "black": "#434345",
-      "blue": "#6F8FB4",
-      "brightBlack": "#434345",
-      "brightBlue": "#6F8FB4",
-      "brightCyan": "#77B3C5",
-      "brightGreen": "#93B379",
-      "brightPurple": "#A4799D",
-      "brightRed": "#B04B57",
-      "brightWhite": "#B4BAC6",
-      "brightYellow": "#E5C179",
-      "cyan": "#77B3C5",
-      "green": "#93B379",
-      "purple": "#A4799D",
       "red": "#B04B57",
+      "green": "#93B379",
+      "yellow": "#E5C179",
+      "blue": "#6F8FB4",
+      "purple": "#A4799D",
+      "cyan": "#77B3C5",
       "white": "#B4BAC6",
-      "yellow": "#E5C179"
+      "brightBlack": "#434345",
+      "brightRed": "#B04B57",
+      "brightGreen": "#93B379",
+      "brightYellow": "#E5C179",
+      "brightBlue": "#6F8FB4",
+      "brightPurple": "#A4799D",
+      "brightCyan": "#77B3C5",
+      "brightWhite": "#B4BAC6"
     }
   ],
   "themes": [
     {
-      "name": "Minimal",
+      "name": "Catppuccin Frappe",
+      "tab": {
+        "background": "#303446FF",
+        "showCloseButton": "hover",
+        "unfocusedBackground": null
+      },
+      "tabRow": {
+        "background": "#232634FF",
+        "unfocusedBackground": "#232634FF"
+      },
+      "window": {
+        "applicationTheme": "dark"
+      }
+    },
+    {
+      "name": "Catppuccin Mocha",
+      "tab": {
+        "background": "#1E1E2E",
+        "unfocusedBackground": null,
+        "showCloseButton": "hover"
+      },
+      "tabRow": {
+        "background": "#1E1E2E",
+        "unfocusedBackground": "#1E1E2E"
+      },
+      "window": {
+        "applicationTheme": "dark"
+      }
+    },
+    {
+      "name": "KDark",
       "tab": {
         "background": "terminalBackground",
-        "unfocusedBackground": "#373737",
+        "unfocusedBackground": null,
         "showCloseButton": "hover"
       },
       "tabRow": {
