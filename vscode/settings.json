@@ -62,6 +62,93 @@
       "fontWeight": "bold"
     }
   ],
+  "vim.leader": "<space>",
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.highlightedyank.enable": true,
+  "vim.useSystemClipboard": true,
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.insert": "line-thin",
+  "vim.cursorStylePerMode.replace": "block-outline",
+  "vim.statusBarColorControl": false,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<cr>"],
+      "commands": [":set hlsearch!"]
+    },
+    {
+      "before": ["<left>"],
+      "commands": [":bprevious"]
+    },
+    {
+      "before": ["<right>"],
+      "commands": [":bnext"]
+    },
+    {
+      "before": ["f", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["g", "_"]
+    },
+    {
+      "before": ["v", "a", "g"],
+      "after": ["g", "g", "V", "G", "g", "_"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [";"],
+      "after": [":"]
+    },
+    {
+      "before": ["<up>"],
+      "after": ["<c-y>"]
+    },
+    {
+      "before": ["<down>"],
+      "after": ["<c-e>"]
+    },
+    {
+      "before": ["p"],
+      "after": ["p", "g", "v", "y"]
+    },
+    {
+      "before": ["J"],
+      "after": ["m", "z", "J", "`", "z"]
+    }
+  ],
+  "vim.operatorPendingModeKeyBindings": [
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["$"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    }
+  ],
   // **************************************************************************
   // ** EDITOR
   // **************************************************************************
@@ -236,7 +323,7 @@
   "terminal.integrated.profiles.linux": {
     "bash": {
       "path": "bash",
-      "icon": "terminal-bash"
+      "icon": "terminal-linux"
     },
     "zsh": {
       "path": "zsh",
@@ -282,7 +369,12 @@
     "editorBracketHighlight.foreground4": "#bfafc4",
     "editorBracketHighlight.foreground5": "#dec7d0",
     "editorBracketHighlight.foreground6": "#e09696",
-    "editorBracketHighlight.unexpectedBracket.foreground": "#ffdca8"
+    "editorBracketHighlight.unexpectedBracket.foreground": "#ffdca8",
+    "statusBar.background": "#5f00af",
+    "statusBar.noFolderBackground": "#5f00af",
+    "statusBar.debuggingBackground": "#5f00af",
+    "statusBar.foreground": "#ffffff",
+    "statusBar.debuggingForeground": "#ffffff"
   },
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
@@ -294,3 +386,4 @@
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tips.enabled": false
 }
+
