@@ -1,5 +1,5 @@
 # support custom sub-commands
-function cargo {
+function global:cargo {
 	try {
 		$PKG = "$env:CONFIG_HOME/shared/packages/cargo.txt"
 		if ($args[0] -eq "load") {
@@ -14,7 +14,7 @@ function cargo {
 }
 
 # support custom sub-commands
-function go {
+function global:go {
 	try {
 		$PKG = "$env:CONFIG_HOME/shared/packages/go.txt"
 		if ($args[0] -eq "load") {
@@ -26,7 +26,7 @@ function go {
 }
 
 # print response headers, following redirects.
-function headers {
+function global:headers {
 	try {
 		if ($args.Length -eq 0) {
 			Write-Error "error: a host argument is required"
@@ -37,7 +37,7 @@ function headers {
 }
 
 # custom |zk| wrapper
-function notes {
+function global:notes {
 	try {
 		if ($args.Length -eq 0 -or $args[0] -eq "list") { zk.exe list }
 		elseif ($args[0] -eq "edit") { zk.exe edit --interactive }
@@ -66,7 +66,7 @@ function notes {
 }
 
 # poor man's rg runtime configuration
-function rg {
+function global:rg {
 	rg.exe --colors line:fg:yellow `
 		--colors line:style:bold `
 		--colors path:fg:blue `
@@ -77,7 +77,7 @@ function rg {
 }
 
 # display information about a remote ssl certificate
-function ssl {
+function global:ssl {
 	try	{
 		if ($args.Length -eq 0) {
 			Write-Error "error: a host argument is required"

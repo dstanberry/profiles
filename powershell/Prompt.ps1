@@ -19,7 +19,7 @@ function RPrompt {
 		}
 
 		$offset = $b.Length + 3
-		$text = (Write-Prompt " $(Get-Glyph 0xE725)" -ForegroundColor ([ConsoleColor]::Cyan))
+		$text = (Write-Prompt " $(Get-Glyph 0xEA68)" -ForegroundColor ([ConsoleColor]::Cyan))
 		$text += (Write-Prompt " $b" -ForegroundColor ([ConsoleColor]::Cyan))
 		if ($status.AheadBy -gt 0) {
 			$text += (Write-Prompt "$(Get-Glyph 0x21E1)" -ForegroundColor ([ConsoleColor]::Red))
@@ -77,7 +77,7 @@ function RPrompt {
 				$elapsed += "{0}s" -f $timespan.Seconds 
 			}
 		}
-		$offset += 1 + $elapsed.Length
+		$offset += 2 + $elapsed.Length
 		$text += (Write-Prompt " $elapsed" -ForegroundColor "#808080")
 	}
 
@@ -87,33 +87,42 @@ function RPrompt {
 	$Host.UI.RawUI.CursorPosition = $pos
 }
 
-function Prompt {
-	$retval = $?
+function global:Prompt {
+	$origRetval = $global:?
+
 	$current_working_directory = $(Get-Location | Split-Path -Leaf)
 	$command = ""
+
 	$history = $(Get-History -Count 1 | Select-Object -ExpandProperty CommandLine)
+
 	if ($history) { $command = $history	}
+
 	if (Test-Administrator) {
 		Write-Host "$(Get-Glyph 0xF0483) " -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
+
 	if (!$null -eq $env:VIRTUAL_ENV) {
 		Write-Host "($($env:VIRTUAL_ENV | Split-Path -Leaf)) " -NoNewline -ForegroundColor Yellow -BackgroundColor Black
 	}
+
 	if ((Get-Location).providerpath -eq ($env:USERPROFILE)) {
 		$cwd = "~"
 	}
 	else {
 		$cwd = $current_working_directory
 	}
+
 	if ($command -eq "") {
-		$Host.ui.RawUI.WindowTitle = "$current_working_directory ―― pwsh"
+		$Host.ui.RawUI.WindowTitle = "$current_working_directory"
 	}
 	else {
-		$Host.ui.RawUI.WindowTitle = "$current_working_directory | $command ―― pwsh"
+		$Host.ui.RawUI.WindowTitle = "$current_working_directory | $command"
 	}
-	Write-Host $cwd -NoNewline -ForegroundColor DarkBlue -BackgroundColor Black
-	if ($retval) {
-		Write-Host " $(Get-Glyph 0x276F)" -NoNewline -ForegroundColor Green -BackgroundColor Black
+
+	Write-Host "$([char]27)[1m$cwd$([char]27)[24m" -NoNewline -ForegroundColor DarkBlue -BackgroundColor Black
+
+	if ($origRetval) {
+		Write-Host " $([char]27)[1m$(Get-Glyph 0x276F)$([char]27)[24m" -NoNewline -ForegroundColor Green -BackgroundColor Black
 	}
 	else {
 		$historyPath = (Get-PSReadLineOption).HistorySavePath
@@ -124,21 +133,24 @@ function Prompt {
 				Set-Content -Path $historyPath -Value ($historyContent | Select-String -Pattern $global:LASTHIST -NotMatch)
 			}
 		}
-		Write-Host " $(Get-Glyph 0x276F)" -NoNewline -ForegroundColor Red -BackgroundColor Black
+		Write-Host " $([char]27)[1m$(Get-Glyph 0x276F)$([char]27)[24m" -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
-	Remove-Variable retval
+
+	Remove-Variable origRetval
 	Remove-Variable LASTHIST -Scope "Global"
 
 	RPrompt
 
 	$loc = $executionContext.SessionState.Path.CurrentLocation;
 	$current_context = "$([char]27)]9;12$([char]7)"
+
 	if ($loc.Provider.Name -eq "FileSystem") {
 		$current_context += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
 	}
+
 	Write-Host $current_context -NoNewline 
 	Write-Host "" -NoNewline -ForegroundColor White
 	Write-Host -NoNewLine "`e[2 q"
+
 	return " "
 }
-

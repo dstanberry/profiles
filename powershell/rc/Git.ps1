@@ -121,7 +121,7 @@ function Switch-GitWorktree {
 }
 
 # support custom sub-commands
-function git {
+function global:git {
 	try {
 		if ($args[0] -eq "fstash") { Get-GitStashes }
 		elseif ($args[0] -eq "wta") { Add-GitWorktree $args[1] }

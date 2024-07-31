@@ -15,13 +15,18 @@ $env:hash_pfe = $pfe
 $c = $HOME
 $env:hash_c = $c
 
-if ((Get-Volume).DriveLetter -contains "D") {
-	$d = (Resolve-Path "D:").ToString()	
-	$env:hash_d = $d
-}
-
 $notes = $env:hash_notes
 $env:hash_notes = $notes
 
 $projects = $env:PROJECTS_DIR
 $env:hash_projects = $projects
+
+Export-ModuleMember -Variable @(
+	"ad"
+	"lad"
+	"pf"
+	"pfe"
+	"c"
+	"notes"
+	"projects"
+)

@@ -9,11 +9,11 @@ $env:EDITOR = "nvim"
 $env:BAT_CONFIG_PATH = "$env:CONFIG_HOME/bat/bat.conf"
 
 # define configuration path for rust-cargo
-$env:CARGO_HOME="$env:DATA_HOME/cargo"
-$env:RUSTUP_HOME="$env:DATA_HOME/rustup"
+$env:CARGO_HOME = "$env:DATA_HOME/cargo"
+$env:RUSTUP_HOME = "$env:DATA_HOME/rustup"
 
 # define configuration path for go
-$env:GOPATH="$env:DATA_HOME/go"
+$env:GOPATH = "$env:DATA_HOME/go"
 
 # set fd as the default source for fzf
 $env:FZF_DEFAULT_COMMAND = "fd -H --follow --type f --color=always -E .git -E 'ntuser.dat\*' -E 'NTUSER.DAT\*'"
@@ -65,18 +65,18 @@ $env:LESS = "-iFMRX -x4"
 $env:PAGER = "less"
 
 # define the default manpager
-$env:MANPAGER='nvim +Man!'
+$env:MANPAGER = 'nvim +Man!'
 
 # define location for local projects
 $env:PROJECTS_DIR = $global:basedir + "Projects"
 
-$env:PSQLRC="$env:CONFIG_HOME/pg/psqlrc-win"
-$env:PSQL_HISTORY="$env:CACHE_HOME/pg/psql_history"
-$env:PGPASSFILE="$env:CONFIG_HOME/pg/pgpass"
-$env:PGSERVICEFILE="$env:CONFIG_HOME/pg/pg_service.conf"
+$env:PSQLRC = "$env:CONFIG_HOME/pg/psqlrc-win"
+$env:PSQL_HISTORY = "$env:CACHE_HOME/pg/psql_history"
+$env:PGPASSFILE = "$env:CONFIG_HOME/pg/pgpass"
+$env:PGSERVICEFILE = "$env:CONFIG_HOME/pg/pg_service.conf"
 
 # prevent virtualenv from automatically modifying prompt
-$env:VIRTUAL_ENV_DISABLE_PROMPT=$true
+$env:VIRTUAL_ENV_DISABLE_PROMPT = $true
 
 # |compat| define location of notes directory
 $env:hash_notes = $global:basedir + "Documents\_notes"
