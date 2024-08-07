@@ -34,7 +34,7 @@
     { "command": { "action": "resizePane", "direction": "left" }, "keys": "alt+shift+h" },
     { "command": { "action": "resizePane", "direction": "right" }, "keys": "alt+shift+l" },
     { "command": { "action": "splitPane", "split": "down", "splitMode": "duplicate" }, "keys": "ctrl+shift+minus" },
-    { "command": { "action": "splitPane", "split": "right", "splitMode": "duplicate" }, "keys": "ctrl+shift+plus" },
+    { "command": { "action": "splitPane", "split": "right", "splitMode": "duplicate" }, "keys": "ctrl+shift+/" },
     { "command": { "action": "togglePaneZoom" }, "keys": "ctrl+shift+z" },
     // tab navigation
     { "command": { "action": "switchToTab", "index": 0 }, "keys": "alt+1" },
@@ -81,7 +81,7 @@
         "face": "Cartograph CF,Symbols Nerd Font,LegacyComputing",
         "size": 10,
         "weight": "light",
-        "cellHeight": "1.65",
+        "cellHeight": "1.50",
         "features": {
           "calt": 1,
           "liga": 1,
