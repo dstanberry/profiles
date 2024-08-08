@@ -1,9 +1,5 @@
 # Developer Profiles
 
-## Colortool
-
-ColorTool makes it easy to change the Windows console to your desired scheme. Includes support for iTerm themes!
-
 ## Powershell
 
 A PowerShell profile is a script that runs when PowerShell starts. You can use the profile as a logon script to customize the environment. You can add commands, aliases, functions, variables, snap-ins, modules, and PowerShell drives. You can also add other session-specific elements to your profile so they are available in every session without having to import or re-create them.
@@ -25,4 +21,4 @@ User specific settings for customizing Windows Terminal. The settings are groupe
 
 ## License
 
-The files and scripts in this repository are licensed under the MIT License, which is a very permissive license allowing you to use, modify, copy, distribute, sell, give away, etc. the software.  In other words, do what you want with it.  The  only requirement with the MIT License is that the license and copyright notice must be provided with the software.
+The files and scripts in this repository are licensed under the MIT License, which is a very permissive license allowing you to use, modify, copy, distribute, sell, give away, etc. the software. In other words, do what you want with it. The only requirement with the MIT License is that the license and copyright notice must be provided with the software.
