@@ -13,8 +13,8 @@ function get_vcs_metadata {
 				}
 			}
 		}
-
-		$text = (Write-Prompt " $(Get-Glyph 0xEA68)" -ForegroundColor ([ConsoleColor]::Cyan))
+		$text = (Write-Prompt " on")
+		$text += (Write-Prompt " $(Get-Glyph 0xEA68)" -ForegroundColor ([ConsoleColor]::Cyan))
 		$text += (Write-Prompt " $b" -ForegroundColor ([ConsoleColor]::Cyan))
 		if ($status.AheadBy -gt 0) {
 			$text += (Write-Prompt "$(Get-Glyph 0x21E1)" -ForegroundColor ([ConsoleColor]::Red))
@@ -67,7 +67,6 @@ function get_vcs_metadata {
 
 function global:Prompt {
 	$origRetval = $global:?
-	$current_working_directory = $(Get-Location | Split-Path -Leaf)
 	$command = ""
 	$history = $(Get-History -Count 1 | Select-Object -ExpandProperty CommandLine)
 	if ($history) { $command = $history	}
@@ -77,12 +76,13 @@ function global:Prompt {
 	if (!$null -eq $env:VIRTUAL_ENV) {
 		Write-Host "($($env:VIRTUAL_ENV | Split-Path -Leaf)) " -NoNewline -ForegroundColor Yellow -BackgroundColor Black
 	}
-	if ((Get-Location).providerpath -eq ($env:USERPROFILE)) {
+	if ((Get-Location).ProviderPath -eq ($env:USERPROFILE)) {
 		$cwd = "~"
 	}
 	else {
-		$cwd = $current_working_directory
+		$cwd = $((Get-Location).ProviderPath -split '\\' | Select-Object -Last 3 | Join-String -Separator '\')
 	}
+	$current_working_directory = $(Get-Location | Split-Path -Leaf)
 	if ($command -eq "") {
 		$Host.ui.RawUI.WindowTitle = "$current_working_directory"
 	}
