@@ -54,18 +54,22 @@ Set-PSReadLineKeyHandler -Key Ctrl+a -Function BeginningOfLine
 Set-PSReadLineKeyHandler -Key Ctrl+e -Function EndOfLine
 Set-PSReadLineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord
 
-# WARN: this is extremely slow 
+# WARN: this is extremely slow
 #Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
 #Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 
 # custom dynamic fuzzy finder
-Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock { Invoke-Expression Invoke-FuzzyGrep } `
-	-BriefDescription "Dynamic Grep"
+Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
+	Save-PSCursorPosition
+	Invoke-Expression Invoke-FuzzyGrep
+} -BriefDescription "Dynamic Grep"
 ## clear buffer
 Set-PSReadLineKeyHandler -Key Ctrl+g -ScriptBlock {
 	Write-Host "`e[2J`e[3J"
 	[Microsoft.PowerShell.PSConsoleReadLine]::ClearScreen()
 } -BriefDescription "Clear Screen"
 # custom session switcher
-Set-PSReadLineKeyHandler -Key Ctrl+p -ScriptBlock { Invoke-ProjectSwitcher } `
-	-BriefDescription "Dynamic Directory Switcher"
+Set-PSReadLineKeyHandler -Key Ctrl+p -ScriptBlock {
+	Save-PSCursorPosition
+	Invoke-ProjectSwitcher
+} -BriefDescription "Dynamic Directory Switcher"

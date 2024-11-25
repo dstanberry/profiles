@@ -1,3 +1,42 @@
+function global:Save-PSCursorPosition {
+	param(
+		[int]$MinHeight = 3
+	)
+	$rawUI = (Get-Host).UI.RawUI
+	$height = [regex]::Matches($env:FZF_DEFAULT_OPTS, '--height=~?(\d+)(%?)').Groups
+	if ($null -eq $height) {
+		$fzfHeight = $rawUI.BufferSize.Height
+	}
+	elseif ($height[2].Length -eq 0) {
+		$fzfHeight = [int]$height[1].Value
+		if ($fzfHeight -lt $MinHeight) {
+			$fzfHeight = $MinHeight
+		}
+	}
+	else {
+		$fzfHeight = [Math]::Truncate(($rawUI.BufferSize.Height - 1) * [int]$height[1].Value / 100)
+		$min_height = [regex]::Matches($env:FZF_DEFAULT_OPTS, '--min-height=(\d+)').Groups
+		if ($null -eq $min_height) {
+			$min_height = 10
+		}
+		elseif ([int]$min_height[1].Value -lt $MinHeight) {
+			$min_height = $MinHeight
+		}
+		else { $min_height = [int]$min_height[1].Value }
+
+		if ($fzfHeight -lt $min_height) {
+			$fzfHeight = $min_height
+		}
+	}
+
+	$global:RepairedCursorPosition = $rawUI.CursorPosition
+	if ($global:RepairedCursorPosition.Y -ge ($rawUI.BufferSize.Height - $FzfHeight)) {
+		$global:RepairedCursorPosition.Y = $rawUI.BufferSize.Height - $FzfHeight
+		$global:RepairedCursorPosition.X = 0
+	}
+	else { $global:RepairedCursorPosition = $null }
+}
+
 # support custom sub-commands
 function global:cargo {
 	try {

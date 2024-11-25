@@ -70,6 +70,11 @@ function global:Prompt {
 	$command = ""
 	$history = $(Get-History -Count 1 | Select-Object -ExpandProperty CommandLine)
 	if ($history) { $command = $history	}
+	if ($null -ne $Global:RepairedCursorPosition) {
+		$Global:RepairedCursorPosition.Y -= 1
+    (Get-Host).UI.RawUI.CursorPosition = $Global:RepairedCursorPosition
+		$Global:RepairedCursorPosition = $null
+	}
 	if (Test-Administrator) {
 		Write-Host "$(Get-Glyph 0xF0483) " -NoNewline -ForegroundColor Red -BackgroundColor Black
 	}
