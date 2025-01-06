@@ -80,7 +80,7 @@
     { "id": "Terminal.ResizePaneRight", "keys": "alt+shift+l" },
     { "id": "Terminal.TogglePaneZoom", "keys": "ctrl+shift+z" },
     // tab navigation
-    { "id": "Terminal.PrevTab", "keys": "ctrl+shift+e" },
+    { "id": "Terminal.PrevTab", "keys": "ctrl+shift+d" },
     { "id": "Terminal.NextTab", "keys": "ctrl+shift+f" },
     { "id": "Terminal.CloseTab", "keys": "ctrl+shift+w" }
   ],
