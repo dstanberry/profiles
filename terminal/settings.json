@@ -64,7 +64,7 @@
     { "id": "User.sendInput.ControlShiftEnter", "keys": "ctrl+shift+enter" },
     { "id": "User.sendInput.ControlBackspace", "keys": "ctrl+backspace" },
     { "id": "User.sendInput.ControlEnter", "keys": "ctrl+enter" },
-    { "id": "User.sendInput.ControlSpace", "keys": "ctrl+space" },
+    // { "id": "User.sendInput.ControlSpace", "keys": "ctrl+space" },
     { "id": "User.sendInput.ControlI", "keys": "ctrl+i" },
     { "id": "User.sendInput.ShiftEnter", "keys": "shift+enter" },
     // window/pane management
