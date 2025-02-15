@@ -59,6 +59,11 @@ $env:GH_FORCE_TTY = "100%"
 # define path to configuration files
 $env:GH_CONFIG_DIR = "$env:CONFIG_HOME/gh"
 
+# define the default configuration path for komorebi
+$env:KOMOREBI_CONFIG_HOME = "$HOME\.config\komorebi"
+# define the default configuration path for whkd
+$env:WHKD_CONFIG_HOME="$HOME/.config/komorebi"
+
 # set sane default options for less
 $env:LESS = "-iFMRX -x4"
 # define the default pager
