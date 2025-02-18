@@ -63,93 +63,15 @@
       "fontWeight": "bold"
     }
   ],
-  "vim.leader": "<space>",
-  "vim.useCtrlKeys": true,
-  "vim.hlsearch": true,
-  "vim.highlightedyank.enable": true,
-  "vim.useSystemClipboard": true,
-  "vim.cursorStylePerMode.normal": "block",
-  "vim.cursorStylePerMode.insert": "line-thin",
-  "vim.cursorStylePerMode.replace": "block-outline",
-  "vim.statusBarColorControl": false,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["j", "k"],
-      "after": ["<esc>"]
+  "vscode-neovim.compositeKeys": {
+    "jk": {
+      "command": "vscode-neovim.escape"
     }
-  ],
-  "vim.normalModeKeyBindings": [
-    {
-      "before": ["<cr>"],
-      "commands": [":set hlsearch!"]
-    },
-    {
-      "before": ["<left>"],
-      "commands": [":bprevious"]
-    },
-    {
-      "before": ["<right>"],
-      "commands": [":bnext"]
-    },
-    {
-      "before": ["f", "f"],
-      "commands": ["editor.action.formatDocument"]
-    },
-    {
-      "before": ["H"],
-      "after": ["^"]
-    },
-    {
-      "before": ["L"],
-      "after": ["g", "_"]
-    },
-    {
-      "before": ["v", "a", "g"],
-      "after": ["g", "g", "V", "G", "g", "_"]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [";"],
-      "after": [":"]
-    },
-    {
-      "before": ["<up>"],
-      "after": ["<c-y>"]
-    },
-    {
-      "before": ["<down>"],
-      "after": ["<c-e>"]
-    },
-    {
-      "before": ["p"],
-      "after": ["p", "g", "v", "y"]
-    },
-    {
-      "before": ["J"],
-      "after": ["m", "z", "J", "`", "z"]
-    }
-  ],
-  "vim.operatorPendingModeKeyBindings": [
-    {
-      "before": ["H"],
-      "after": ["^"]
-    },
-    {
-      "before": ["L"],
-      "after": ["$"]
-    }
-  ],
-  "vim.visualModeKeyBindings": [
-    {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
-    },
-    {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"]
-    }
-  ],
+  },
+  "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
   // **************************************************************************
   // ** EDITOR
   // **************************************************************************
@@ -315,7 +237,10 @@
       "icon": "terminal-powershell"
     },
     "Command Prompt": {
-      "path": ["${env:windir}\\Sysnative\\cmd.exe", "${env:windir}\\System32\\cmd.exe"],
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
       "args": [],
       "icon": "terminal-cmd"
     },
