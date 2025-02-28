@@ -1,6 +1,6 @@
 {
   "$help": "https://aka.ms/terminal-documentation",
-  "$schema": "https://raw.githubusercontent.com/microsoft/terminal/main/doc/cascadia/profiles.schema.json",
+  "$schema": "https://aka.ms/terminal-profiles-schema-preview",
   "alwaysOnTop": false,
   "alwaysShowNotificationIcon": false,
   "confirmCloseAllTabs": true,
@@ -53,8 +53,8 @@
     { "id": "Terminal.PasteFromClipboard", "keys": "ctrl+shift+v" },
     // text manipulation
     { "id": "Terminal.ResetFontSize", "keys": "ctrl+shift+`" },
-    { "id": "Terminal.IncreaseFontSize", "keys": "ctrl+shift+0" },
-    { "id": "Terminal.DecreaseFontSize", "keys": "ctrl+shift+9" },
+    { "id": "Terminal.IncreaseFontSize", "keys": "ctrl+shift+delete" },
+    { "id": "Terminal.DecreaseFontSize", "keys": "ctrl+shift+backspace" },
     { "id": "Terminal.ClearBuffer", "keys": "ctrl+shift+g" },
     // app management
     { "id": "Terminal.ToggleFocusMode", "keys": "ctrl+;" },
