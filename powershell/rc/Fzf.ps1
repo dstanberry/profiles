@@ -74,21 +74,38 @@ function Invoke-CustomFuzzyEdit() {
 }
 
 function Invoke-ProjectSwitcher() {
-	$previewer = @"
-(glow -s dark {1}/README.md || bat --style=plain {1}/README.md || cat {1}/README.md || eza -lh --icons {1} || ls -lh {1}) 2> Nul
-"@
+	$previewer = "(glow -s dark {1}/README.md || bat --style=plain {1}/README.md || cat {1}/README.md || eza -lh --icons {1} || ls -lh {1}) 2> Nul"
+	$git_dirs = Get-ChildItem -Path ( -join ($global:basedir, "Git")) -Directory
+	$project_dirs = Get-ChildItem -Path $env:PROJECTS_DIR -Directory
+	$worktree_dirs = @()
+	foreach ($d in $git_dirs) {
+		if ((Test-Path "$($d.FullName)/worktrees") -or (Test-Path "$($d.FullName)/.git/worktrees")) {
+			$worktree_list = git -C "$($d.FullName)" worktree list 2> Nul | ForEach-Object { $_.Split()[0] }
+			if ($worktree_list) {
+				foreach ($w in $worktree_list) {
+					$worktree_dirs += $w.Replace("/", "\")
+				}
+			}
+		}
+	}
+	foreach ($d in $project_dirs) {
+		if ((Test-Path "$($d.FullName)/worktrees") -or (Test-Path "$($d.FullName)/.git/worktrees")) {
+			$worktree_list = git -C "$($d.FullName)" worktree list 2> Nul | ForEach-Object { $_.Split()[0] }
+			if ($worktree_list) {
+				foreach ($w in $worktree_list) {
+					$worktree_dirs += $w.Replace("/", "\")
+				}
+			}
+		}
+	}
 	$mru = @(
-		-join ($env:USERPROFILE, "\"),
-		$global:basedir,
-		-join ($env:hash_notes, "\zettelkasten"),
-		-join ($global:basedir, "Git"),
-		$env:PROJECTS_DIR,
-		-join ($env:PROJECTS_DIR, "\*\*")
+		$env:CONFIG_HOME.Replace("/", "\"),
+		-join ($global:basedir.Replace("/", "\"), "Git"),
+		$env:PROJECTS_DIR.Replace("/", "\")
 	)
-	$mru |`
+	$mru + $git_dirs + $project_dirs + $worktree_dirs |`
 		Sort-Object -Unique |`
-		Get-ChildItem -Attributes Directory |`
-		Invoke-Fzf -Height "50%" -Preview "$previewer" |`
+		Invoke-Fzf -Height "100%" -Preview "$previewer" |`
 		Set-Location
 	FixInvokePrompt
 }
