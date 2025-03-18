@@ -1,4 +1,4 @@
-$env:CONFIG_HOME = "$HOME/.config"
+$env:CONFIG_HOME = "$HOME\.config"
 $env:CACHE_HOME = "$env:TEMP"
 $env:DATA_HOME = "$env:APPDATA"
 
@@ -6,14 +6,14 @@ $env:DATA_HOME = "$env:APPDATA"
 $env:EDITOR = "nvim"
 
 # define configuration path for bat
-$env:BAT_CONFIG_PATH = "$env:CONFIG_HOME/bat/bat.conf"
+$env:BAT_CONFIG_PATH = "$env:CONFIG_HOME\bat\bat.conf"
 
 # define configuration path for rust-cargo
-$env:CARGO_HOME = "$env:DATA_HOME/cargo"
-$env:RUSTUP_HOME = "$env:DATA_HOME/rustup"
+$env:CARGO_HOME = "$env:DATA_HOME\cargo"
+$env:RUSTUP_HOME = "$env:DATA_HOME\rustup"
 
 # define configuration path for go
-$env:GOPATH = "$env:DATA_HOME/go"
+$env:GOPATH = "$env:DATA_HOME\go"
 
 # set fd as the default source for fzf
 $env:FZF_DEFAULT_COMMAND = "fd -H --follow --type f --color=always -E .git -E 'ntuser.dat\*' -E 'NTUSER.DAT\*'"
@@ -57,12 +57,12 @@ $env:GIT_REVIEW_BASE = "main"
 # enable terminal colors in output
 $env:GH_FORCE_TTY = "100%"
 # define path to configuration files
-$env:GH_CONFIG_DIR = "$env:CONFIG_HOME/gh"
+$env:GH_CONFIG_DIR = "$env:CONFIG_HOME\gh"
 
 # define the default configuration path for komorebi
 $env:KOMOREBI_CONFIG_HOME = "$HOME\.config\komorebi"
 # define the default configuration path for whkd
-$env:WHKD_CONFIG_HOME="$HOME/.config/komorebi"
+$env:WHKD_CONFIG_HOME = "$HOME\.config\komorebi"
 
 # set sane default options for less
 $env:LESS = "-iFMRX -x4"
@@ -75,10 +75,10 @@ $env:MANPAGER = 'nvim +Man!'
 # define location for local projects
 $env:PROJECTS_DIR = $global:basedir + "Projects"
 
-$env:PSQLRC = "$env:CONFIG_HOME/pg/psqlrc-win"
-$env:PSQL_HISTORY = "$env:CACHE_HOME/pg/psql_history"
-$env:PGPASSFILE = "$env:CONFIG_HOME/pg/pgpass"
-$env:PGSERVICEFILE = "$env:CONFIG_HOME/pg/pg_service.conf"
+$env:PSQLRC = "$env:CONFIG_HOME\pg\psqlrc-win"
+$env:PSQL_HISTORY = "$env:CACHE_HOME\pg\psql_history"
+$env:PGPASSFILE = "$env:CONFIG_HOME\pg\pgpass"
+$env:PGSERVICEFILE = "$env:CONFIG_HOME\pg\pg_service.conf"
 
 # prevent virtualenv from automatically modifying prompt
 $env:VIRTUAL_ENV_DISABLE_PROMPT = $true
