@@ -277,32 +277,9 @@
   "window.commandCenter": true,
   "window.menuBarVisibility": "compact",
   "window.title": "",
-  "workbench.colorTheme": "KDark",
+  // "workbench.colorTheme": "KDark",
   "workbench.colorCustomizations": {
-    "[KDark]": {
-      "editor.selectionBackground": "#48525e",
-      "editor.wordHighlightBackground": "#00000000",
-      "editorCursor.foreground": "#e5c179",
-      "editorInlayHint.background": "#37373700",
-      "editorInlayHint.foreground": "#8f8f8f",
-      "editorRuler.foreground": "#5a5a5a20",
-      "panel.background": "#212121",
-      "tab.activeBackground": "#37373700",
-      "tab.activeForeground": "#d8dee9",
-      "terminal.background": "#212121"
-    },
-    "editorBracketHighlight.foreground1": "#73c1b9",
-    "editorBracketHighlight.foreground2": "#80d3dd",
-    "editorBracketHighlight.foreground3": "#9086a4",
-    "editorBracketHighlight.foreground4": "#bfafc4",
-    "editorBracketHighlight.foreground5": "#dec7d0",
-    "editorBracketHighlight.foreground6": "#e09696",
-    "editorBracketHighlight.unexpectedBracket.foreground": "#ffdca8",
-    "statusBar.background": "#5f00af",
-    "statusBar.noFolderBackground": "#5f00af",
-    "statusBar.debuggingBackground": "#5f00af",
-    "statusBar.foreground": "#ffffff",
-    "statusBar.debuggingForeground": "#ffffff"
+    
   },
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
