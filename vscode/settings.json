@@ -47,13 +47,13 @@
     {
       "text": "TODO:",
       "color": "#c9d1d9",
-      "backgroundColor": "#62757e",
+      "backgroundColor": "#b48ead",
       "fontWeight": "bold"
     },
     {
       "text": "NOTE:",
       "color": "#c9d1d9",
-      "backgroundColor": "#b48ead",
+      "backgroundColor": "#62757e",
       "fontWeight": "bold"
     },
     {
