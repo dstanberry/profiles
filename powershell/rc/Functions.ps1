@@ -104,6 +104,18 @@ function global:notes {
 	catch { Throw "$($_.Exception.Message)" }
 }
 
+# support custom sub-commands
+function global:npm {
+	try {
+		$PKG = "$env:CONFIG_HOME/shared/packages/npm.txt"
+		if ($args[0] -eq "load") {
+			Get-Content $PKG | ForEach-Object { npm.cmd install --global $_ }
+		}
+		else { npm.cmd @args }
+	}
+	catch { Throw "$($_.Exception.Message)" }
+}
+
 # poor man's rg runtime configuration
 function global:rg {
 	rg.exe --colors line:fg:yellow `
